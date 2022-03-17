@@ -1,26 +1,25 @@
 package If;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class A_2884 {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String str[] = br.readLine().split(" ");
-		int h = Integer.parseInt(str[0]);
-		int m = Integer.parseInt(str[1]);
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 
-		if(m <45) {
-			h --;
-			m += 60;
+		int h = sc.nextInt();
+		int m = sc.nextInt();
+		int time = sc.nextInt();
+		m += time;
+		if (m >= 60) {
+			while (m >= 60) {
+				m -= 60;
+				h++;
+				if (h >= 24) {
+					h = 0;
+				}
+			}
 		}
-		if(h<0) {
-			h += 24;
-		}
-		System.out.print(h);
-		System.out.print(" ");
-		System.out.print(m-45);
-	
+		System.out.print(h + " " + m);
+
 	}
 }
