@@ -78,7 +78,7 @@ class HashTable {
 
 public class HashTable01 {
 	public static void main(String[] args) {
-		HashTable h = new HashTable(3);
+		HashTable h = new HashTable(5);
 		h.put("sung", "She is pretty");
 		h.put("jin", "She is model");
 		h.put("hee", "She is an angel");
