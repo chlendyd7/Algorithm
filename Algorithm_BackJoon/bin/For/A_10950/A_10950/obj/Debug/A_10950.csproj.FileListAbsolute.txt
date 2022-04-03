@@ -1,0 +1,6 @@
+C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_10950\A_10950\bin\Debug\A_10950.exe.config
+C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_10950\A_10950\bin\Debug\A_10950.exe
+C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_10950\A_10950\bin\Debug\A_10950.pdb
+C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_10950\A_10950\obj\Debug\A_10950.csprojResolveAssemblyReference.cache
+C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_10950\A_10950\obj\Debug\A_10950.exe
+C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_10950\A_10950\obj\Debug\A_10950.pdb
