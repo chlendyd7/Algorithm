@@ -1,6 +1,0 @@
-C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_8393\A_8393\bin\Debug\A_8393.exe.config
-C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_8393\A_8393\bin\Debug\A_8393.exe
-C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_8393\A_8393\bin\Debug\A_8393.pdb
-C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_8393\A_8393\obj\Debug\A_8393.csprojResolveAssemblyReference.cache
-C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_8393\A_8393\obj\Debug\A_8393.exe
-C:\Users\test02\Documents\GitHub\Algorithm\Algorithm_BackJoon\BackJoon\For\A_8393\A_8393\obj\Debug\A_8393.pdb
