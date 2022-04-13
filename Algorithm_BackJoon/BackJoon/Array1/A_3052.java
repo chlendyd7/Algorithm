@@ -16,8 +16,12 @@ public class A_3052 {
 		for(int i=0; i<10; i++) {
 			array[Integer.parseInt(br.readLine()) %42 ] = true;
 		}
-		for(int i=0; i<array.length; i++) {
-			System.out.println(array[i]);
+		int count =0;
+		for(boolean value : array) {
+			if(value) {
+				count++;
+			}
 		}
+		System.out.println(count);
 	}
 }
