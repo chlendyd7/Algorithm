@@ -1,9 +1,12 @@
-a = input().upper()
-set_a = list(set(a))
-cnt_list =[]
-for x in set_a:
-    cnt = a.count(x)
-    cnt_list.append(cnt)
-
-if cnt_list(max(cnt_list))>1:
-    print("?")
+# input = ["aba","abab","abcabc","a"]
+N=int(input())
+answer = 0
+for i in range(N):
+    option = [">"]
+    word = input()
+    for j in word:
+        if option[-1] != j:
+            option.append(j)
+    if len(option)==len(set(option)):
+        answer +=1
+print(answer)
