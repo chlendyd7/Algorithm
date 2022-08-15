@@ -1,12 +1,6 @@
-# input = ["aba","abab","abcabc","a"]
-N=int(input())
-answer = 0
-for i in range(N):
-    option = [">"]
-    word = input()
-    for j in word:
-        if option[-1] != j:
-            option.append(j)
-    if len(option)==len(set(option)):
-        answer +=1
-print(answer)
+
+a = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"]
+b = "G"
+for i in a:
+    if b in i:
+        print(i)
