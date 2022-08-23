@@ -8,4 +8,3 @@ while N >=0:
     N -= 3
     bag +=1
 else: print(-1)
-print(bag)
