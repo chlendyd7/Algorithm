@@ -1,16 +1,13 @@
-x= int(input())
-line = 1
-
-while x > line:
-    x -= line
-    line +=1
-
-if line %2 ==0:
-    up =x
-    down = line-x +1
-
-else:
-    up = line -x +1
-    down = x
-
-print(up,"/",down, sep="")
+N = int(input())
+cnt = 1
+first = 1
+second = 1
+for i in range(N):
+    if first < cnt:
+        second +=1
+        first -=1
+    
+    elif second < cnt:
+        first +=1
+        second -=1
+    else:
