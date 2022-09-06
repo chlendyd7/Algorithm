@@ -1,11 +1,19 @@
-a, b ,c = input().split()
-i = 1
-cnt=0
-if b >= c :
-    cnt = -1
+# a, b ,c = map(int,input().split())
+# i = 0
+# cnt=0
+# if c < b :
+#     print(-1)
+
+# else:
+#     while (c*i)<=(a+(b*i)):
+#         cnt +=1
+#         i +=1
+
+# print(cnt)
+## Ctrl + K + C 전체 주석
+
+a,b,c = map(int, input().split())
+if c<=b:
+    print(-1)
 else:
-    while (c*i)<(a+b*i):
-        cnt +=1
-        i +=1
-        print(1)
-print(cnt) n
+    print(int(a/(c-b)+1))
