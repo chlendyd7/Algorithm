@@ -16,4 +16,4 @@ if ai < a:
 if ci < c:
     e = e+d[ci:]
 for x in e:
-    print(x, end='')1
+    print(x, end='')

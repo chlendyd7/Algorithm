@@ -4,8 +4,8 @@ dx=[-1, 0, 1, 0]
 dy=[0, 1, 0, -1]
 n=int(input())
 a=[list(map(int, input().split())) for _ in range(n)]
-a.insert(0, [0]*n)
-a.append([0]*n)
+a.insert(0, [0]*n)#행
+a.append([0]*n)#열
 for x in a:
     x.insert(0, 0)
     x.append(0)
