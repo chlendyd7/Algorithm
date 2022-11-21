@@ -15,7 +15,9 @@ def Count(len):
 for _ in range(n):
     tmp = int(input())
     Line.append(tmp)
+
 Line.sort()
+
 lt = 1
 rt = Line[n-1]
 while lt <= rt:
