@@ -20,7 +20,7 @@ while lt<=rt:
         last=tmp[0][0]
         if tmp[0][1]=='L':
             lt=lt+1
-        else:
+        else:	
             rt=rt-1
     tmp.clear()
 

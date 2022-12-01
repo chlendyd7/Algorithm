@@ -1,12 +1,8 @@
-import sys
-#sys.stdin=open('C:\\Users\\Administrator\\Documents\\GitHub\\Algorithm\\inflearn\\AA\\input.txt', "rt")
-n, k = map(int, input().split())
-cnt = 0
-for i in range(1, n+1):
-    if n%i == 0:
-        cnt+=1
-    if cnt == k:
-        print(i)
-        break
-else:
-    print(-1)
+num, m=map(int, input().split())
+num = list(map(int, str(num)))
+stack=[]
+for x in num:
+    while stack and m>0 and stack[-1]<x:
+        stack.pop()
+        m-=1
+    stack.append(x)
