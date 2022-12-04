@@ -1,14 +1,14 @@
-n = int(input())
-meeting = []
-for i in range(n):
-    a, b = map(int,input().split())
-    meeting.append((a,b))
-meeting.sort(key=lambda x : (x[1], x[0]))
-et = 0
-cnt =0
-for s, e in meeting:
-    if s>=et:
-        et=e
-        cnt+=1
-    
-print(meeting)
+num,m = map(int, input().split())
+num = list(map(int, str(num)))
+stack = []
+for x  in num:
+    while stack and m>0 and stack[-1]<x:
+        stack.pop()
+        m = -1
+    stack.append(x)
+if m!=0:
+    stack = stack[:-m]
+print(stack)
+res=''.join(map(str, stack))
+print(res)
+
