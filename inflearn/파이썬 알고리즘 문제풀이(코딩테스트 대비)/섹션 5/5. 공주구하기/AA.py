@@ -1,15 +1,15 @@
 from collections import deque
 a, b = map(int, input().split())
-dq = list(range(1, b+1))
+q = list(range(1, a+1))
 # for _ in range(1, a+1):
 #     q.append(_)
-dq = deque(dq)
+dq = deque(q)
 
 while dq:
-    for _ in range(b-1):
-        cur = dq.popleft()
+    for _ in range(b-1): # 하나 작은 상태까지 돌아감 ex) 4 = 0,1,2
+        cur = dq.popleft() # 왼쪽에서 하나씩 빼 오른쪽으로 append
         dq.append(cur)
-    dq.popleft()
-    if len(dq)==1:
+    dq.popleft() # b번째의 숫자가 pop됨
+    if len(dq)==1: 
         print(dq[0])
         dq.popleft()
