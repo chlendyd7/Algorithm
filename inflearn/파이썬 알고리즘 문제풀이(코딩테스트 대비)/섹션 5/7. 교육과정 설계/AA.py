@@ -16,4 +16,8 @@ for i in range(n):
             print("#%d YES" %(i+1))
         else:
             print("#%d NO" %(i+1))
-                
+
+# dq = [1,2,3,4]
+# b = 0
+# if b in dq:
+#     print("Yes")
