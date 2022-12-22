@@ -41,25 +41,25 @@ for x in a: #다시 하여금 접근
     else:
         print("YES")
 
-# 리스트 해쉬 아스키 넘버를 이용
-a = input()
-b = input()
-str1 = [0]*52
-str2 = [0]*52
-for x in a:
-    if x.isupper(): #대문자 이면 True return
-        str1[ord(x)-65]+=1 # ord() 문자를 아스키넘버로 변환 대문자는 65~90, 소문자는 97~122 26개씩
-    else:
-        str1[ord(x)-71]+=1
-for x in b:
-    if x.isupper():
-        str2[ord(x)-65]+=1
-    else:
-        str2[ord(x)-71]+=1
-# if str1==str2: 이렇게 해도 됨
-for i in range(52):
-    if str1[i] != str2[i]:
-        print("NO")
-        break
-    else:
-        print("YES")
+# # 리스트 해쉬 아스키 넘버를 이용
+# a = input()
+# b = input()
+# str1 = [0]*52
+# str2 = [0]*52
+# for x in a:
+#     if x.isupper(): #대문자 이면 True return
+#         str1[ord(x)-65]+=1 # ord() 문자를 아스키넘버로 변환 대문자는 65~90, 소문자는 97~122 26개씩
+#     else:
+#         str1[ord(x)-71]+=1
+# for x in b:
+#     if x.isupper():
+#         str2[ord(x)-65]+=1
+#     else:
+#         str2[ord(x)-71]+=1
+# # if str1==str2: 이렇게 해도 됨
+# for i in range(52):
+#     if str1[i] != str2[i]:
+#         print("NO")
+#         break
+#     else:
+#         print("YES")
