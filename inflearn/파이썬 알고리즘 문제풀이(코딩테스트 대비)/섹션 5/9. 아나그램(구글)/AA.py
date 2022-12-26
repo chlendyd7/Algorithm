@@ -25,21 +25,21 @@ else:
 # get함수는 선언된 dict에서 출력하고자 하는 key가 있으면, 그에 해당하는 value를 출력해줍니다.
 # 또한, 출력하고자 하는 key가 없으면, 오류가 아닌 None을 출력합니다.
 
-a = input()
-b = input()
-sH = dict() #string hash
-for x in a:
-    sH[x]=sH.get(x,0)+1
+# a = input()
+# b = input()
+# sH = dict() #string hash
+# for x in a:
+#     sH[x]=sH.get(x,0)+1
 
-for x in b:
-    sH[x] = sH.get(x,0)-1
+# for x in b:
+#     sH[x] = sH.get(x,0)-1
 
-for x in a: #다시 하여금 접근
-    if sH.get(x)>0:
-        print("NO")
-        break
-    else:
-        print("YES")
+# for x in a: #다시 하여금 접근
+#     if sH.get(x)>0:
+#         print("NO")
+#         break
+#     else:
+#         print("YES")
 
 # # 리스트 해쉬 아스키 넘버를 이용
 # a = input()
