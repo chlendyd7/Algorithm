@@ -4,3 +4,4 @@ def DFS(x):
     else:
         DFS(x//2)
         print(x%2, end='')
+asd
