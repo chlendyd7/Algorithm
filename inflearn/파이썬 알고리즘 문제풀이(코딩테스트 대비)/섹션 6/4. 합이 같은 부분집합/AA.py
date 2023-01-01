@@ -8,7 +8,7 @@ def DFS(L, sum):
             print("YES")
             sys.exit(0)
     else:
-        DFS(L+1, sum+a[L])
+        DFS(L+1, sum+a[L]) # list 받은 것의 a[L]
         DFS(L+1, sum)
 
 if __name__=="__main__":
