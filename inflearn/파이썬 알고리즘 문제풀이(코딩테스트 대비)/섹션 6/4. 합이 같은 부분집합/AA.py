@@ -17,5 +17,3 @@ if __name__=="__main__":
     total=sum(a)
     DFS(0, 0)
     print("NO")
-
-    asd
