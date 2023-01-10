@@ -1,7 +1,9 @@
 
 
-def DFS(L, sum):
+def DFS(L, sum, tsum):
     global result
+    if sum + (total-tsum)<result:
+        return
     if sum>c:
         return
     if L==n:
@@ -21,5 +23,6 @@ if __name__=="__main__":
     result = -2147000000
     for i in range(n):
         a[i] = int(input())
-    DFS(0,0)
+    total = sum(a)
+    DFS(0,0,0)
     print(result)
