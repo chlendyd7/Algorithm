@@ -6,8 +6,8 @@ def DFS(L, sum):
             res=sum
     else:
         if L+T[L]<=n+1:
-            DFS(L+T[L], sum+P[L])
-        DFS(L+1, sum)
+            DFS(L+T[L], sum+P[L])# 상담을 한 날짜
+        DFS(L+1, sum)# 상담을 하지 않았을 때
 
 
 
