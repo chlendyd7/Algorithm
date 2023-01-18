@@ -2,25 +2,30 @@
 
 def DFS(L, sum):
     global cnt
-    if L==k: # 동전의 갯수
-        if sum==T:
+    if sum>m:
+        return
+    if L==n:
+        if sum==m:
             cnt+=1
-        else:
-            for i in range(cn[L]+1):
-                DFS(L+1, sum+(cv[L]*i)) # 1을 곱하기 위해
+    else:
+        for i in range(cn[L]+1):
+            DFS(L+1, sum+(cv[L]*i))
+            
+
 
 
 
 
 
 if __name__=="__main__":
-    T=int(input())
-    k=int(input())
-    cv = list()
-    cn = list()
-    for i in range(k):
+    m=int(input())
+    n=int(input())
+    cv=list()
+    cn=list()
+    for i in range(n):
         a, b = map(int, input().split())
         cv.append(a)
-        cv.append(b)
+        cn.append(b)
     cnt = 0
     DFS(0,0)
+    print(cnt)
