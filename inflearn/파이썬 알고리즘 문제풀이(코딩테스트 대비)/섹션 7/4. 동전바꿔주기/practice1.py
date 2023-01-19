@@ -1,6 +1,4 @@
-#☆☆☆
-
-def DFS(L, sum):
+def DFS(L,sum):
     global cnt
     if sum>m:
         return
@@ -10,7 +8,8 @@ def DFS(L, sum):
     else:
         for i in range(cn[L]+1):
             DFS(L+1, sum+(cv[L]*i))
-            
+
+
 
 
 
@@ -25,4 +24,3 @@ if __name__=="__main__":
         cn.append(b)
     cnt = 0
     DFS(0,0)
-    print(cnt)

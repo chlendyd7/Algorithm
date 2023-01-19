@@ -1,5 +1,3 @@
-
-
 def DFS(L, sum):
     global res
     if L==n:
@@ -7,7 +5,7 @@ def DFS(L, sum):
             res.add(sum) 
     
     else:
-        DFS(L+1, sum+G[L]) # 추를 왼쪽에 넣는다
+        DFS(L+1, sum+G[L]) # 추를 왼쪽에 넣는다 
         DFS(L+1, sum-G[L]) # 추를 오른쪽에 놓는다
         DFS(L+1, sum) # index에 추를 사용하지 않는다
 
