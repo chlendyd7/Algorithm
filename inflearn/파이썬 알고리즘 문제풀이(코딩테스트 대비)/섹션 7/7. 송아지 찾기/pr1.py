@@ -1,3 +1,18 @@
+from collections import deque
+
+
+MAX = 10000
+ch = [0] * (MAX+1)
+dis = [0] * (MAX+1)
+n,m = map(int, input().split())
+ch[n] = 1
+dis[n] = 0
+dQ = deque()
+dQ.append(n)
+while dQ:
+    
+
+
 #아이폰 동영상 가운데 잘라내기
 def DFS(S,E):
     global cnt
