@@ -19,7 +19,7 @@ for i in range(n):
                     x=tmp[0]+dx[k]
                     y=tmp[1]+dy[k]
                     if 0<=x<n and 0<=y<n and board[x][y]==1:
-                        board[x][y]=0
+                        board[x][y]=0 # 이제 방문할 예정
                         Q.append((x, y)) # 이건 어떤 용도?
             cnt+=1 # 돌고 끝나면 cnt+1
 print(cnt)

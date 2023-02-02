@@ -24,3 +24,4 @@ for i in range(n):
                         Q.append((x,y))
             cnt+=1
 print(cnt)
+

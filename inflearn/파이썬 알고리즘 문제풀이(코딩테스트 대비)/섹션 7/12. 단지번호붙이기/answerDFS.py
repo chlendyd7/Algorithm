@@ -4,7 +4,7 @@ dy=[0, 1, 0, -1]
 def DFS(x, y):
     global cnt
     cnt+=1 # 왜 cnt +1 검증 안해도 되는가? 하나의 집 좌표가 발견되면 상관없기 때문
-    board[x][y]=0 # 왜 바로 0으로 초기화? 중복방문 막기 위함
+    board[x][y]=0 # 왜 바로 0으로 초기화? 중복방문 막기 위함 i와 j의 값은 이미 받아옴
     for i in range(4):
         xx=x+dx[i]
         yy=y+dy[i]
