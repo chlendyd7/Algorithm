@@ -1,8 +1,8 @@
 import sys
-sys.stdin=open("input.txt", "r")
+# 바뀌는거 x,y값 사다리는 오른쪽이나 왼쪽 한 방향으로만 이동
 def DFS(x, y):
     ch[x][y]=1
-    if x==0:
+    if x==0: # 시작하는 지점
         print(y)
     else:
         if y-1>=0 and board[x][y-1]==1 and ch[x][y-1]==0:
