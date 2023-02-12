@@ -14,4 +14,4 @@ for i in range(2, n+1):
     dy[i]=max+1
     if dy[i]>res: # 최대값 
         res=dy[i]
-print(res)
+print(res)a
