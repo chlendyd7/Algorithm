@@ -1,3 +1,2 @@
-dy=[0]*(9)
-dy[1]=1
-print(dy)
+for j in range(4, 0, -1): # for문은 시작부터 마지막꺼는 안나옴
+    print(j)
