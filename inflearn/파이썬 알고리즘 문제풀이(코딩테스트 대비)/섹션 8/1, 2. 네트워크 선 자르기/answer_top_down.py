@@ -3,8 +3,8 @@
 
 def DFS(len):
     #가지 컷
-    if dy[len]>0:
-        return dy[len]
+    if dy[len]>0: # 기록되있는 값이 있으면
+        return dy[len] # 바로 리턴해라
     if len==1 or len==2:
         return len
     else:

@@ -9,7 +9,7 @@ res=0
 for i in range(2, n+1):
     max=0
     for j in range(i-1, 0, -1):
-        if arr[j]<arr[i] and dy[j]>max:
+        if arr[j]<arr[i] and dy[j]>max: #이 부분 다시 보기
             max=dy[j]
 
     dy[i]=max+1
