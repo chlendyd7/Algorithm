@@ -1,9 +1,23 @@
-n = int(input())
-c_list=[0]*(n+1)
-cnt = 0
+import sys
+#sys.stdin=open("input.txt", "r")
+n=int(input())
+ch=[0]*(n+1)
+cnt=0
 for i in range(2, n+1):
-    if c_list[i]==0:
-        cnt +=1
+    if ch[i]==0:
+        cnt+=1
+        for j in range(i, n+1, i): #배수의 숫자를 1로 만들어주기
+            ch[j]=1
+print(cnt)
+
+import sys
+#sys.stdin=open("input.txt", "r")
+n=int(input())
+ch=[0]*(n+1)
+cnt=0
+for i in range(2, n+1):
+    if ch[i]==0:
+        cnt+=1
         for j in range(i, n+1, i):
-            c_list[j]=1
+            ch[j]=1
 print(cnt)
