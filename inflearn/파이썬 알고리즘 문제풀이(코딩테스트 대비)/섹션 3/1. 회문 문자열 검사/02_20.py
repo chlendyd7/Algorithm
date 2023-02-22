@@ -7,7 +7,7 @@ for i in range(n):
         if word[j] != word[-1-j]:
             print("#%d NO" %(i+1))
             break
-        else:
-            print('#%d YES' %(i+1)) 
+    
+        print('#%d YES' %(i+1)) 
 # n = "word"
 # print(n[-2])

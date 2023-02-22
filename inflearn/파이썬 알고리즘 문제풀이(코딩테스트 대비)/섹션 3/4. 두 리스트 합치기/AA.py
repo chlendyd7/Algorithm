@@ -1,19 +1,20 @@
-a = int(input())
+n = int(input())
+a = list(map(int,input().split()))
+m = int(input())
 b = list(map(int,input().split()))
-c = int(input())
-d = list(map(int,input().split()))
-e = []
-ai = ci = 0
-while a < ai and c < ci:
-    if b[ai] < d[ci]:
-        e.append(b[ai])
-        ai += 1
+c = []
+p1 = p2 = 0
+while p1 < n and p2 < m:
+    if a[p1] < b[p2]:
+        c.append(a[p1])
+        p1 +=1
     else:
-        e.append(d[ci])
-        ci +=1
-if ai < a:
-    e = e+d[ai:]
-if ci < c:
-    e = e+d[ci:]
-for x in e:
-    print(x, end='')
+        c.append(b[p2])
+        p2 +=1
+
+if p1 < n:
+    c = c+a[p1:]
+if p2 < m:
+    c = c+b[p2:]
+for x in c:
+    print(x, end=' ')

@@ -15,7 +15,7 @@ for j in range(n):
 sum1=sum2=0
 for j in range(n):
     sum1 +=a[j][j]
-    sum2 +=a[j][n-j-1]
+    sum2 +=a[j][n-j-1] #역순
 if sum1 > mx:
     mx = sum1
 if sum2 > mx:

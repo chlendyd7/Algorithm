@@ -1,3 +1,4 @@
+# index 번호 값을 잡기, 경우의 수 = 연속되는 합의 수
 N,M = map(int, input().split())
 a = list(map(int, input().split()))
 cnt = 0
