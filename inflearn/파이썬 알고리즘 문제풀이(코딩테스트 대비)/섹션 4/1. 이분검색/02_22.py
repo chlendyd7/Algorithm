@@ -1,10 +1,14 @@
 n, m = map(int,input().split())
 ls = list(map(int,input().split()))
 ls.sort()
-cnt= 0
-for i in ls:
-    cnt += 1
-    if m==i:
+lt=0
+rt=n-1 # index 번호?
+while lt <= rt:
+    mid=(lt+rt)//2
+    if ls[mid]==m:
+        print(mid+1)
         break
-
-print(cnt)
+    elif ls[mid]>m:
+        rt=mid-1
+    else:
+        lt=mid+1

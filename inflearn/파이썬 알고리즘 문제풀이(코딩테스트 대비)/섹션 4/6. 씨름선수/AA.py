@@ -12,3 +12,5 @@ for x,y in body:
         cnt += 1
 
 print(cnt)
+
+
