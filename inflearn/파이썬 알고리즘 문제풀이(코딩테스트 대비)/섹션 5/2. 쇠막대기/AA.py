@@ -1,7 +1,12 @@
 s = input()
 stack = []
-cnt = 0
-for i in range(len(s)):
+res = ''
+for i in s:
+    if s.isdecimal():
+        res += s
+    else:
+        if x == '(':
+            stack.append(s)
     if s[i]=='(':
         stack.append(s[i])
     else: # )가 들어온다면 
