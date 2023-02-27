@@ -1,26 +1,28 @@
+
+
 n=int(input())
+count = 0
 stack = []
-cnt = 0
 result = []
 no_message = True
+
 for i in range(n):
-    x=int(input())
+    x = int(input())
     
-    while cnt < x:
-        cnt +=1
-        stack.append(cnt)
+    while count < x:
+        count +=1
+        stack.append(count)
         result.append('+')
-    
+
     if stack[-1] == x:
         stack.pop()
         result.append('-')
     
     else:
-        no_message = False
+        no_message=False
         break
 
-        
-if no_message == False:
-    print('NO')
+if no_message==False:
+    print("NO")
 else:
-    print("\n".join())
+    print("\n".join(result))
