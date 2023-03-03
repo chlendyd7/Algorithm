@@ -1,5 +1,5 @@
 import sys
-sys.stdin=open("input.txt", "r")
+# sys.stdin=open("input.txt", "r")
 def DFS(L, s):
     global cnt
     if L==m:
