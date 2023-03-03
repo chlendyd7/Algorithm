@@ -19,6 +19,6 @@ if __name__=="__main__":
     a = list(map(int, input().split()))
     m = int(input())
     res = 100000
-    a.sort(reverse=True)
+    a.sort(reverse='True')
     DFS(0,0)
     print(res)
