@@ -1,5 +1,5 @@
 import sys
-sys.stdin=open("input.txt", "r")
+# sys.stdin=open("input.txt", "r")
 n=int(input())
 a=list(map(int, input().split()))
 seq=[0]*n
