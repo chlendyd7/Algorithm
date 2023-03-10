@@ -5,3 +5,4 @@ a=list(map(int,input().split()))
 seq=[0]*n
 for i in range(n):
     for
+s
