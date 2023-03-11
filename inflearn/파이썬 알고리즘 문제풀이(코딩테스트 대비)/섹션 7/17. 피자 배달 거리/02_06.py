@@ -1,5 +1,3 @@
-
-
 def DFS(L,s):
     global res
     if L==m:
@@ -22,7 +20,6 @@ def DFS(L,s):
         for i in range(s, len(pz)):
             cb[L]=i
             DFS(L+1, i+1)
-
 
 
 
