@@ -16,4 +16,4 @@ for i in range(n):
         dy[i]=max_h+bricks[i][1]
     res=max(res, dy[i])
 print(res)
-# dy의 2차원 함수로 받는 방법 비교 값이 두개 이상일 시 코드 짜는 방법
+# dy의 2차원 함수로 받는 방법 비교 값이 두개 이상일 시 코드 짜는 방법.

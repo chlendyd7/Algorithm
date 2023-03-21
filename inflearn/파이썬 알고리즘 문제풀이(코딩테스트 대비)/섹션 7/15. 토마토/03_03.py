@@ -33,3 +33,6 @@ if flag==1:
         for j in range(n):
             if dis[i][j] >result:
                 result = dis[i][j]
+    print(result)
+else:
+    print(-1)
