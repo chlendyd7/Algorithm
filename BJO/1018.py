@@ -21,4 +21,4 @@ for a in range(M-7): #바둑판의 시작지점을 잡음
                     if ls[i][j] != 'W':
                         index2 +=1
         count.append(min(index1, index2))
-print(min(count))
+print(min(count))!
