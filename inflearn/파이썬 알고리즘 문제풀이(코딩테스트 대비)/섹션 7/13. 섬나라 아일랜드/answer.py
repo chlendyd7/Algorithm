@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-sys.stdin=open("input.txt", "r")
+# sys.stdin=open("input.txt", "r")
 dx=[-1, -1, 0, 1, 1, 1, 0, -1] # 8방향 대각선 포함 탐색법 3,3좌표로 생각해볼 것
 dy=[0, 1, 1, 1, 0, -1, -1, -1] # 시계방향 왼쪽 아래부터 좌표가 시작되나?
 
