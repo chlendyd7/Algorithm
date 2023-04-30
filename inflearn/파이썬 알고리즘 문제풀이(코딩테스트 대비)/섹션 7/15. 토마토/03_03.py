@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from collections import deque
 
 dx = [1,0,-1,0]
@@ -36,3 +37,9 @@ if flag==1:
     print(result)
 else:
     print(-1)
+=======
+m,n = map(int,input().split())
+board = [list(map(int,input().split())) for _ in range(m)]
+
+ch = [[0]*n for _ in range(m)]
+>>>>>>> 8180045cc69c5d51e320377eb4095b6bfa70c5a7

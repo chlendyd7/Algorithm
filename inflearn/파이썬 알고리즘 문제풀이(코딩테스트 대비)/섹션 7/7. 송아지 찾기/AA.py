@@ -1,3 +1,4 @@
+#BFS 는 레벨 탐색, 큐가 필요함 first in first out
 import sys
 from collections import deque
 #sys.stdin=open("input.txt", "r")

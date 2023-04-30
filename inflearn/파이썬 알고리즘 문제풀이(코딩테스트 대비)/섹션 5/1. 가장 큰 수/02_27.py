@@ -11,6 +11,6 @@ for x in n:
     stack.append(x)
 
 if m>0:
-    stack=stack[:-m]
+    stack=stack[:-m] # -m개를 제외한 나머지를 반환
 res="".join(map(str, stack))
 print(res)

@@ -4,7 +4,7 @@ def DFS(v,s):
     if s>total//2:
         return
     if v==n:
-        if s==total-s:
+        if s==(total//2):
             print("YES")
             sys.exit(0)
         
