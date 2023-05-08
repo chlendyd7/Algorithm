@@ -8,7 +8,7 @@ for _ in range(n):
 
 for _ in range(m):
     b = input()
-    if b in nls:
+    if b in nls: #b가 nls에 있는지 체크
         count += 1
 
 print(count)
