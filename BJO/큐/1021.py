@@ -12,8 +12,8 @@ for num in nums:
             qu.popleft()
             break
         if qu.index(num) <= len(qu) //2:
-            qu.append(qu.popleft())
+            qu.rotate(-1)
         else:
-            qu.appendleft(qu.pop())
+            qu.rotate(1)
         cnt +=1
 print(cnt)
