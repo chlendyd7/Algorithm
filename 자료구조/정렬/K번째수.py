@@ -3,7 +3,6 @@ def solution(array, commands):
     for command in commands:
         new_array = array[command[0]-1:command[1]]
         new_array.sort()
-        print(new_array)
         answer.append(new_array[command[2]-1])
     return answer
 
