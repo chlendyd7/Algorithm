@@ -18,3 +18,10 @@ if p2 < m:
     c = c+b[p2:]
 for x in c:
     print(x, end=' ')
+
+'''
+    c = a+b
+    c.sort()
+    for _ in c:
+    print(_, end=' ')
+'''
