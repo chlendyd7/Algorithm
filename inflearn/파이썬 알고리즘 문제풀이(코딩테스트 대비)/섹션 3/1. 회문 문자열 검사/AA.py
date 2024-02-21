@@ -17,9 +17,6 @@ for i in range(n):
     else:
         print("#%d YES" %(i+1))        #if문 통과하지 않고 정상적으로 올 시 통과
 
-    
-
-
 # n = int(input())
 # for i in range(n):
 #     s = input()
