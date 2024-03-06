@@ -1,5 +1,3 @@
-import sys
-sys.stdin=open("input.txt", "r")
 def Count(len):
     cnt=1
     ep=Line[0]

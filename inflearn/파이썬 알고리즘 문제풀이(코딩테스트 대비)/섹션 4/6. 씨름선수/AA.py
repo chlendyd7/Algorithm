@@ -4,6 +4,7 @@ for i in range(n):
     a, b = map(int,input().split())
     body.append((a,b))
 body.sort(reverse=True)#몸무게로 정렬하고
+print(body)
 largest = 0
 cnt = 0
 for x,y in body:
