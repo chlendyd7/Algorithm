@@ -6,7 +6,6 @@ p = list(map(int,input().split()))
 p.sort()
 p = deque(p) #deque는 앞에서도 뺏다 넣었다 가능 
 cnt = 0
-p.append(1)
 while p: #p가 비어있을 때 까지 동작
     if len(p) == 1: # 한명이면 그냥 1개쓰고 break
         cnt +=1

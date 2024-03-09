@@ -1,3 +1,7 @@
+'''
+    1. 자기자리 찾은 경우
+    2. 자기자리 못찾은 경우
+'''
 import sys
 # sys.stdin=open("input.txt", "r")
 n=int(input())
