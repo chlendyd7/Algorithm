@@ -15,7 +15,7 @@
     후위표기식을 출력한다.
     ▣ 입력예제 1
     3+5*2/(7-2)
-    ▣ 출력예제 1
+    ▣ 출력예제 13+5*2/(7-2)3+5*2/(7-2)
     352*72-/+
     ▣ 입력예제 2
     3*(5+2)-9
@@ -25,9 +25,39 @@
 
 m = input() # 중위식을 담음
 stack = [] # 
-res = ''
+res = []
+switch=False
+for i in range(len(m)):
+    print(res)
+    if m[i] == '(':
+        switch=True
+        i+=1
+    elif m[i] == ')':
+        switch=False
+        i+=1
+    elif m[i]=='*' or m[i]=='/':
+        res+=m[i+1]
+        res+=m[i]
+        i+=1
+    elif m[i]=='+' or m[i]=='-':
+        if switch:
+            res+=m[i+1]
+            res+=m[i]
+            i+=1
+        else:
+            stack.append(m[i])
+    if m[i].isdecimal():
+        res+=m[i]
 
-for x in m:
-    if x == '(':
-        stack.append(x)
-    elif x=='*' or x=='/'
+print(stack)
+# for x in m:
+#     if x == '(':
+#         switch=True
+#     elif x == ')':
+#         switch=False
+#     elif x=='*' or x=='/':
+#         pass
+#     elif x=='+' or x=='-':
+#         stack.append(x)
+#     else:
+#         res+=x
