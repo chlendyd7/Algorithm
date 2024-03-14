@@ -35,7 +35,23 @@ from collections import deque
 n,m = map(int,input().split())
 ls = list(map(int,input().split()))
 deq = deque()
+cnt=0
 for i in range(len(ls)):
     tup=(i,ls[i])
     deq.append(tup)
-print(deq)
+
+check=deq[m][0]
+while deq:
+    print(max(deq))
+    if deq[0] == max(deq):
+        if deq[0][0] == check:
+            print(cnt+1)
+            break
+        else:
+            deq.popleft()
+            cnt+=1
+    else:
+        deq.append(deq.popleft())
+# deq.pop(max(deq))
+# while deq:
+#     deq
