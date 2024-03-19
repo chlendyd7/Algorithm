@@ -1,5 +1,10 @@
-def DFS(depth, max):
+'''
+    무거우면 버리기?
+'''
+def DFS(depth, max, tsum):
     global result
+    if result>max+(total-tsum):
+        return
     if max>c:
         return
     if max < c and result<max:
@@ -8,8 +13,8 @@ def DFS(depth, max):
         if max>result:
             result=max
     else:
-        DFS(depth+1, max+ls[depth])
-        DFS(depth+1, max)
+        DFS(depth+1, max+ls[depth], tsum+ls[depth])
+        DFS(depth+1, max, tsum+ls[depth])
 
 
 if __name__=='__main__':
@@ -18,5 +23,7 @@ if __name__=='__main__':
     ls=[]
     for _ in range(n):
         ls.append(int(input()))
-    DFS(0,0)
+    total=sum(ls)
+    DFS(0,0,0)
     print(result)
+    
