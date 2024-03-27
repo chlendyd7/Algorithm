@@ -1,11 +1,11 @@
+
 def DFS(L,P):
     global cnt
     if L==n:
-        cnt+=1
         for j in range(P):
-            print(chr(res[j]+64), end='')
+            if res[j] != 0:
+                print(chr(res[j]+64), end='')
         print()
-    
     else:
         for i in range(1,27):
             if code[L]==i:
@@ -18,12 +18,12 @@ def DFS(L,P):
 
 
 
-
 if __name__=="__main__":
     code = list(map(int,input()))
     n=len(code)
-    code.insert(n,-1) #out of index range를 피하기 위해
+    code.insert(n,-1)
     res=[0]*n
     cnt=0
     DFS(0,0)
     print(cnt)
+#chr(res[j]+64
