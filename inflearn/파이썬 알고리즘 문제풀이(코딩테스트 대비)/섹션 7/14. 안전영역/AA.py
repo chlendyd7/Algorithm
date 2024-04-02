@@ -14,8 +14,6 @@ def DFS(x, y, h):
             DFS(xx,yy,h)
 
 
-    
-
 if __name__=="__main__":
     n = int(input())
     cnt = 0
