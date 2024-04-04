@@ -1,14 +1,19 @@
 import sys
-dx=[-1, 0, 1, 0]
-dy=[0, 1, 0, -1]
-sys.setrecursionlimit(10**6)
-def DFS(x, y, h):
+sys.setrecursionlimit(10**6)# 시간 limit
+
+dx=[-1,0,1,0]
+dy=[0,1,0,-1]
+from collections import deque
+
+
+def DFS(x,y,h):
     ch[x][y]=1
     for i in range(4):
         xx=x+dx[i]
         yy=y+dy[i]
         if 0<=xx<n and 0<=yy<n and ch[xx][yy]==0 and board[xx][yy]>h:
-            DFS(xx, yy, h)
+            DFS(xx,yy,h)
+
 
 if __name__=="__main__":
     n = int(input())
@@ -22,14 +27,8 @@ if __name__=="__main__":
             for j in range(n):
                 if ch[i][j]==0 and board[i][j]>h:
                     cnt+=1
-                    DFS(i, j, h)
-        res=max(res, cnt)
+                    DFS(i,j,h)
+        res=max(res,cnt)
         if cnt==0:
             break
     print(res)
-
-
-
-
-
-    

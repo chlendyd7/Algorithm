@@ -1,5 +1,6 @@
 from collections import deque
-
+import sys
+sys.stdin=open("inflearn\파이썬 알고리즘 문제풀이(코딩테스트 대비)\섹션 7\\15. 토마토\in4.txt", "r")
 dx = [1,0,-1,0]
 dy = [0,1,0,-1]
 
