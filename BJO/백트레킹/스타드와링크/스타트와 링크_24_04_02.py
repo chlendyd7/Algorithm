@@ -1,9 +1,3 @@
-
-
-
-
-
-
 def DFS(L, idx):
     global res
     if L==n//2:
@@ -13,7 +7,7 @@ def DFS(L, idx):
             for j in range(n):
                 if visited[i] and visited[j]:
                     A += board[i][j]
-                elif not visited[i] and not visited[j]:
+                elif not visited[i] and not visited[j]: #하나의 행 씩 체크함
                     B += board[i][j]
         res=min(res, abs(A-B))
         return
