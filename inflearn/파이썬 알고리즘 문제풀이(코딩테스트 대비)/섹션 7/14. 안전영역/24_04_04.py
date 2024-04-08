@@ -12,6 +12,7 @@ def DFS(x,y,h):
         xx=x+dx[i]
         yy=y+dy[i]
         if 0<=xx<n and 0<=yy<n and ch[xx][yy]==0 and board[xx][yy]>h:
+            ch[xx][yy]=1
             DFS(xx,yy,h)
 
 
