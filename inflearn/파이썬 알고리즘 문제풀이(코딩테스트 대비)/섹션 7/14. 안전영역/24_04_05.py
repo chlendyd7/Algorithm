@@ -2,7 +2,7 @@ dx=[1,0,-1,0]
 dy=[0,1,0,-1]
 
 def DFS(x,y,h):
-    ch[xx][yy]=1
+    ch[xx][y]=1
     for k in range(4):
         xx=x+dx[k]
         yy=y+dy[k]
