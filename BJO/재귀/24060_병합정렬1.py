@@ -6,8 +6,8 @@
 import sys
 
 
-def merge_sort(A):
-    
+def merge_sort(l,r):
+    if l<r
 
 
 
