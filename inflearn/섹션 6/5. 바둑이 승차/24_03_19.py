@@ -26,4 +26,3 @@ if __name__=='__main__':
     total=sum(ls)
     DFS(0,0,0)
     print(result)
-    
