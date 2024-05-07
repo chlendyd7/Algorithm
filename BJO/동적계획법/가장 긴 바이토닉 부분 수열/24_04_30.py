@@ -15,4 +15,3 @@ for k in range(n):
     result_dy[k] = plus_dy[k] + min_dy[n-k-1]-1
 
 print(max(result_dy))
-asd
