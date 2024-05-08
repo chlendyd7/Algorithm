@@ -9,6 +9,6 @@ for i in ls:    # accumulate arr section
     temp += i
     prefix_sum.append(temp)
 
-for i in range(n):
+for _ in range(n):
     i, j = map(int, input().split())
     print(prefix_sum[j] - prefix_sum[i-1])
