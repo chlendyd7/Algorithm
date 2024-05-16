@@ -1,16 +1,16 @@
-# import sys
-# input = sys.stdin.readline
+import sys
+input = sys.stdin.readline
 
-# string = input()
-# q = int(input())
+string = input()
+q = int(input())
 
-# for i in range(q):
-#     temp = input().split()
-#     sum=0
-#     for j in range(int(temp[1]), int(temp[2])+1):
-#         if string[j] == temp[0]:
-#             sum += 1
-#     print(sum)
+for i in range(q):
+    temp = input().split()
+    sum=0
+    for j in range(int(temp[1]), int(temp[2])+1):
+        if string[j] == temp[0]:
+            sum += 1
+    print(sum)
 
 import sys
 
@@ -24,11 +24,11 @@ for i in range(1, len(name)):
     arr[i][ord(name[i]) - 97] = 1
     for j in range(26):
         arr[i][j] += arr[i - 1][j]
-print(arr)
 for i in range(n):
     a = input().split()
     if int(a[1]) > 0:
-        res = arr[int(a[2])][ord(a[0]) - 97] - arr[int(a[1]) - 1][ord(a[0]) - 97]
+        res = arr[int(
+            a[2])][ord(a[0]) - 97] - arr[int(a[1]) - 1][ord(a[0]) - 97]
     else:
         res = arr[int(a[2])][ord(a[0]) - 97]
     print(res)
