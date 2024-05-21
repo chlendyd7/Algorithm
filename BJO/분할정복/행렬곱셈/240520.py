@@ -1,24 +1,21 @@
-import sys
-input = sys.stdin.readline
-n,m = map(int,input().split())
-a = []
-for _ in range(n):
-    a.append(list(map(int,input().split())))
+N, M = map(int, input().split())
+A = [list(map(int,input().split())) for _ in range(N)]
 
-m, k =map(int,input().split())
-b = []
-for _ in range(m):
-    b.append(list(map(int,input().split())))
+M, K = map(int, input().split())
+B = [list(map(int,input().split())) for _ in range(M)]
 
-c = [[0 for _ in range(k)] for _ in range(n)]
 
-for n in range(n):
-    for k in range(k):
-        for m in range(m):
-            c[n][k] += a[n][m] * b[m][k]
 
-print(c)
-for i in c:
+#행렬 곱셈
+C = [[0 for _ in range(K)] for _ in range(N)]
+
+for n in range(N):
+    for k in range(K):
+        for m in range(M):
+            C[n][k] += A[n][m] * B[m][k]
+
+#출력문
+for i in C:
     for j in i:
-        print(j, end=' ')
+        print(j, end = ' ')
     print()
