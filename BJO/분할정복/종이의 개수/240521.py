@@ -1,6 +1,5 @@
 import sys
 
-
 def cut(x, y, n):
     next =  n//3
     color = board[x][y]
@@ -32,5 +31,3 @@ if __name__=='__main__':
     }
     cut(0,0,n)
     print(result)
-
-
