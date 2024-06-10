@@ -45,3 +45,5 @@ dp[0][2] = min(dp[0][0] + dp[1][2] + (prefix_sum[3] - prefix_sum[0]), dp[0][1] +
 dp[1][3] = min(dp[1][1] + dp[2][3] + (prefix_sum[4] - prefix_sum[1]), dp[1][2] + dp[3][3] + (prefix_sum[4] - prefix_sum[1])) = 160
 
 dp[0][3] = min(dp[0][0] + dp[1][3] + (prefix_sum[4] - prefix_sum[0]), dp[0][1] + dp[2][3] + (prefix_sum[4] - prefix_sum[0]), dp[0][2] + dp[3][3] + (prefix_sum[4] - prefix_sum[0])) = 300
+
+cost = dp[i][k] + dp[k+1][j] + prefix_sum[j +1] - prefix_sum[i]
