@@ -1,7 +1,6 @@
-# https://www.acmicpc.net/problem/5639
-
 import sys
 sys.setrecursionlimit(10**6)  # 재귀 한도를 늘립니다.
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -9,9 +8,9 @@ class Node:
         self.right = None
 
 class Tree:
-    def __init__(self):
+    def __init__(self) -> None:
         self.root = None
-    
+
     def add(self, data):
         if self.root == None:
             self.root = Node(data)
@@ -23,31 +22,17 @@ class Tree:
                         current.left = Node(data)
                         break
                     current = current.left
-
+                
                 if current.data < data:
-                    if current.right == None:
+                    if current.right = None:
                         current.right = Node(data)
                         break
                     current = current.right
-
-    def postOrder(self, node=None):
+    
+    def postOrder(self ,node=None):
         global answer
-
-        if node == None:
-            node = self.root
-        
-        if node.left != None:
-            self.postOrder(node.left)
-        if node.right != None:
-            self.postOrder(node.right)
-        answer.append(node.data)
 
 tree = Tree()
 while True:
     try:
         tree.add(int(input()))
-    except:
-        break
-answer = []
-tree.postOrder()
-print('\n'.join(map(str,answer)))
