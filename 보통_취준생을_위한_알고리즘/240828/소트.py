@@ -7,16 +7,3 @@ while True:
     for i in range(N):
         idx = i
         cmp = 0
-        for j in range(N -1, i, -1):
-            if arr[idx] < arr[j] and j - i <= S:
-                idx = j
-                tof = True
-                cmp = j-i
-        if idx != i:
-            tmp = arr[idx]
-            arr.pop(idx)
-            arr.insert(i, tmp)
-            S -= cmp
-            break
-
-print(arr)
