@@ -1,31 +1,22 @@
-
-
-
-
+#방법3. 백준 15961번 슬라이딩 윈도우 기법
 from collections import defaultdict
+n,d,k,c = map(int, input().split())
+arr = [ int(input()) for _ in range(n)]
+arr = arr + arr[:k-1] 
+max_sushi = 0
+left , right = 0, 0
+window = defaultdict(int)
+window[c] +=1
 
+while right < k:  #처음 k개로 초기값 만들기 
+    window[arr[right]] +=1
+    right+=1
 
-def solution(n,k,c, chobob):
-    check_dic = defaultdict(int)
-    check_dic[c] = 1
-    start, end = 0, k
-    while end < n:
-        check_dic[chobob[end]] += 1
-        end += 1
-    max_sushi = len(check_dic)
-    
-    for _ in range(n):
-        max_sushi = max(max_sushi, len(check_dic))
-        
-        check_dic[chobob[end]] += 1
-        check_dic[chobob[start]] -= 1
-        if check_dic[chobob[start]] == 0:
-            del check_dic[chobob[start]]
-        
-        start += 1
-        end += 1
-    return max_sushi
-n, d, k, c = map(int,input().split())
-chobob = [int(input()) for _ in range(n)]
-chobob += chobob[:n-1]
-print(solution(n,k,c,chobob))
+for _ in range(n-1):
+    max_sushi = max(max_sushi, len(window))    
+    window[arr[right]] +=1
+    window[arr[left]] -=1
+    if window[arr[left]==0]: window.pop(arr[left])
+    right+=1
+    left+=1
+print(max_sushi)

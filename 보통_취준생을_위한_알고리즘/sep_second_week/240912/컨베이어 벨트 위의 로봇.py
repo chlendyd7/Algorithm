@@ -32,7 +32,7 @@ def simulateConveyorBelt(belt_length, max_zero_durability, durability_list):
         # 4. 내구도가 0인 칸의 개수가 max_zero_durability 이상일 때 종료
         if durability_list.count(0) >= max_zero_durability:
             break
-    
+
     return step_count
 
 # 입력 받기

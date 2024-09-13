@@ -1,5 +1,5 @@
 import heapq
-import sys
+
 
 def solution(start):
     q = []
@@ -17,12 +17,11 @@ def solution(start):
     return dis[n]
 
 
-
 n,m = map(int,input().split())
 graph = [[] for _ in range(n+1)]
-dis = [sys.maxsize] * (n+1)
-for i in range(m):
-    start, end, cows = map(int,input().split())
-    graph[start].append((end, cows))
-    graph[end].append((start, cows))
-print(solution(0))
+dis = [float('inf')] * (n+1)
+for _ in range(m):
+    a,b,c = map(int,input().split())
+    graph[a].append(b,c)
+    graph[b].append(a,c)
+print(solution(1))
