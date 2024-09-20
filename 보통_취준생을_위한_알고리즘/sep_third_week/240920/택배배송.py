@@ -1,11 +1,8 @@
-
-
 import heapq
 import sys
 
 
 def solution(start):
-    
     q = []
     heapq.heappush(q, (0, start))
     dis[start] = 0
@@ -20,6 +17,7 @@ def solution(start):
                 heapq.heappush(q, (cost, next[0]))
     return dis[n]
 
+
 n,m = map(int,input().split())
 graph = [[] for _ in range(n+1)]
 for i in range(m):
@@ -27,5 +25,4 @@ for i in range(m):
     graph[a].append((b,c))
     graph[b].append((a,c))
 dis = [sys.maxsize] * (n+1)
-
 print(solution(1))
