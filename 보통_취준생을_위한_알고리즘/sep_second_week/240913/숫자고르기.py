@@ -52,4 +52,4 @@ result.sort()
 print(len(result)) 
 for x in result:
     print(x)
-출처: https://cotak.tistory.com/141 [TaxFree:티스토리]
+# 출처: https://cotak.tistory.com/141 [TaxFree:티스토리]

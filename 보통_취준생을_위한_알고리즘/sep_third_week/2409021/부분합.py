@@ -1,9 +1,9 @@
-n,s = int(input().split())
+n,s = map(int, (input().split()))
 nums = list(map(int,input().split()))
 
-left, right = 0,0
+left, right = 0, 0
 num_sum = 0
-min_length=1e9
+min_length = 1e9
 
 while True:
     if num_sum >= s:
@@ -14,7 +14,8 @@ while True:
         break
     else:
         num_sum += nums[right]
-        right += 1
+        right+=1
+
 if min_length == 1e9:
     print(0)
 else:
