@@ -4,9 +4,9 @@ def solution(skylines):
     for p in skylines:
         height = p
         while stk[-1] > p:
-            if stk[-1] != height:
-                answer +=1
-                height = stk[-1]
+            # if stk[-1] != height:
+            answer +=1
+            height = stk[-1]
             stk.pop()
         stk.append(p)
 
