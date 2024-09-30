@@ -1,5 +1,6 @@
 from collections import deque
 
+
 n = int(input())
 m = int(input())
 
@@ -17,7 +18,7 @@ def bfs(s, e):
 
     while q:
         here = q.popleft()
-
+        
         if here == e:
             return True
 
@@ -31,11 +32,6 @@ def bfs(s, e):
 answer = True
 for i in range(m-1):
     if plan[i] != plan[i+1]:
-        if not bfs(plan[i]-1, plan[i+1]-1):
+        if not bfs(plan[i]-1, plan[i+1] - 1):
             answer = False
             break
-
-if answer:
-    print('YES')
-else:
-    print('NO')
