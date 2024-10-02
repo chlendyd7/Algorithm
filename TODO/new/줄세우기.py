@@ -17,7 +17,7 @@ def lis(sequence):
                 else:
                     right = mid - 1
             dp[left] = num  # dp에서 대체
-    
+    print(dp)
     return len(dp)  # 최장 증가 부분 수열의 길이 반환
 
 
