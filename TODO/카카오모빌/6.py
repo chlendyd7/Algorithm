@@ -21,7 +21,7 @@ def solution(n, m, x, y, r, c, k):
     answer += 'd'*d
     direction['u'] += d
     k -= 2*d
-    
+
     answer += 'l'*direction['l']
     l = min(int(k/2), y-direction['l']-1)
     answer += 'l'*l
