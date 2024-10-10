@@ -13,5 +13,5 @@ for i in arr:
     for j in range(i[0], i[1]):
         trucks[j] -= min_box  # Update truck capacity
     result += min_box  # Add delivered packages
-    print(result)
+    print(trucks, result)
 print(result)
