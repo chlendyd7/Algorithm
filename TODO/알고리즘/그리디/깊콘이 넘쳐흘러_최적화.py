@@ -10,6 +10,7 @@ def main():
 	B = [int(i) for i in input().rstrip().split()]
 	table = [(A[i], B[i]) for i in range(N)]
 	table = sorted(table, key=lambda x: (x[1], x[0]))
+	print(table)
 	prev = -1
 	max_A_value = -1
 	for i in range(N):
@@ -22,10 +23,11 @@ def main():
 			time = math.ceil((b - a) / 30)
 			a = a + 30 * time
 			answer = answer + time
+			print(time, i)
 		max_A_value = max(max_A_value, a)
 		if i + 1 < N and b != table[i + 1][1]:
 			prev = max_A_value
-			
+    
 	return answer
 """
 5
