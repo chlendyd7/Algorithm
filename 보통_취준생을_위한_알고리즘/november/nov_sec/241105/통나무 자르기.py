@@ -4,7 +4,9 @@ input = sys.stdin.readline
 l, k, c = map(int, input().split())
 position = sorted(list(set([0, *list(map(int, input().split())), l])))
 # 나무토막들
+print(position)
 pieces = [position[i] - position[i-1] for i in range(1, len(position))]
+print(pieces)
 start = 1
 end = l
 
