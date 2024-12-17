@@ -1,0 +1,18 @@
+from heapq import heappop, heappush
+
+
+def dijkstra(graph, start, end):
+		distance = [float("inf")] * (vertex + 1)
+		distance[start] = 0
+    q = []
+    heapq.heappush(q, (0, start))
+    while q:
+        dist, now = heapq.heappop(q)
+        if distance[now] < dist:
+            continue
+        for vv, ww in graph[now]:
+            cost = distance[now] + ww
+            if cost < distance[vv]:
+                distance[vv] = cost
+                heapq.heappush(q, (cost, vv))
+		return distance[end]
