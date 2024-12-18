@@ -8,11 +8,10 @@ def solution(diffs, times, limit):
             time_cur = times[i]
             if diff <= level:
                 total_time += time_cur
-                prev_time = time_cur
             else:
                 wrong_attempts = diff - level
                 total_time += (time_cur + prev_time) * wrong_attempts + time_cur
-                prev_time = time_cur
+            prev_time = time_cur
         return total_time
     
     
