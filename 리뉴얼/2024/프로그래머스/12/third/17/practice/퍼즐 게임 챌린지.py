@@ -1,26 +1,28 @@
 def solution(diffs, times, limit):
     
-    def calc_time(level):
-        total_time = 0
+    def calculate(level):
+        time = 0
         prev_time = 0
-        for i in range(len(diffs)):
-            diff = diffs[i]
-            time_cur = times[i]
-            if diff <= level:
-                total_time += time_cur
+        n = len(diffs)
+        for i in range(n):
+            if diffs[i] <= level:
+                time += times[i]
             else:
-                wrong_attempts = diff - level
-                total_time += (time_cur + prev_time) * wrong_attempts + time_cur
-            prev_time = time_cur
-        return total_time
-    
-    
+                time += (times[i] + prev_time) * (diffs[i] - level) + times[i]
+            prev_time = times[i]
+
+        return time
+
     left, right = 1, max(diffs)
-    while left < right:
+    result = right
+
+    while left <= right:
         mid = (left + right) // 2
-        if calc_time(mid) <= limit:
-            right = mid
+        time = calculate(mid)
+        if time <= limit:
+            result = mid
+            right = mid - 1
         else:
             left = mid + 1
 
-    return left
+    return result
