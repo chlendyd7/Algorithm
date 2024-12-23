@@ -4,6 +4,27 @@ def solution(sequence, k):
     sum_sequence = 0
     answer = []
 
+    while start < len(sequence):
+        if sum_sequence > k:
+            sum_sequence -= sequence[start]
+            start += 1
+        else:
+            if sum_sequence == k:
+                if min_len > end - start + 1:
+                    answer = [start, end - 1]
+                    min_len = end - start + 1
+            sum_sequence += sequence[end]
+            end += 1
+    
+    return answer
+
+
+def solution(sequence, k):
+    start, end = 0, 0
+    min_len = float('inf')
+    sum_sequence = 0
+    answer = []
+
     while start < len(sequence):  # 수정: 배열의 범위를 초과하지 않도록 조건 변경
         if sum_sequence > k:
             sum_sequence -= sequence[start]
