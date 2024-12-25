@@ -1,36 +1,34 @@
 from collections import deque
 
-direction = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-
-def bfs(h, w, i, j, maps, visited):
-    cnt = 0
+def bfs(y, x, i, j, maps, visited):
+    direction = [[1, 0], [0, 1], [-1, 0], [0, -1]]
     q = deque()
-    q.append((i, j))
-    visited[i][j] = True  # 방문 처리
-    
+    q.append([i, j])
+    visited[i][j] = True
+    cnt = 0
     while q:
-        x, y = q.popleft()
-        cnt += int(maps[x][y])  # 현재 위치의 값을 합산
-        
-        for dx, dy in direction:
-            nx, ny = x + dx, y + dy
-            if 0 <= nx < h and 0 <= ny < w and not visited[nx][ny] and maps[nx][ny] != 'X':
-                visited[nx][ny] = True  # 방문 처리
-                q.append((nx, ny))
-                
+        now_y, now_x = q.popleft()
+        cnt += int(maps[now_y][now_x])  # 숫자 값을 더해야 하므로 형 변환 추가
+
+        for k in range(4):
+            dy = direction[k][0] + now_y
+            dx = direction[k][1] + now_x
+            if 0 <= dy < y and 0 <= dx < x and not visited[dy][dx] and maps[dy][dx] != 'X':
+                q.append([dy, dx])
+                visited[dy][dx] = True
+
     return cnt
 
+
 def solution(maps):
-    h, w = len(maps), len(maps[0])
-    visited = [[False] * w for _ in range(h)]  # 수정: 크기 변경
+    y, x = len(maps), len(maps[0])
+    visited = [[False] * x for _ in range(y)]
     answer = []
-    
-    for i in range(h):
-        for j in range(w):
+    for i in range(y):
+        for j in range(x):
             if maps[i][j] != 'X' and not visited[i][j]:
-                answer.append(bfs(h, w, i, j, maps, visited))
-    
+                answer.append(bfs(y, x, i, j, maps, visited))
     if answer:
-        return sorted(answer)  # 수정: sorted로 정렬 후 반환
+        return sorted(answer)
     else:
         return [-1]
