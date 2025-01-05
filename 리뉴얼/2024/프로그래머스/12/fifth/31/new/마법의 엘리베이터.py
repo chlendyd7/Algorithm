@@ -12,7 +12,7 @@ def solution(storey):
             answer += remainder
         # 5
         else:
-            if (storey // 10) % 10 > 4:
+            if (storey // 10) % 10 > 4: 
                 storey += 10
             answer += remainder
         storey //= 10
