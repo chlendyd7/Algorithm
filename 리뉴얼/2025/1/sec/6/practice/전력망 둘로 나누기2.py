@@ -26,3 +26,4 @@ def solution(n, wires):
         answer = min(answer, abs(cnt_a - cnt_b))
 
     return answer
+    
