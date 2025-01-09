@@ -21,7 +21,7 @@ def solution(n, s, a, b, fares):
     for c, d, f in fares:
         graph[c].append((d, f))
         graph[d].append((c, f))
-
+    print(graph)
     start_distances = dijkstra(s)
     min_cost = sys.maxsize
 
