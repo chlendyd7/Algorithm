@@ -6,7 +6,7 @@ def solution(n, edge):
     for a,b in edge:
         graph[a].append(b)
         graph[b].append(a)
-    
+    print(graph[1])
     visited = [-1] * (n+1)
     q = deque([1])
     visited[1] = 1
