@@ -21,10 +21,6 @@ def solution(gems):
             if right == len(gems):
                 break
                 
-            if gems[right] in gem_dict: # 딕셔너리 key에 있으면 count
-                gem_dict[gems[right]] += 1
-                
-            else:   # 없으면 추가
-                gem_dict[gems[right]] = 1
+            gem_dict[gems[right]] + 1
     
     return [answer[0]+1, answer[1]+1] # 시작 인덱스가 1번 진열대 부터 라서 1 증가

@@ -11,12 +11,12 @@ def solution(a):
         cnt = 0
         idx = 0
         while idx < len(a) - 1:
-            if (a[idx] != k and a[idx+1] != k) or (a[idx] == a[idx+1]):
-                idx += 1
-                continue
             
-            cnt += 1
-            idx += 2
+            if (a[idx] == k or a[idx+1] == k) and a[idx] != a[idx+1]:
+                cnt += 1
+                idx += 2
+            else:
+                idx += 1
         
         answer = max(cnt, answer)
     
