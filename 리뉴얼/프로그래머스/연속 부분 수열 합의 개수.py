@@ -15,3 +15,15 @@ def solution(elements):
             result.add(current_sum)
     
     return len(result)
+
+
+def solution(elements):
+    result = set()
+    element_len = len(elements)
+    elements = elements * 2
+    
+    for i in range(element_len):
+        for j in range(element_len):
+            result.add(sum(elements[j:j+i+1]))
+    
+    return len(result)

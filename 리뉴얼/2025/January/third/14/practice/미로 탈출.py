@@ -19,4 +19,8 @@ def solution(maps):
         visited[start[0]][start[1]] = True
 
         directions = [(-1, 0), (1,0), (0, -1), (0, 1)]
-        
+
+        while q:
+            x, y, dist = q.popleft()
+            if (x, y) == target:
+                return dist        
