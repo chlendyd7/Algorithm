@@ -26,6 +26,5 @@ def solution(n, build_frame):
             result.remove(item)
             if impossible(result):
                 result.add(item)
-    answer = map(list, result)
     
-    return sorted(answer, key = lambda x : (x[0], x[1], x[2]))
+    return sorted(result, key = lambda x : (x[0], x[1], x[2]))
