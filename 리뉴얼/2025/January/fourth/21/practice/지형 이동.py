@@ -8,14 +8,14 @@ def find(parent, x):
 def union(parent, rank, x, y):
     rootX = find(parent, x)
     rootY = find(parent, y)
-    if rootX != rootY:
-        if rank[rootX] > rank[rootY]:
-            parent[rootY] = rootX
-        elif rank[rootX] < rank[rootY]:
-            parent[rootX] = rootY
-        else:
-            parent[rootY] = rootX
-            rank[rootX] += 1
+    # if rootX != rootY:
+    if rank[rootX] > rank[rootY]:
+        parent[rootY] = rootX
+    elif rank[rootX] < rank[rootY]:
+        parent[rootX] = rootY
+    else:
+        parent[rootY] = rootX
+        rank[rootX] += 1
 
 def solution(land, height):
     N = len(land)
