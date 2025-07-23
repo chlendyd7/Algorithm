@@ -1,1 +1,1 @@
-print(format(4, '06b'))
+print(5//2)
