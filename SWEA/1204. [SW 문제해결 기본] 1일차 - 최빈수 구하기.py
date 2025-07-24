@@ -15,7 +15,7 @@ for _ in range(T):
     print(f'#{case} {result}')
 
 
-# import sys
+# import sys    
 # input = sys.stdin.readline
 
 # T = int(input())

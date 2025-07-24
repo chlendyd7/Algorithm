@@ -1,24 +1,24 @@
-def solution(board):
+# def solution(board):
 
-    for i in range(9):
-        row = [0] * 9
-        col = [0] * 9
-        for j in range(9):
-            if row[board[i][j]] or col[board[j][i]]:
-                return 0
-            else:
-                row[board[i][j]] = 1
-                col[board[j][i]] = 1
+#     for i in range(9):
+#         row = [0] * 9
+#         col = [0] * 9
+#         for j in range(9):
+#             if row[board[i][j]] or col[board[j][i]]:
+#                 return 0
+#             else:
+#                 row[board[i][j]] = 1
+#                 col[board[j][i]] = 1
         
 
-    for i in range(3):
-        mat = [0] * 9
-        for j in range(3):
-            if mat[board[i][j]]:
-                return 0
+#     for i in range(3):
+#         mat = [0] * 9
+#         for j in range(3):
+#             if mat[board[i][j]]:
+#                 return 0
 
-    return 1
-        
+#     return 1
+
 def solution(board):
     for i in range(9):
         row = [0] * 9
@@ -45,4 +45,4 @@ def solution(board):
 T = int(input())
 for t in range(1, T+1):
     board = [list(map(int, input().split())) for _ in range(9)]
-    check = solution(board)
+    print(solution(board))

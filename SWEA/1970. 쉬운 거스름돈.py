@@ -9,6 +9,8 @@ def solution():
         while money >= k:
             won[k] += 1
             money -= k
+        # won[k] = money // k
+        # money %= k
     return ' '.join(map(str, (k for k in won.values())))
 
 
