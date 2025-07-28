@@ -1,3 +1,13 @@
+'''
+    
+1
+5 1000
+100 200
+300 500
+250 300
+500 1000
+400 400
+'''
 def solution():
     N, L = map(int, input().split())
     ingredients = [tuple(map(int, input().split())) for _ in range(N)]
