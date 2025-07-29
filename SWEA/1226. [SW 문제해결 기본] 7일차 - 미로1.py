@@ -12,7 +12,6 @@ def solution():
     N = int(input())
     board = [list(map(int, input())) for _ in range(16)]
     q = deque()
-    x, y = (1, 1)
     q.append((1,1))
     visited = [[0] * 16 for _ in range(16)]
     visited[1][1] = 1
