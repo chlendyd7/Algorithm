@@ -4,6 +4,7 @@ direction = [
     (0, -1),
     (-1, 0)
 ]
+
 def snail(n):
     board = [[0] * n for _ in range(n)]
     row, col, d = 0, 0, 0
@@ -12,7 +13,7 @@ def snail(n):
         board[row][col] = num
         dr, dc = direction[d]
         nr, nc = row + dr, col + dc
-        
+
         if not(0 <= nr < n and 0 <= nc < n) or board[nr][nc]:
             d = (d + 1) % 4
             dr, dc = direction[d]

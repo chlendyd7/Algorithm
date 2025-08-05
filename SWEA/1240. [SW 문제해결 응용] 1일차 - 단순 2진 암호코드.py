@@ -12,7 +12,7 @@ def solution():
                 start_idx = (i, j)
                 check = True
                 break
-    
+
     password = []
     print(start_idx)
     return
