@@ -4,7 +4,7 @@ def solution():
     now = 0
     cnt = 0
     while now + K < N:
-        for i in range(now+K, now,-1):
+        for i in range(now+K, now, -1):
             if i in charges:
                 now = i
                 cnt += 1
