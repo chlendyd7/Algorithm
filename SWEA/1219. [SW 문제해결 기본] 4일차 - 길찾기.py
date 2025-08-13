@@ -8,7 +8,7 @@ def solution():
     graph = defaultdict(list)
     for i in range(0, N*2, 2):
         graph[board[i]].append(board[i+1])
-    print(graph)
+
     q = deque()
     q.append(0)
     while q:
@@ -25,3 +25,4 @@ def solution():
 # T = int(input())
 for t in range(1, 11):
     print(f'#{t} {solution()}')
+

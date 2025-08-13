@@ -11,6 +11,7 @@
 dfs(좌표, 방문여부, 갯수)
 
 '''
+# 대각 방향 이동, 시계방향대로 이동하게 순서를 맞춰줘야함
 direct = [
     (1,1),
     (1,-1),
@@ -24,17 +25,17 @@ def find_max_value(board):
     
     def dfs(x, y, start_x, start_y, direction, count, visited_nums):
         nonlocal mx_count
-
+        
+        # 현재 방향에서 한번 더 가거나 다음 시계방향으로 꺾기
         for d in range(direction, direction + 2):
-            if d >= 4:
+            if d >= 4: # 4이상이 되면 그 방향은 건너뜀 IndexError 방지 및 이미 네 방향 돌았음
                 continue
             nx, ny = x + direct[d][0], y + direct[d][1]
 
             if 0<= nx < N and 0 <= ny < N:
-                if nx == start_x and ny == start_y and count >= 4:
-                    if nx == start_x and ny == start_y and count >= 4:
-                        mx_count = max(mx_count, count)
-                        continue
+                if nx == start_x and ny == start_y and count >= 4: # 다시 내 위치로 돌아왔으면
+                    mx_count = max(mx_count, count)
+                    continue
 
                 num = board[nx][ny]
                 if num not in visited_nums:

@@ -1,11 +1,12 @@
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AXaSUPYqPYMDFASQ
 def has_five_in_a_row(board, N):
     # 4방향: 오른쪽, 아래, 대각선 오른아래, 대각선 오른위
+    # 역순으로 올라가는건 시간낭비
     directions = [(0, 1), (1, 0), (1, 1), (-1, 1)]
 
     for i in range(N):
         for j in range(N):
-            if board[i][j] == 'o':
+            if board[i][j] == 'o': # 최적화 o가 되야 시작하게 만듬
                 for dx, dy in directions:
                     count = 1
                     x, y = i, j
