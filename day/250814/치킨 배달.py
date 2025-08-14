@@ -1,41 +1,30 @@
 import sys
 input = sys.stdin.readline
-INF = 10000000
-def dfs(dep, n):
+
+def dfs(depth, n):
     global ans
     ret = 0
-    '''
-        d는 특정 집에 대한 (거리, 치킨집 인덱스) 리스트
-        for distence, idx in d:
-        거리 순으로 정렬된 치킨집 리스트를 순서대로 보면서
-
-        if visited[idx]: → 현재 선택된 치킨집이라면
-
-        그 거리(distence)를 ret에 더하고
-
-        break → 가장 가까운 선택된 치킨집만 더함
-    '''
-    if dep == M:
+    if depth == M:
         for d in dist:
-            for distence, idx in d:
+            for distance, idx in d:
                 if visited[idx]:
-                    ret += distence
+                    ret += distance
                     break
             if ans <= ret:
                 return
         ans = min(ans, ret)
         return
-	
-    for i in range(n, len(chicken)): # visited를 통해 살아남을 치킨집을
+
+    for i in range(n, len(chicken)):
         if not visited[i]:
             visited[i] = 1
-            dfs(dep+1, i+1)
+            dfs(depth + 1, i + 1)
             visited[i] = 0
-    return
+
 
 if __name__ == '__main__':
     N, M = map(int, input().split())
-    city =[list(map(int, input().split())) for _ in range(N)]
+    city = [list(map(int, input().split())) for _ in range(N)]
     house = []
     chicken = []
     for i in range(N):
@@ -44,15 +33,15 @@ if __name__ == '__main__':
                 house.append((i, j))
             elif city[i][j] == 2:
                 chicken.append((i, j))
+    
     dist = []
     for r1, c1 in house:
         dist.append([])
         for idx, c in enumerate(chicken):
             r2, c2 = c
-            dist[-1].append((abs(r1-r2)+abs(c1-c2), idx))
+            dist[-1].append((abs(r1-r2) + abs(c1-c2), idx))
         dist[-1].sort()
-    
+
     visited = [0 for _ in range(len(chicken))]
-    ans = INF
+    ans = 1e9
     dfs(0, 0)
-    print(ans)
