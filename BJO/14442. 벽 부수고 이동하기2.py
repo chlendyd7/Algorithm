@@ -35,26 +35,28 @@ def calculate():
     q = deque([(0,0,0)])
     visited[0][0][0] = 1
     while q:
-        r, c, wall = q.popleft()
-        if r == N-1 and c == M-1:
-            return visited[r][c][wall]
+        size_q = len(q)
+        for _ in range(size_q):
+            r, c, wall = q.popleft()
+            if r == N-1 and c == M-1:
+                return visited[r][c][wall]
 
-        for dr, dc in direction:
-            nr, nc = r + dr, c + dc
-            flag = False
-            if 0 <= nr < N and 0 <= nc < M and not visited[nr][nc][wall]:
-                for i in range(wall):
-                    if visited[nr][nc][i]:
-                        flag = True
-                        break
-                if maze[nr][nc] == 0:
-                    visited[nr][nc][wall] = visited[r][c][wall] + 1
-                    q.append((nr, nc, wall))
-                elif maze[nr][nc] == 1 and wall < K:
-                    visited[nr][nc][wall+1] = visited[r][c][wall] + 1
-                    q.append((nr, nc, wall + 1))
-            if flag:
-                continue
+            for dr, dc in direction:
+                nr, nc = r + dr, c + dc
+                flag = False
+                if 0 <= nr < N and 0 <= nc < M and not visited[nr][nc][wall]:
+                    for i in range(wall):
+                        if visited[nr][nc][i]:
+                            flag = True
+                            break
+                    if maze[nr][nc] == 0:
+                        visited[nr][nc][wall] = visited[r][c][wall] + 1
+                        q.append((nr, nc, wall))
+                    elif maze[nr][nc] == 1 and wall < K:
+                        visited[nr][nc][wall+1] = visited[r][c][wall] + 1
+                        q.append((nr, nc, wall + 1))
+                if flag:
+                    continue
 
     return -1
 
