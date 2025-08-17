@@ -32,41 +32,47 @@ from copy import deepcopy
 def solution():
     D, W, K = map(int, input().split())
     board = [list(map(int, input().split())) for _ in range(D)]
+    if K == 1:
+        return 0
+
+
+
     visited = [0] * D
-
-
     def check_board(local_board):
-        cnt = 0
-        for d in range(D):
-            flag = 0
-            w_cnt = 0
-            for w in range(W):
-                if flag == local_board[d][w]: # 현재 체크하는 것과 같다면
+        for w in range(W):
+            flag = local_board[0][w]
+            w_cnt = 1
+            success = False
+            for d in range(1, D):
+                if flag == local_board[d][w]:
                     w_cnt += 1
-                    if w_cnt == K:
-                        cnt += 1
+                    if w_cnt >= K:
+                        success = True
                         break
                 else:
                     flag = local_board[d][w]
                     w_cnt = 1
-        if cnt == W:
-            return True
-        else:
-            return False
-
+            if not success:
+                return False
+        return True
 
     def dfs(length, count, start, temp_board):
         if count < length:
             for d in range(start, D):
                 if not visited[d]:
                     visited[d] = 1
-                    origin_board = temp_board[d]
+                    origin_board = temp_board[d][:] # 깊은 복사
+
                     temp_board[d] = [0] * W
                     if dfs(length, count + 1, d, temp_board):
                         return True
 
-                    visited[d] = 0
+                    temp_board[d] = [1] * W
+                    if dfs(length, count + 1, d, temp_board):
+                        return True
+
                     temp_board[d] = origin_board
+                    visited[d] = 0
 
         elif count == length:
             if check_board(temp_board):
@@ -74,7 +80,7 @@ def solution():
         return False
 
 
-    for length in range(D):
+    for length in range(D+1):
         tmp_board = deepcopy(board)
         if dfs(length, 0, 0, tmp_board):
             return length
