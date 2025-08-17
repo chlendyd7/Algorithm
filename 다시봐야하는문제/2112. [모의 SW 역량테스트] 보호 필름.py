@@ -33,42 +33,51 @@ def solution():
     D, W, K = map(int, input().split())
     board = [list(map(int, input().split())) for _ in range(D)]
     visited = [0] * D
-    def check_line(idx):
-        check = 0
+
+
+    def check_board(local_board):
         cnt = 0
-        for i in range(D):
-            if cnt == K:
-                return True
+        for d in range(D):
+            flag = 0
+            w_cnt = 0
+            for w in range(W):
+                if flag == local_board[d][w]: # 현재 체크하는 것과 같다면
+                    w_cnt += 1
+                    if w_cnt == K:
+                        cnt += 1
+                        break
+                else:
+                    flag = local_board[d][w]
+                    w_cnt = 1
+        if cnt == W:
+            return True
+        else:
+            return False
 
-            if check == board[i][idx]:
-               cnt += 1
-               if cnt == K:
-                   return True
-            else:
-                check = board[i][idx]
-                cnt = 1 
 
-        return False
-
-    for length in range(D):
-        if dfs(length, board):
-            return length
-
-    def dfs(length, count, temp_board):
+    def dfs(length, count, start, temp_board):
         if count < length:
-            temp_baord = deepcopy(board)
-            for d in range(D):
+            for d in range(start, D):
                 if not visited[d]:
                     visited[d] = 1
-                    temp_baord[d] = [0] * W
-                    if check_line(temp_baord):
+                    origin_board = temp_board[d]
+                    temp_board[d] = [0] * W
+                    if dfs(length, count + 1, d, temp_board):
                         return True
-                    temp_baord[d]
-                if not check_line(w):
-                    break
-        
-            
 
+                    visited[d] = 0
+                    temp_board[d] = origin_board
+
+        elif count == length:
+            if check_board(temp_board):
+                return True
+        return False
+
+
+    for length in range(D):
+        tmp_board = deepcopy(board)
+        if dfs(length, 0, 0, tmp_board):
+            return length
 
 T = int(input())
 for t in range(1, T+1):
