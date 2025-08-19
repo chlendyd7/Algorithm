@@ -12,7 +12,6 @@ for test_case in range(1, T+1):
     size = n + 2*k
     offset = k
     grid = [[0]*size for _ in range(size)]
-    state = [[0]*size for _ in range(size)]  # 0=빈칸, -1=비활성, >0=활성
 
     # 세포 큐: x, y, life, 상태(0=비활성,1=활성), 남은 시간
     cells = deque()
@@ -22,7 +21,6 @@ for test_case in range(1, T+1):
                 x, y = i+offset, j+offset
                 life = initial[i][j]
                 grid[x][y] = life
-                state[x][y] = -life  # 비활성 상태, 남은 비활성시간
                 cells.append([x, y, life, 0, life])
 
     for _ in range(k):
@@ -48,7 +46,6 @@ for test_case in range(1, T+1):
                 if time_left > 0:
                     cells.append([x, y, life, status, time_left])
                 else:
-                    state[x][y] = 0  # 사멸
                     grid[x][y] = -1
 
         # 새로 번식한 세포 처리
@@ -56,7 +53,6 @@ for test_case in range(1, T+1):
             max_life = max(lifes)
             if grid[nx][ny] == 0:
                 grid[nx][ny] = max_life
-                state[nx][ny] = -max_life
                 cells.append([nx, ny, max_life, 0, max_life])
 
     print(f"#{test_case} {len(cells)}")
