@@ -1,7 +1,7 @@
 def solution():
     N = int(input())
     col = [0] * N
-    diag1 = [0] * (2*N - 1)
+    diag1 = [0] * (2*N - 1) # 0,0에서 N-1, N-1까지의 범위 (2N-2)
     diag2 = [0] * (2*N - 1)
     cnt = 0
     
