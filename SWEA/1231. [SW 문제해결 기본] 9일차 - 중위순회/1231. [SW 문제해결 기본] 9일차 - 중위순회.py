@@ -13,14 +13,14 @@ def solution():
             for n in naver:
                 graph[node].append(int(n))
     char = ''
+
     def dfs(node):
         nonlocal char
-        if graph[node]:
-            for next in graph[node]:
-                dfs(next)
-
+        if len(graph[node]) >= 1:
+            dfs(graph[node][0])
         char += chars[node]
-        return
+        if len(graph[node]) == 2:
+            dfs(graph[node][1])
     dfs(1)
     print(char)
 
