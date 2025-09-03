@@ -1,4 +1,6 @@
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq&
+# import sys
+# sys.stdin = open('input.txt', 'r')
 def dfs(n, sm):
     global ans
     if ans<=sm:
@@ -29,3 +31,5 @@ for test_case in range(1, T + 1):
         
         D[i] = mn
     ans = D[12]
+
+    print(f'#{test_case} {ans}')
