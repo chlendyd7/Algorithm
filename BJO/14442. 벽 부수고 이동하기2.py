@@ -45,16 +45,12 @@ def calculate():
                 nr, nc = r + dr, c + dc
                 flag = False
                 if 0 <= nr < N and 0 <= nc < M and not visited[nr][nc][wall]:
-                    for i in range(wall):
-                        if visited[nr][nc][i]:
-                            flag = True
-                            break
-                    if maze[nr][nc] == 0:
+                    if maze[nr][nc] == 0: # maze[nr][nc] == 1
                         visited[nr][nc][wall] = visited[r][c][wall] + 1
                         q.append((nr, nc, wall))
-                    elif maze[nr][nc] == 1 and wall < K:
-                        visited[nr][nc][wall+1] = visited[r][c][wall] + 1
-                        q.append((nr, nc, wall + 1))
+                    # elif maze[nr][nc] == 1 and wall < K:
+                    #     visited[nr][nc][wall+1] = visited[r][c][wall] + 1
+                    #     q.append((nr, nc, wall + 1))
                 if flag:
                     continue
 

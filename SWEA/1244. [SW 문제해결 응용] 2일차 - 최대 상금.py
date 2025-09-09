@@ -4,6 +4,8 @@
 3. 그냥 자리 수 대로 상금 획득
 4. 가장 ㅡㅋㄴ 금액
 '''
+import sys
+sys.stdin = open('input.txt', 'r')
 def solution():
     board, M = input().split()
     board = list(map(int, board))
