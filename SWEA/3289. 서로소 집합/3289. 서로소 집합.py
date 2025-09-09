@@ -10,6 +10,7 @@ def union(a, b):
         parent[b] = a  # 한쪽 루트에 합치기
 
 T = int(input())
+
 for tc in range(1, T+1):
     n, m = map(int, input().split())
     parent = [i for i in range(n+1)]
