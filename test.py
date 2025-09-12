@@ -1,44 +1,35 @@
-import math
+from itertools import combinations
 
-# balls: [ (x,y), (x,y), ... ] 형태, 최대 6개 (흰공 + 5개)
-# 예시
-balls = [
-    (10, 20),   # 내 공 (흰공)
-    (30, 40),   # 1번 공 (타겟)
-    (-1, -1),   # 2번 공 없음
-    (50, 60),   # 3번 공
-    (-1, -1),   # 4번 공 없음
-    (-1, -1)    # 5번 공 없음
-]
+N, M = map(int, input().split())
+graph = [[0] * N for _ in range(N)]
 
-# 1. 내 공 좌표
-white_ball = balls[0]
+home_rcs = []
+store_rcs = []
+answer = 1e9
 
-# 2. 타겟 공 찾기 (첫 번째 존재하는 공)
-target_ball = None
-for i in range(1, len(balls)):
-    if balls[i][0] != -1 and balls[i][1] != -1:  # -1, -1 이 아닌 경우
-        target_ball = balls[i]
-        break
+for r in range(N):
+    row = list(map(int, input().split()))
+    for c in range(N):
+        graph[r][c] = row[c]
+        if graph[r][c] == 1:
+            home_rcs.append((r, c))
+        elif graph[r][c] == 2:
+            store_rcs.append((r,c))
 
-if target_ball:
-    # 3. 벡터 계산 (타겟공 - 내공)
-    dx = target_ball[0] - white_ball[0]
-    dy = target_ball[1] - white_ball[1]
+distances = [[0] * len(store_rcs) for _ in range(len(home_rcs))]
+for home_idx in range(len(home_rcs)):
+    for store_idx in range(len(store_rcs)):
+        distances[home_idx][store_idx] = abs(home_rcs[home_idx][0] - store_rcs[store_idx][0]) \
+                + abs(home_rcs[home_idx][1] - store_rcs[store_idx][0])
 
-    # 4. atan2 로 각도 계산 (라디안)
-    radian = math.atan2(dy, dx)
+for stroe_idx_set in combinations(range(len(store_rcs)), M):
+    distance = 0
+    for home_idx in range(len(home_rcs)):
+        min_distance = 2*(N-1)
+        for store_idx in stroe_idx_set:
+            min_distance = min(min_distance, distances[home_idx][store_idx])
 
-    # 5. degree 변환
-    angle = math.degrees(radian)
+        distance += min_distance
+    answer = min(answer, distance)
 
-    # 6. 출력 (power는 100으로 고정)
-    power = 100
-    print(f"타겟공: {target_ball}, angle: {angle:.2f}°, power: {power}")
-else:
-    print("타겟 공이 없습니다.")
-
-
-radian = math.atan2(dy, dx)
-angle = math.degrees(radian)
-power = 100
+print(answer)
