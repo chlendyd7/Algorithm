@@ -59,6 +59,7 @@ while True:
     if apples[r][c]:
         apples[r][c] = 0
         q.append((r-dr, c-dc))
+
     q.append((r,c))
     q.popleft()
 
