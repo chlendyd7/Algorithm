@@ -21,13 +21,9 @@
 '''
 from collections import deque
 
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
 
-direction = [
-    (-1,0),
-    (0, 1),
-    (1, 0),
-    (0, -1)
-]
 N, M = map(int, input().split())
 r,c,d = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(N)]
@@ -35,8 +31,8 @@ board = [list(map(int, input().split())) for _ in range(N)]
 x, y = r, c
 cnt = 0
 while True:
-    if board[x][y] == 0:
-        board[x][y] = 2
+    if board[r][c] == 0:
+        board[r][c] = 2
         cnt += 1
 
     moved = False
@@ -51,7 +47,7 @@ while True:
         continue
 
     bx, by = r - dx[d], c - dy[d]
-    if not (0 <= bx < N and 0 <= by < M) or room[bx][by] == 1:
+    if not (0 <= bx < N and 0 <= by < M) or board[bx][by] == 1:
         break
     r, c = bx, by
 
