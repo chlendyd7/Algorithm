@@ -19,7 +19,6 @@
     1은 벽
     두번 째 좌표와 로봇 청소기가 바라보느 방향
 '''
-
 from collections import deque
 
 
@@ -37,12 +36,27 @@ x, y = r, c
 cnt = 0
 while True:
     if board[x][y] == 0:
+        board[x][y] = 2
         cnt += 1
-        board[x][y] = 1
 
+    moved = False
     for i in range(4):
-        dx, dy = direction[(d + i) % 4]
-        
+        d = (d + 3) % 4
+        nx, ny = r + dx[d], c + dy[d]
+        if 0 <= nx < N and 0 <= ny < M and board[nx][ny] == 0:
+            r, c = nx, ny
+            moved = True
+            break
+    if moved:
+        continue
+
+    bx, by = r - dx[d], c - dy[d]
+    if not (0 <= bx < N and 0 <= by < M) or room[bx][by] == 1:
+        break
+    r, c = bx, by
+
+print(cnt)
+
 # q = deque([(r,c)])
 # cnt = 0
 # while q:
