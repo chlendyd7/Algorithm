@@ -6,14 +6,22 @@
 
 시간제한 2초
 '''
+import sys
+input = sys.stdin.readline
+
 N = int(input())
-classes = list(map(int, input().split()))
+A = list(map(int, input().split()))
 B, C = map(int, input().split())
 
-print(classes)
-
 result = 0
-for cl in classes:
-    r = 1
-    r += (cl - B) / C
-    if 
+
+for students in A:
+    # 총감독관 한 명 배치
+    result += 1
+    students -= B
+    
+    # 부감독관 필요하면 계산
+    if students > 0:
+        result += (students + C - 1) // C
+
+print(result)
