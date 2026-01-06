@@ -8,4 +8,5 @@ for _ in range(K):
     rotate_dir = [0] * 4
     rotate_dir[idx] = direction
 
-    
+    for i in range(idx -1, -1, -1):
+        if 

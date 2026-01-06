@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Java: Run Current File", // 이름을 명확하게 바꿉니다.
+            "request": "launch",
+            "mainClass": "${file}",
+            "cwd": "${fileDirname}", // 현재 폴더에서 실행되게 함
+            "console": "integratedTerminal"
+        }
+    ]
+}
