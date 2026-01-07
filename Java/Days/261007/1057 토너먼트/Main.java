@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -8,9 +11,9 @@ public class Main {
         Integer hansu = Integer.parseInt(input[2]);
         
         Integer count = 0;
-        while (!jimin == hansu) {
-            jimin = (jimin + 1) / 2
-            hansu = (hansu + 1) / 2
+        while (jimin != hansu) {
+            jimin = (jimin + 1) / 2;
+            hansu = (hansu + 1) / 2;
 
             count ++;
         }
