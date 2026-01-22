@@ -38,7 +38,7 @@ for _ in range(T):
             print(dist)
             found = True
             break
-        
+
         for cells in flips:
             next_board = flip_board(curr_board, cells)
             next_state = board_to_tuple(next_board)
