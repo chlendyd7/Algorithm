@@ -8,3 +8,4 @@ for _ in range(Q):
     print(result)
     nums[a-1] = b
 
+

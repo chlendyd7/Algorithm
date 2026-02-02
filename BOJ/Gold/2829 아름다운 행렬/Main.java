@@ -1,4 +1,3 @@
-package 크루스칼;
 import java.io.*;
 import java.util.*;
 
