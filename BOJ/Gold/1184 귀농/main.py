@@ -8,6 +8,7 @@ from collections import defaultdict
 
 def get_sum(r1, c1, r2, c2):
     return pref[r2+1][c2+1] - pref[r1][c2+1] - pref[r2+1][c1] + pref[r1][c1]
+
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
 pref = [[0] *(n+1) for _ in range(n+1)]
@@ -23,21 +24,21 @@ for r in range(n-1):
             for j in range(c+1):
                 sums[get_sum(i,j,r,c)] += 1
 
-    for i in range(r+1, n):
-        for j in range(c+1, n):
-            val = get_sum(r+1, c+1, i, j)
-            if val in sums:
-                ans += sums[val]
+        for i in range(r+1, n):
+            for j in range(c+1, n):
+                val = get_sum(r+1, c+1, i, j)
+                if val in sums:
+                    ans += sums[val]
 
-    sums = defaultdict(int)
-    for i in range(r+1):
-        for j in range(c+1, n):
-            sums[get_sum(i,c+1, r,j)] += 1
-    
-    for i in range(r+1, n):
-        for j in range(c+1):
-            val = get_sum(r+1, j, i, c)
-            if val in sums:
-                ans += sums[val]
+        sums = defaultdict(int)
+        for i in range(r+1):
+            for j in range(c+1, n):
+                sums[get_sum(i,c+1, r,j)] += 1
+        
+        for i in range(r+1, n):
+            for j in range(c+1):
+                val = get_sum(r+1, j, i, c)
+                if val in sums:
+                    ans += sums[val]
 
 print(ans)
