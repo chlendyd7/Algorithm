@@ -35,15 +35,15 @@ def cleanup(board):
         board[r1][i] = board[r1][i-1]
     board[r1][1] = 0
 
-    for i in range(R-1, r2-1, -1):
-        board[i-1][0] = board[i][0]
-    # for i in range(C-1):
-    #     board[r2][i] = board[r2][i+1]
-    # for i in range(R-1, r2-1, -1):
-    #     board[i][C-1] = board[i][C-1]
-    # for i in range(C-1, 0, -1):
-    #     board[r2][i] = board[r2][i-1]
-    # board[r2][1] = 0
+    for i in range(r2+1, R-1):
+        board[i][0] = board[i+1][0]
+    for i in range(C-1):
+        board[R-1][i] = board[R-1][i+1]
+    for i in range(R-1, r2, -1):
+        board[i][C-1] = board[i-1][C-1]
+    for i in range(C-1, 1, -1):
+        board[r2][i] = board[r2][i-1]
+    board[r2][1] = 0
 
 for t in range(T):
     board = mise_spread(board)

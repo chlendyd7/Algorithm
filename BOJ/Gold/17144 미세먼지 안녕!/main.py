@@ -12,87 +12,70 @@
     공청기 동작하는 로직 1
     
 '''
+import copy
+
 dr = [-1,1,0,0]
 dc = [0,0,1,-1]
 R, C, T = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(R)]
 r1,c1,r2,c2 = 0, 0, 0, 0
-flag = True
+
+up, down = -1, -1
 for i in range(R):
-    if flag:
-        for j in range(C):
-            if board[i][j] == -1:
-                r1 = i
-                c1 = j
-                flag = False
-                break
-    else:
+    if board[i][0] == -1:
+        up = i
+        down = i + 1
         break
+
 
 r2, c2 = r1+1, c1
 
-def mise(board):
+def mise_spread():
     next_board = [[0] * C for _ in range(R)]
     for r in range(R):
         for c in range(C):
-            if board[r][c] == -1:
-                next_board[r][c] = -1
-                continue
-
             if board[r][c] > 0:
-                if board[r][c] > 4:
-                    cnt = 0
-                    for i in range(4):
-                        nr, nc = r + dr[i], c + dc[i]
-                        if 0 <= nr < R and 0 <= nc < C:
-                            next_board[nr][nc] += int(board[r][c] / 5)
-                            cnt += 1
-                    next_board[r][c] += board[r][c] - (int(board[r][c] / 5) * cnt)
-                else:
-                    next_board[r][c] += board[r][c]
-
+                amount = board[r][c] // 5
+                cnt = 0
+                for dr, dc in [(-1,0), (1,0), (0,-1), (0,1)]:
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < R and 0 <= nc < C and board[nr][nc] != -1:
+                        next_board[nr][nc] += amount
+                        cnt += 1
+                next_board[r][c] += (board[r][c] - (amount * cnt))
+            elif board[r][c] == -1:
+                next_board[r][c] = -1
     return next_board
 
+def air_move():
+    for i in range(up - 1, 0, -1):
+        board[i][0] = board[i-1][0]
+    for i in range(C-1):
+        board[0][i] = board[0][i+1]
+    for i in range(up):
+        board[i][C-1] = board[i+1][C-1]
+    for i in range(C-1, 1, -1):
+        board[up][i] = board[up][i-1]
+    board[up][1] = 0
 
-direction_up = [(0,1), (-1,0), (0,-1), (1,0)]
-direction_down = [(0,1), (1,0), (0,-1), (-1,0)]
-def air_condition(board, r1, c1, r2, c2):
-    next_board = [[0] * C for _ in range(R)]
-    dir = 0
-    r, c = r1, c1
-    while True:
-        nr, nc = r + direction_up[dir][0], c + direction_up[dir][1]
-        if 0 > nr or nr >= R or 0 > nc or nr >= C:
-            dir += 1
-        else:
-            if nr == r1 and c == c1:
-                break
-            next_board[nr][nc] = board[r][c]
-            r, c = nr, nc
+    for i in range(down+1, R-1):
+        board[i][0] = board[i+1][0]
+    for i in range(C-1):
+        board[R-1][i] = board[R-1][i+1]
+    for i in range(R-1, down, -1):
+        board[i][C-1] = board[i-1][C-1]
+    for i in range(C-1, 1, -1):
+        board[down][i] = board[down][i-1]
+    board[down][1] = 0
 
-    dir = 0
-    r, c = r2, c2
-    while True:
-        nr, nc = r + direction_down[dir][0], c + direction_down[dir][1]
-        if 0 > nr or nr >= R or 0 > nc or nr >= C:
-            dir += 1
-        else:
-            if nr == r2 and c == c2:
-                break
-            next_board[nr][nc] = board[r][c]
-            r, c = nr, nc
+for _ in range(T):
+    board = mise_spread()
+    air_move()
 
-    return next_board
+total_dust = 0
+for r in range(R):
+    for c in range(C):
+        if board[r][c] > 0:
+            total_dust += board[r][c]
 
-
-first_step_board = mise(board)
-print(first_step_board)
-second_step_board = air_condition(first_step_board, r1, c1, r2, c2)
-# print(second_step_board)
-result = 0
-for i in range(R):
-    for j in range(C):
-        if second_step_board[i][j] == -1:
-            continue
-        result += second_step_board[i][j]
-print(result)
+print(total_dust)
