@@ -21,7 +21,6 @@ def get_window_vals(arr, b, find_max=True):
                 dq.pop()
         
         dq.append(i)
-        print(dq)
         # 2. 윈도우 범위를 벗어난 인덱스 제거 (가장 왼쪽 값)
         if dq[0] <= i - b:
             dq.popleft()
@@ -82,3 +81,4 @@ def solve():
         print(res_max - res_min)
 
 solve()
+

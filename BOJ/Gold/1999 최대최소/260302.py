@@ -38,15 +38,20 @@ for _ in range(K):
     print(final_max[i][j] - final_min[i][j])
 
 
-def get_sliding_max(arr, B):
+def get_sliding_max(arr, B, is_max):
     res = []
     dq = deque()
     for i in range(len(arr)):
-        if dq and dq[0] <= i-B:
+        if is_max:
+            while dq and arr[dq[-1]] <= arr[i]:
+                dq.pop()
+            
+
+        dq.append(arr[i])
+
+        if dq[0] <= i - B:
             dq.popleft()
-        while dq and arr[dq[-1]] < arr[i]:
-            dq.pop()
-        dq.append(i)
-        if i >= B - 1:
-            res.append(arr[dq[0]])
-    return res
+        if i >= N-B:
+            res.append(dq[-1])
+            
+        
