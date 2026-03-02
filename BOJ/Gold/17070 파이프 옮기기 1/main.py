@@ -50,3 +50,49 @@ dfs(0, 1, RIGHT)
 print(result)
 
 
+import sys
+from functools import lru_cache
+
+# 재귀 깊이 제한 해제 (파이썬 기본은 1000이라 N이 커지면 위험함)
+sys.setrecursionlimit(10000)
+
+N = int(sys.stdin.readline())
+board = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+
+RIGHT, DOWN, DAGAK = 0, 1, 2
+
+def check(r, c, shape):
+    if shape == RIGHT:
+        return c + 1 < N and board[r][c + 1] == 0
+    elif shape == DOWN:
+        return r + 1 < N and board[r + 1][c] == 0
+    elif shape == DAGAK:
+        if r + 1 < N and c + 1 < N:
+            return board[r+1][c] == 0 and board[r][c+1] == 0 and board[r+1][c+1] == 0
+    return False
+
+@lru_cache(None)
+def dfs(r, c, shape):
+    # 목적지 도달 시 경우의 수 1 반환
+    if r == N - 1 and c == N - 1:
+        return 1
+    
+    cnt = 0
+    # 1. 가로 이동
+    if shape == RIGHT or shape == DAGAK:
+        if check(r, c, RIGHT):
+            cnt += dfs(r, c + 1, RIGHT)
+            
+    # 2. 세로 이동
+    if shape == DOWN or shape == DAGAK:
+        if check(r, c, DOWN):
+            cnt += dfs(r + 1, c, DOWN)
+            
+    # 3. 대각선 이동
+    if check(r, c, DAGAK):
+        cnt += dfs(r + 1, c + 1, DAGAK)
+        
+    return cnt
+
+# 시작: (0, 1) 위치에 가로(RIGHT) 상태
+print(dfs(0, 1, RIGHT))
