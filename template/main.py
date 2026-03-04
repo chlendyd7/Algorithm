@@ -1,9 +1,9 @@
 import sys
 import os
+file_path = os.path.join(os.path.dirname(__file__), 'input.txt')
 
-# 로컬에서 테스트할 때만 주석 해제
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.stdin = open(os.path.join(current_dir, 'input.txt'), 'r')
-sys.stdout = open(os.path.join(current_dir, 'output.txt'), 'w')
-
-input = sys.stdin.readline
+# 파일이 존재하는지 확인 후 stdin을 교체합니다.
+if os.path.exists(file_path):
+    sys.stdin = open(file_path, 'r')
+else:
+    print("경고: input.txt 파일을 찾을 수 없습니다.")
