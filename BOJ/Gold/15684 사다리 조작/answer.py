@@ -28,26 +28,33 @@ def check():
             return False
     return True
 
-def dfs(cnt, r, c):
-    global ans
-    if cnt >= ans:
-        return
-    if check():
-        ans = cnt
-        return
-    if cnt == 3:
+def dfs(cnt, r, c, target):
+    global found
+    if found: return
+    
+    if cnt == target:
+        if check():
+            found = True
         return
 
-    for i in range(r, H+1):
-        if i == r:
-            k = c
-        else:
-            k = 1
-        for j in range(k, N):
+    for i in range(r, H + 1):
+        # 행이 바뀌면 1열부터, 같은 행이면 이전 c부터
+        start_c = c if i == r else 1
+        for j in range(start_c, N): # N-1번 열까지만 가로선을 놓을 수 있음
+            # 1. 현재 자리에 가로선이 없고
+            # 2. 왼쪽(j-1)에 가로선이 없고
+            # 3. 오른쪽(j+1)에 가로선이 없는지 확인
             if board[i][j] == 0 and board[i][j-1] == 0 and board[i][j+1] == 0:
                 board[i][j] = 1
-                dfs(cnt+1, i, j+2)
+                dfs(cnt + 1, i, j + 2, target) # 연속 설치 불가니 j+2
                 board[i][j] = 0
-ans = 4
-dfs(0,1,1)
-print(ans)
+                if found: return
+
+found = False
+for limit in range(4):
+    dfs(0,1,1,limit)
+    if found:
+        print(limit)
+        exit()
+
+print(-1)
