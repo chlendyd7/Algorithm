@@ -7,3 +7,9 @@ if os.path.exists(file_path):
     sys.stdin = open(file_path, 'r')
 else:
     print("경고: input.txt 파일을 찾을 수 없습니다.")
+
+while True:
+    try:
+        pass
+    except EOFError:
+        break
