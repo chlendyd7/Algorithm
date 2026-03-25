@@ -41,7 +41,11 @@ for c in range(rabbit_c + 1, M):
             pr = r + dr
             if 0 <= pr < N and dp[pr][c-1] != -1:
                 prev_max = max(prev_max, dp[pr][c-1])
-                
+        
+        if prev_max != -1:
+            dp[r][c] = prev_max + (1 if board[r][c] == 'C' else 0)
+ans = -1
+
 
 dp = [[0] * M for _ in range(N)]
 q = deque([[0, *rabbit]])
