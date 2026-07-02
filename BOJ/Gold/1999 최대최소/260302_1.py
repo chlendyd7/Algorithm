@@ -1,3 +1,6 @@
+from collections import deque
+
+
 N, B, K = map(int, input().split())
 board = [list(map(int, input().split())) for _ in range(N)]
 mx_row = [[0] * (N-B+1) for _ in range(N)]
@@ -23,3 +26,8 @@ for _ in range(K):
     print(final_mx[i][j] - final_mn[i][j])
 
 
+def get_sliding_max(arr, B):
+    res = []
+    dq = deque()
+    for i in range(len(arr)):
+        

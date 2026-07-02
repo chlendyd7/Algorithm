@@ -43,13 +43,7 @@ grid = [
 ]
 
 # dp값을 전부 -1로 초기화해줍니다.
-dp = [
-    [
-        [-1] * (MAX_K + 1) 
-        for _ in range(MAX_N)
-    ] 
-    for _ in range(MAX_N)
-]
+dp = [[[-1] * (MAX_K + 1) for _ in range(MAX_N)] for _ in range(MAX_N)]
 
 # 각 위치를 시작으로 하는 dp를 진행합니다.
 ans = INT_MAX
