@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic AI 업무 자동화 — 설계 시나리오</title>
+  <style>
+    :root {
+      --black: #0f0f0f;
+      --gray-1: #333;
+      --gray-2: #666;
+      --gray-3: #aaa;
+      --border: #e5e5e5;
+      --bg-soft: #f8f9fb;
+      --green: #16a34a;
+      --green-light: #f0fdf4;
+      --orange: #ea580c;
+      --orange-light: #fff7ed;
+      --blue: #1a56db;
+      --blue-light: #eff4ff;
+      --purple: #7c3aed;
+      --purple-light: #faf5ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color: var(--black);
+      background: #fff;
+      line-height: 1.65;
+      padding: 40px 32px;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+
+    /* ── Header ── */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--gray-2);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .title { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-bottom: 6px; }
+    .subtitle { font-size: 15px; color: var(--gray-2); margin-bottom: 30px; }
+
+    /* ── Context Box ── */
+    .context-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      background: var(--bg-soft);
+      margin-bottom: 32px;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .context-box strong { font-weight: 800; }
+
+    /* ── Next Steps ── */
+    .next-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .next-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .next-card.now { border-color: var(--green); background: var(--green-light); }
+    .next-card.short { border-color: var(--orange); background: var(--orange-light); }
+    .next-card.mid { border-color: var(--blue); background: var(--blue-light); }
+    .next-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .now .next-tag { color: var(--green); }
+    .short .next-tag { color: var(--orange); }
+    .mid .next-tag { color: var(--blue); }
+    .next-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
+    .next-card p { font-size: 13px; line-height: 1.6; color: var(--gray-1); }
+    .next-card .reason {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-2);
+      padding-top: 8px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 44px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-2);
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Scenario Card ── */
+    .sc-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .sc-header {
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sc-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .sc-1 .sc-icon { background: var(--blue-light); }
+    .sc-2 .sc-icon { background: var(--green-light); }
+    .sc-3 .sc-icon { background: var(--purple-light); }
+    .sc-header-text { flex: 1; }
+    .sc-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      margin-bottom: 4px;
+    }
+    .sc-title { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+    .sc-desc { font-size: 13px; color: var(--gray-2); }
+    .sc-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .sc-col {
+      padding: 18px 20px;
+      border-right: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+    .sc-col:last-child { border-right: none; }
+    .sc-col-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cause .sc-col-label { color: #c0392b; }
+    .analysis .sc-col-label { color: #e67e22; }
+    .solution .sc-col-label { color: #27ae60; }
+    .sc-col p { line-height: 1.65; }
+    .sc-col code {
+      display: inline-block;
+      background: #f0f0f0;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 11.5px;
+      font-family: "Menlo", "Consolas", monospace;
+    }
+
+    /* ── Flow diagram ── */
+    .flow {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-soft);
+      font-size: 13px;
+    }
+    .flow-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      margin-bottom: 8px;
+    }
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .flow-step {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+    .flow-arrow {
+      color: var(--gray-3);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .flow-step.highlight {
+      background: var(--black);
+      color: #fff;
+      border-color: var(--black);
+    }
+
+    /* ── Stack tags ── */
+    .stack-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding: 10px 20px 14px;
+      border-top: 1px solid var(--border);
+    }
+    .stack-tag {
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 10px;
+      background: #fff;
+      color: var(--gray-1);
+    }
+
+    /* ── Arch bridge ── */
+    .arch-box {
+      border: 1.5px solid var(--black);
+      border-radius: 12px;
+      padding: 22px 24px;
+      background: #fafafa;
+      margin-top: 8px;
+    }
+    .arch-box h4 { font-size: 15px; font-weight: 800; margin-bottom: 12px; }
+    .arch-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 13.5px;
+    }
+    .arch-dot {
+      width: 20px;
+      height: 20px;
+      background: var(--black);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--gray-2);
+      line-height: 1.8;
+    }
+
+    @media print {
+      body { padding: 20px; }
+      .next-grid { grid-template-columns: 1fr 1fr; }
+      .sc-body { grid-template-columns: 1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="eyebrow">Agentic AI 확장 설계 · 업무 자동화 시나리오</div>
+  <div class="title">현재 아키텍처의 다음 단계</div>
+  <div class="subtitle">VibeCoding Studio의 Agentic 구조를 기반으로 — 실제 업무 문제에 적용하면</div>
+
+  <!-- Context -->
+  <div class="context-box">
+    <strong>현재 보유한 아키텍처 자산:</strong><br>
+    ① <strong>tool_use 기반 자기검증 Agentic Loop</strong> (다회전 재호출, fallback 설계)<br>
+    ② <strong>MCP 서버</strong> (어떤 AI 클라이언트든 연결 가능한 표준 도구 계층)<br>
+    ③ <strong>OpenCode 소스 분석</strong>으로 내재화한 Agent 역할 분리 패턴<br>
+    ④ FastAPI + Spring Boot + React 풀스택 + SSE 스트리밍 구현 경험<br>
+    <br>
+    아래 시나리오는 이 자산을 <strong>"사내 업무 자동화"</strong>에 적용할 때의 설계 방향입니다.
+  </div>
+
+  <!-- Next Steps -->
+  <div class="section">
+    <div class="section-title">지금 당장 해야 할 것 — 우선순위 순</div>
+    <div class="next-grid">
+
+      <div class="next-card now">
+        <div class="next-tag">🟢 즉시 (3일 이내)</div>
+        <h4>LangGraph로 현재 루프 재구현</h4>
+        <p>현재 Spring Boot에서 직접 구현한 <code>tool_use → 재호출</code> 루프를 LangGraph <strong>StateGraph</strong>로 변환. 코드 구조가 이미 완성되어 있어 Node/Edge로 1:1 매핑만 하면 됨.</p>
+        <div class="reason">→ "LangGraph 경험 있음"이 진짜 경험이 됨. 면접 때 "직접 만든 구조를 LangGraph로도 구현해봤다"는 가장 강력한 대답.</div>
+      </div>
+
+      <div class="next-card now">
+        <div class="next-tag">🟢 즉시 (2일 이내)</div>
+        <h4>Streamlit으로 사내 업무 PoC 하나 완성</h4>
+        <p>아래 시나리오 중 하나를 <strong>Streamlit UI + FastAPI + Claude API</strong>로 데모 수준 구현. UI는 Streamlit이라 하루면 됨. 실제로 돌아가는 데모가 있으면 포폴이 완전히 달라짐.</p>
+        <div class="reason">→ "Streamlit 경험 보유자" 우대 조건 충족 + 면접 때 데모 시연 가능.</div>
+      </div>
+
+      <div class="next-card short">
+        <div class="next-tag">🟡 단기 (1주)</div>
+        <h4>Multi-Agent 실분리 구현</h4>
+        <p>현재 단일 AIService를 <code>CodeGeneratorAgent</code> / <code>SummaryAgent</code> / <code>EditAgent</code>로 실제 분리. 역할별 모델 설정(Sonnet vs Haiku) 적용해 비용 최적화 측정.</p>
+        <div class="reason">→ "Multi-Agent 협업 구조 설계·개발" 직무 요구사항 직접 충족.</div>
+      </div>
+
+      <div class="next-card short">
+        <div class="next-tag">🟡 단기 (1주)</div>
+        <h4>RAG 파이프라인 연동</h4>
+        <p>기존 RAG 경험 기반으로 ChromaDB + 사내 문서 임베딩 파이프라인을 VibeCoding이나 별도 PoC에 통합. FastAPI 엔드포인트로 서빙.</p>
+        <div class="reason">→ RAG 경험을 현재 Agentic 구조와 결합해 "LLM API + RAG + FastAPI" 3개 우대 동시 충족.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 시나리오 -->
+  <div class="section">
+    <div class="section-title">업무 자동화 적용 시나리오 설계 — 원인 / 분석 / 해결</div>
+
+    <!-- 시나리오 1 -->
+    <div class="sc-card sc-1">
+      <div class="sc-header">
+        <div class="sc-icon">📊</div>
+        <div class="sc-header-text">
+          <div class="sc-tag">Scenario 01 · Multi-Agent</div>
+          <div class="sc-title">주간 보고서 자동 초안 생성 Agent</div>
+          <div class="sc-desc">데이터 조회 → 인사이트 도출 → 초안 작성 → 검토 흐름을 Agent 구조로 자동화</div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-col cause">
+          <div class="sc-col-label">원인</div>
+          <p>주간 보고서 작성에 2~3시간 소모. 데이터 조회·정리·문장화·포맷팅을 매주 수동으로 반복. 담당자가 바뀌면 일관성도 깨짐</p>
+        </div>
+        <div class="sc-col analysis">
+          <div class="sc-col-label">분석</div>
+          <p>VibeCoding에서 구현한 <code>tool_use</code> 루프와 동일한 패턴. 데이터 조회(<code>fetch_kpi</code> 도구) → 인사이트 생성 → 초안 작성 → 검토의 단계별 Agent 분리가 적합. OpenCode 분석에서 확인한 역할별 모델 최적화 적용 가능</p>
+        </div>
+        <div class="sc-col solution">
+          <div class="sc-col-label">설계 방향</div>
+          <p><code>DataFetchAgent</code>(DB/API 조회, GPT-4o-mini) → <code>AnalysisAgent</code>(인사이트 도출, Claude Sonnet) → <code>DraftAgent</code>(초안 생성) → Streamlit 검토 UI. LangGraph StateGraph로 상태 전이 명시화</p>
+        </div>
+      </div>
+      <div class="flow">
+        <div class="flow-label">Agent 실행 흐름</div>
+        <div class="flow-steps">
+          <div class="flow-step">KPI 데이터 조회<br><small>fetch_kpi tool</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step highlight">AnalysisAgent<br><small>Claude Sonnet</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step highlight">DraftAgent<br><small>보고서 초안 생성</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Streamlit 검토 UI<br><small>담당자 확인</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">최종 배포</div>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tag">LangGraph</div>
+        <div class="stack-tag">Claude Sonnet (분석)</div>
+        <div class="stack-tag">GPT-4o-mini (데이터 조회)</div>
+        <div class="stack-tag">FastAPI</div>
+        <div class="stack-tag">Streamlit</div>
+        <div class="stack-tag">PostgreSQL</div>
+      </div>
+    </div>
+
+    <!-- 시나리오 2 -->
+    <div class="sc-card sc-2">
+      <div class="sc-header">
+        <div class="sc-icon">🔍</div>
+        <div class="sc-header-text">
+          <div class="sc-tag">Scenario 02 · RAG + Agent</div>
+          <div class="sc-title">사내 문서 Q&A RAG Agent</div>
+          <div class="sc-desc">내부 문서·매뉴얼·정책을 벡터 DB로 관리하고, AI가 질문에 맞는 문서를 찾아 답변 생성</div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-col cause">
+          <div class="sc-col-label">원인</div>
+          <p>사내 문서가 분산되어 있어 필요한 정보를 찾는 데 시간 소모. 동일한 질문이 담당자에게 반복 접수. 문서 업데이트가 실시간으로 반영되지 않아 오래된 정보 참조 문제 발생</p>
+        </div>
+        <div class="sc-col analysis">
+          <div class="sc-col-label">분석</div>
+          <p>정적 프롬프트에 문서를 전부 넣는 방식은 컨텍스트 길이 한계. 벡터 DB 기반 검색으로 질문과 유사한 문서만 선별 주입하는 RAG 구조 필요. VibeCoding의 런타임 상태 조회 패턴과 동일: "생성 전 필요한 정보를 먼저 조회"</p>
+        </div>
+        <div class="sc-col solution">
+          <div class="sc-col-label">설계 방향</div>
+          <p>문서 업로드 → ChromaDB 임베딩 파이프라인, 질문 시 Retriever가 상위 K개 청크 검색 → Claude API로 답변 생성. FastAPI로 서빙, Streamlit으로 Q&A 인터페이스. 출처 문서 링크 함께 반환</p>
+        </div>
+      </div>
+      <div class="flow">
+        <div class="flow-label">RAG 실행 흐름</div>
+        <div class="flow-steps">
+          <div class="flow-step">사용자 질문 입력</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step highlight">ChromaDB 검색<br><small>Top-K 청크 추출</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step highlight">Claude API<br><small>컨텍스트 + 질문 → 답변</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">답변 + 출처 반환</div>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tag">RAG</div>
+        <div class="stack-tag">ChromaDB</div>
+        <div class="stack-tag">Claude API</div>
+        <div class="stack-tag">FastAPI</div>
+        <div class="stack-tag">Streamlit</div>
+        <div class="stack-tag">LangChain (Retriever)</div>
+      </div>
+    </div>
+
+    <!-- 시나리오 3 -->
+    <div class="sc-card sc-3">
+      <div class="sc-header">
+        <div class="sc-icon">⚙️</div>
+        <div class="sc-header-text">
+          <div class="sc-tag">Scenario 03 · Agentic Workflow</div>
+          <div class="sc-title">업무 프로세스 자동화 — Single → Multi-Agent 전환</div>
+          <div class="sc-desc">단일 LLM 호출로 처리하던 업무 자동화를 역할별 Agent로 분리해 품질·비용 동시 개선</div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <div class="sc-col cause">
+          <div class="sc-col-label">원인</div>
+          <p>기존 LLM 활용이 "프롬프트 1회 → 결과 반환" 수준에 머물러, 복잡한 업무(다단계 판단, 외부 데이터 조회, 결과 검증)를 처리하지 못하고 오류율이 높음</p>
+        </div>
+        <div class="sc-col analysis">
+          <div class="sc-col-label">분석</div>
+          <p>OpenCode 분석에서 확인한 패턴: 단일 Agent는 역할 혼재로 품질 저하. 역할 분리 시 각 Agent를 역할에 맞는 모델로 최적화 가능. VibeCoding의 <code>tool_use</code> 루프가 이 구조의 토대</p>
+        </div>
+        <div class="sc-col solution">
+          <div class="sc-col-label">설계 방향</div>
+          <p><code>Planner</code>(작업 분해) → <code>Executor</code>(도구 실행 + 자기검증 루프) → <code>Reviewer</code>(결과 품질 확인) → <code>SummaryAgent</code>(Haiku, 저비용). LangGraph StateGraph로 조건 분기 명시화. fallback은 VibeCoding 구현 방식 그대로 적용</p>
+        </div>
+      </div>
+      <div class="flow">
+        <div class="flow-label">Multi-Agent 실행 흐름 (LangGraph StateGraph)</div>
+        <div class="flow-steps">
+          <div class="flow-step">Planner<br><small>작업 분해</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step highlight">Executor<br><small>tool_use 루프</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Reviewer<br><small>품질 검증</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step highlight">오류 시 Fixer<br><small>자동 재실행</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Summary<br><small>Haiku (저비용)</small></div>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-tag">LangGraph</div>
+        <div class="stack-tag">Multi-Agent</div>
+        <div class="stack-tag">Claude Sonnet (핵심 역할)</div>
+        <div class="stack-tag">Claude Haiku (요약)</div>
+        <div class="stack-tag">FastAPI</div>
+        <div class="stack-tag">MCP (도구 연결)</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 아키텍처 연결 -->
+  <div class="section">
+    <div class="section-title">현재 구현 → 시나리오 연결점</div>
+    <div class="arch-box">
+      <h4>이미 해결한 문제가 모든 시나리오의 토대입니다</h4>
+      <div class="arch-row">
+        <div class="arch-dot">1</div>
+        <div><strong>tool_use 루프</strong> → 모든 시나리오의 "도구 호출 + 결과 반영" 패턴 동일. 구조를 이미 이해하고 구현했기 때문에 업무 도메인만 바꾸면 적용 가능</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-dot">2</div>
+        <div><strong>fallback 설계</strong> → 기업 환경에서 API 제약·장애 상황에 graceful degradation 적용. 모든 PoC에서 즉시 재사용 가능</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-dot">3</div>
+        <div><strong>MCP 서버</strong> → 시나리오에서 "도구 실행 계층"으로 그대로 활용. <code>fetch_kpi</code>, <code>search_docs</code> 같은 도구를 추가만 하면 됨</div>
+      </div>
+      <div class="arch-row">
+        <div class="arch-dot">4</div>
+        <div><strong>OpenCode 분석 패턴</strong> → Multi-Agent 역할 분리·모델 최적화·Compaction을 이미 설계 완료. LangGraph로 코드화하는 것만 남음</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    * 위 시나리오는 현재 VibeCoding Studio에서 구현한 Agentic 아키텍처를 기반으로 한 설계 방향입니다.<br>
+    * 각 시나리오의 핵심 패턴(tool-calling 루프, fallback, Multi-Agent 역할 분리)은 이미 구현 완료된 구조이며, 업무 도메인과 도구 정의만 변경하면 적용 가능합니다.<br>
+    * LangGraph StateGraph 재구현 및 Streamlit PoC는 현재 진행 예정입니다.
+  </div>
+
+</div>
+</body>
+</html>
