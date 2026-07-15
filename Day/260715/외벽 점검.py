@@ -106,6 +106,21 @@ def solution(n, weak, dist):
                         return count
     return -1
 
+def solution(n, weak, dist:list):
+    length = len(weak)
+    linear = weak + [w + n for w in weak]
+    dist.sort(reverse=True)
+    
+    for count in range(1, len(dist) + 1):
+        for perm in permutations(dist, count):
+            for start in range(length):
+                idx = start
+                for d in perm:
+                    reach = linear[idx] + d
+                    while idx < start + length and linear[idx] <= reach:
+                        idx += 1
+                    if idx >= start + length:
+                        return count
 '''
 12	[1, 5, 6, 10]	[1, 2, 3, 4]	2
 12	[1, 3, 4, 9, 10]	[3, 5, 7]	1
