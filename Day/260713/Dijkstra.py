@@ -2,6 +2,7 @@
 from collections import defaultdict
 import heapq
 
+INF = 10**18
 n, m = map(int, input().split())
 graph = defaultdict(list)
 for _ in range(m):
@@ -12,6 +13,7 @@ distance = [1e9] * (n+1)
 parent = [0] * (n+1)
 hq = [(0, 1)]
 distance[1] = 0
+
 while hq:
     dist, node = heapq.heappop(hq)
     if distance[node] < dist:
