@@ -112,6 +112,71 @@
     .copy-btn-dark.ok { background: #dcfce7; color: #15803d; border-color: #86efac; }
 
     .note { background: #eff6ff; border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 0.85rem; color: #1e40af; margin-top: 14px; }
+
+    /* 탈락 패턴 카드 */
+    .pattern-card { border: 1px solid #fecdd3; border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
+    .pattern-card:last-child { margin-bottom: 0; }
+    .pattern-head { padding: 10px 16px; background: #fff1f2; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #fecdd3; }
+    .pattern-num { background: var(--red); color: white; font-size: 0.78rem; font-weight: 700; padding: 2px 9px; border-radius: 20px; flex-shrink: 0; }
+    .pattern-title { font-weight: 700; font-size: 0.92rem; color: #be123c; }
+    .pattern-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 9px; }
+    .pattern-row { display: flex; gap: 10px; align-items: flex-start; }
+    .plabel { font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+    .plabel.bad { background: #fee2e2; color: #dc2626; }
+    .plabel.good { background: #dcfce7; color: #16a34a; }
+    .ptext { font-size: 0.88rem; line-height: 1.75; }
+    .ptext .ex { font-size: 0.81rem; color: var(--muted); font-style: italic; margin-top: 3px; display: block; }
+
+    /* 문항 프레임 */
+    .frame-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+    .frame-card:last-child { margin-bottom: 0; }
+    .frame-head { padding: 9px 16px; background: var(--bg); font-weight: 700; font-size: 0.88rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .frame-badge { background: var(--blue); color: white; font-size: 0.72rem; padding: 1px 8px; border-radius: 20px; }
+    .frame-body { padding: 12px 16px; font-size: 0.88rem; line-height: 1.8; }
+    .formula { background: #eff6ff; border-left: 3px solid var(--blue); padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 0.83rem; margin-bottom: 8px; }
+    .forbidden { background: #fff7ed; border-left: 3px solid #f97316; padding: 6px 12px; border-radius: 0 6px 6px 0; font-size: 0.82rem; color: #9a3412; margin-top: 6px; }
+
+    /* 체크리스트 */
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; background: var(--bg); border-radius: 8px; font-size: 0.88rem; line-height: 1.65; }
+    .ck-num { background: var(--navy); color: white; font-size: 0.74rem; font-weight: 700; padding: 1px 7px; border-radius: 20px; flex-shrink: 0; margin-top: 2px; }
+
+    /* 공고 판단 */
+    .fit-score-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin-bottom: 4px; }
+    .fit-score-item { display: flex; align-items: flex-start; gap: 10px; background: var(--bg); border-radius: 8px; padding: 10px 13px; font-size: 0.87rem; }
+    .fit-score-item .sc { font-weight: 700; font-size: 0.8rem; color: var(--blue); background: #dbeafe; padding: 1px 7px; border-radius: 20px; flex-shrink: 0; margin-top: 1px; }
+    .verdict-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 6px; }
+    .verdict { flex: 1; min-width: 140px; border-radius: 10px; padding: 12px 14px; text-align: center; }
+    .verdict .vt { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .verdict .vd { font-size: 0.78rem; opacity: 0.85; }
+    .verdict.go { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .verdict.hold { background: #fef9c3; color: #854d0e; border: 1px solid #fde68a; }
+    .verdict.pass { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+    .kw-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .kw-group { flex: 1; min-width: 180px; border-radius: 8px; padding: 10px 13px; }
+    .kw-group.go { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .kw-group.hold { background: #fefce8; border: 1px solid #fde68a; }
+    .kw-group.pass { background: #fff1f2; border: 1px solid #fecdd3; }
+    .kw-group .kw-title { font-weight: 700; font-size: 0.78rem; margin-bottom: 7px; }
+    .kw-group.go .kw-title { color: #15803d; }
+    .kw-group.hold .kw-title { color: #854d0e; }
+    .kw-group.pass .kw-title { color: #dc2626; }
+    .kw-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .kw-tag { font-size: 0.76rem; padding: 2px 8px; border-radius: 20px; }
+    .kw-group.go .kw-tag { background: #dcfce7; color: #166534; }
+    .kw-group.hold .kw-tag { background: #fef9c3; color: #713f12; }
+    .kw-group.pass .kw-tag { background: #fee2e2; color: #991b1b; }
+    .prio-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .prio-card { flex: 1; min-width: 180px; border-radius: 8px; padding: 11px 14px; border: 1px solid var(--border); }
+    .prio-card .pt { font-weight: 700; font-size: 0.85rem; margin-bottom: 5px; }
+    .prio-card ul { padding-left: 14px; font-size: 0.82rem; line-height: 1.8; color: var(--muted); }
+    .prio-1 { border-top: 3px solid var(--blue); }
+    .prio-2 { border-top: 3px solid var(--green); }
+    .prio-3 { border-top: 3px solid #9ca3af; }
+
+    /* 섹션 구분 */
+    .sub-title { font-weight: 700; font-size: 0.82rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin: 20px 0 10px; }
+    .sub-title:first-child { margin-top: 0; }
   </style>
 </head>
 <body>
@@ -134,6 +199,8 @@
   <a href="#stories">스토리뱅크</a>
   <a href="#edu">교육/자격증</a>
   <a href="#keywords">핵심 키워드</a>
+  <a href="#writing-rules">탈락방지</a>
+  <a href="#fit-check">공고판단</a>
 </nav>
 
 <main>
@@ -167,9 +234,9 @@
           <span class="career-role">백엔드 개발자 / PM</span>
         </div>
         <ul class="achievements">
-          <li>Spring / .NET 기반 <strong>열관리 시스템 MES 유지보수</strong> — <span class="fill">[개선 수치 채우기: 처리 시간, 오류 감소 등]</span></li>
-          <li><strong>바이브코딩 스튜디오</strong> 개발 — <span class="fill">[어떤 도구인지 + 사용 기술 + 성과]</span></li>
-          <li><strong>프로젝트 관리 시스템</strong> 개발 — <span class="fill">[규모, 사용 부서, 주요 기능]</span></li>
+          <li>Spring Boot + MyBatis 기반 <strong>열관리 시스템 MES 유지보수</strong> (<span class="num">150</span>페이지 중 <span class="num">50</span>페이지 담당 / Vue 3 + PostgreSQL) — 생산 성능 분석(PP301) byHour/Day/Month/Range 다중 조회 기준 추가 + SQL 하드코딩 대신 Java Pivot 동적 구현 / 공정진행 현황 야간·주간 06시 기준 시간대 컬럼 분리 / Serial1·Serial2 독립 검색 분리(AND 조건 정밀화) / 출하 팔레트·박스별 LOT 조회 + Excel 다운로드 추가 / WORK_SHIFT A·K 데이터 혼선 버그·ConcurrentModificationException 수정</li>
+          <li><strong>바이브코딩 스튜디오</strong> 개발 — Claude Agentic Loop 기반 사내 AI 코드 생성 플랫폼 / MCP 8개 도구 + CodeGenerator · EditAgent · SummaryAgent 멀티 에이전트 구조 / Spring Boot + FastAPI + React 19 + LangGraph / 사내 HChat AI 게이트웨이 연동으로 보안 정책 준수 / 입사 <span class="num">2달</span> 만에 PoC 완성 → 워크샵 발표</li>
+          <li><strong>프로젝트 관리 시스템 (IPMS)</strong> 개발 — ICT 추진팀 사내 업무개선 PoC, 솔로 개발 진행 중 / Spring Boot 3.2 + Vue 3 + QueryDSL + PostgreSQL / Confluence·OneDrive에 산재한 문서 → 사업별 OneDrive 링크 허브 통합 + 예산/실집행 비교 + 사업 단계(기획→완료) 추적 / 계약서·제안서·산출내역서·회의록·견적서 6종 통합 관리</li>
           <li><strong>에너지관리시스템 PM</strong> — <span class="fill">[관련 설비 수, 진행 상황, 예상 성과]</span></li>
           <li>제조 도메인 IT 특성 체득: 데이터 무결성 최우선 / 레거시 연동 / 다운타임 불가 환경</li>
         </ul>
@@ -596,6 +663,38 @@ MQTT + EMQX 브로커를 활용해 경량 메시징 구조를 설계하고, Expo
         </div>
       </div>
 
+      <!-- S13 -->
+      <div class="story-item">
+        <div class="story-head">
+          <div class="story-title">S13. 문서 산재 문제 인식 → 직접 시스템 개발 (ICT 사업관리 시스템)</div>
+          <div class="tags">
+            <span class="tag improve">불편→개선</span>
+            <span class="tag action">주도적 실행</span>
+            <span class="tag tech">기술역량</span>
+          </div>
+          <button class="copy-btn-dark" onclick="copyStory('s13')">복사</button>
+        </div>
+        <div class="story-qtype">
+          <strong>적합한 질문:</strong> 업무 개선 경험, 주도적 실행, 문제 정의 능력, 장점/강점, 개발자로서의 관점
+        </div>
+        <div class="story-body" id="s13">경찰행정학과에서 법령·수사 매뉴얼·판례 등 정형화된 문서 체계를 다루며, 문서 한 줄의 표현 차이가 집행 결과를 바꾼다는 것을 체감했습니다. 이것이 실무에서 문서를 대하는 방식의 출발점이 되었습니다.
+
+현대위아에서 사업을 운영하며 구조적인 문제를 목격했습니다. 계약서·산출내역서·회의록 등 핵심 문서가 Confluence와 OneDrive에 PPT·Excel 형태로 흩어져 있었고, 내용을 확인하려면 각 플랫폼에 직접 접속해 파일을 열어봐야 했습니다. 프로젝트가 진행되면서 발생하는 디테일한 결정 사항과 맥락은 기록되지 못하고 소실됐습니다.
+
+이를 사내 업무개선 과제로 채택해 ICT 사업관리 시스템을 혼자 기획·개발했습니다. Spring Boot 3.2 + Vue 3 + QueryDSL + PostgreSQL 기반으로, 사업 단계(기획→제안→계약→진행→완료→종료)와 예산 대비 실집행 현황을 추적하고, 계약서·제안서·산출내역서·회의록·견적서 6종 문서를 OneDrive 링크로 사업별 허브처럼 통합 관리할 수 있도록 구성했습니다.
+
+기술 선택도 문서로 남겼습니다. JPA+QueryDSL vs MyBatis를 5개 항목으로 비교 분석한 TECH_DECISION.md를 직접 작성해 의사결정 근거를 기록했습니다.
+
+문서를 많이 읽어온 사람이, 문서가 있어야 할 자리에 없다는 문제를 직접 시스템으로 해결했습니다.</div>
+        <div class="story-nums">
+          <span class="num-badge">솔로 PoC 개발</span>
+          <span class="num-badge">6종 문서 통합 관리</span>
+          <span class="num-badge">사업 단계 6단계 추적</span>
+          <span class="num-badge">TECH_DECISION.md 직접 작성</span>
+          <span class="num-badge">QueryDSL 도입 (근거 문서화)</span>
+        </div>
+      </div>
+
       <!-- S10 -->
       <div class="story-item">
         <div class="story-head">
@@ -741,9 +840,395 @@ CLICK-CEO에서 이 문제를 직접 해결했습니다. GitHub Actions 기반 C
     </div>
   </div>
 
+  <!-- 공고 핏 판단 -->
+  <div class="sec" id="fit-check">
+    <div class="sec-head navy">
+      <h2>공고 핏 판단기</h2>
+      <span class="hint">공고 붙여넣고 → AI에 프롬프트 복사 → GO/HOLD/PASS 판단</span>
+      <button class="copy-btn" onclick="copyFitPrompt()">판단 프롬프트 복사</button>
+    </div>
+    <div class="sec-body">
+
+      <div class="sub-title">📊 10점 체크리스트 — 6점↑ GO · 4~5점 HOLD · 3점↓ PASS</div>
+
+      <div class="fit-score-grid">
+        <div class="fit-score-item"><span class="sc">+1</span>Java/Spring 기반인가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>백엔드 개발 + 운영이 함께 있는가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>성능개선 / 장애대응 / 안정화 업무가 있는가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>Redis / Kafka / 비동기 경험이 우대되는가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>제조 / DX / 사내시스템 / 물류 / 커머스 도메인인가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>1~3년 또는 주니어 채용인가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>프로젝트·비전공 경험을 인정해주는가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>운영 중인 시스템 개선 경험을 높게 볼 것 같은가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>현업 협업 / 요구사항 반영 경험이 중요한가</div>
+        <div class="fit-score-item"><span class="sc">+1</span>팀 리드가 아니라 실무 기여자를 뽑는가</div>
+      </div>
+
+      <div class="verdict-row">
+        <div class="verdict go"><div class="vt">6~10점 → GO</div><div class="vd">바로 지원. 자소서 작성 시작.</div></div>
+        <div class="verdict hold"><div class="vt">4~5점 → HOLD</div><div class="vd">JD 전문 다시 읽고 결정. 주력 스택 겹치면 GO.</div></div>
+        <div class="verdict pass"><div class="vt">0~3점 → PASS</div><div class="vd">시간 낭비. 미련 없이 넘기기.</div></div>
+      </div>
+
+      <div class="sub-title">🔍 공고 제목 키워드 필터</div>
+
+      <div class="kw-grid">
+        <div class="kw-group go">
+          <div class="kw-title">✅ 바로 저장</div>
+          <div class="kw-tags">
+            <span class="kw-tag">주니어 백엔드</span>
+            <span class="kw-tag">1~3년</span>
+            <span class="kw-tag">경력무관</span>
+            <span class="kw-tag">Java/Spring</span>
+            <span class="kw-tag">Spring Boot</span>
+            <span class="kw-tag">API 개발</span>
+            <span class="kw-tag">성능 개선</span>
+            <span class="kw-tag">백엔드 + 운영</span>
+            <span class="kw-tag">사내시스템</span>
+            <span class="kw-tag">서비스 운영</span>
+            <span class="kw-tag">MES/ERP/SCM</span>
+            <span class="kw-tag">제조 DX</span>
+            <span class="kw-tag">스마트팩토리</span>
+            <span class="kw-tag">Redis / Kafka 우대</span>
+            <span class="kw-tag">비동기 처리</span>
+          </div>
+        </div>
+        <div class="kw-group hold">
+          <div class="kw-title">⚠️ JD 확인 후 결정</div>
+          <div class="kw-tags">
+            <span class="kw-tag">백엔드/DevOps</span>
+            <span class="kw-tag">플랫폼 엔지니어</span>
+            <span class="kw-tag">SRE</span>
+            <span class="kw-tag">AI 플랫폼</span>
+            <span class="kw-tag">풀스택</span>
+            <span class="kw-tag">클라우드 엔지니어</span>
+            <span class="kw-tag">Python 백엔드</span>
+            <span class="kw-tag">물류/커머스</span>
+          </div>
+        </div>
+        <div class="kw-group pass">
+          <div class="kw-title">❌ 바로 패스</div>
+          <div class="kw-tags">
+            <span class="kw-tag">3년 이상 필수</span>
+            <span class="kw-tag">5년 이상</span>
+            <span class="kw-tag">리드 / Manager</span>
+            <span class="kw-tag">Architect</span>
+            <span class="kw-tag">Frontend</span>
+            <span class="kw-tag">Android / iOS</span>
+            <span class="kw-tag">ML Research</span>
+            <span class="kw-tag">Data Scientist</span>
+            <span class="kw-tag">Embedded / C++</span>
+            <span class="kw-tag">24x7 온콜 필수</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-title">🏢 회사 유형별 지원 우선순위</div>
+
+      <div class="prio-row">
+        <div class="prio-card prio-1">
+          <div class="pt">1순위 — 제조 / DX / 업무시스템</div>
+          <ul>
+            <li>대기업 제조 계열 IT</li>
+            <li>스마트팩토리 / MES / SCADA</li>
+            <li>B2B 솔루션 / 운영형 SaaS</li>
+            <li>내부 업무 자동화 시스템</li>
+          </ul>
+        </div>
+        <div class="prio-card prio-2">
+          <div class="pt">2순위 — 서비스 백엔드 / 플랫폼</div>
+          <ul>
+            <li>커머스 / 물류 / 배송</li>
+            <li>예약 / 구독 / 정산 시스템</li>
+            <li>사용자 트래픽 있는 플랫폼</li>
+          </ul>
+        </div>
+        <div class="prio-card prio-3">
+          <div class="pt">3순위 — AI 연동 / 생산성 툴</div>
+          <ul>
+            <li>AI Agent 연동 서비스</li>
+            <li>사내 업무 자동화</li>
+            <li>데이터 처리 파이프라인</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 탈락 방지 원칙 -->
+  <div class="sec" id="writing-rules">
+    <div class="sec-head red">
+      <h2>탈락 방지 원칙</h2>
+      <span class="hint">BGF리테일 탈락 분석 기반 — 다음 지원부터 적용</span>
+      <button class="copy-btn" onclick="copyPrompt()">시스템 프롬프트 복사</button>
+    </div>
+    <div class="sec-body">
+
+      <div class="sub-title">❌ 탈락 패턴 6개 — 반드시 반대로</div>
+
+      <div class="pattern-card">
+        <div class="pattern-head">
+          <span class="pattern-num">P1</span>
+          <span class="pattern-title">회사 고유성 없는 지원동기</span>
+        </div>
+        <div class="pattern-body">
+          <div class="pattern-row">
+            <span class="plabel bad">증상</span>
+            <div class="ptext">"대규모 환경에서 병목 개선을 하고 싶다" — 어느 회사에나 그대로 제출 가능한 문장<span class="ex">→ 평가자가 느끼는 것: "우리 회사일 필요가 없네"</span></div>
+          </div>
+          <div class="pattern-row">
+            <span class="plabel good">교정</span>
+            <div class="ptext">지원 회사의 고유한 시스템·서비스·사업구조를 <strong>1개 이상 구체적으로</strong> 언급하고, 그것과 본인 경험을 직접 연결할 것<span class="ex">예) "CU 포켓앱의 예약/결제 구조는 점포·본사·물류를 실시간으로 이어야 한다. 내가 애기야가자에서 했던 피크타임 병목 제거가 이 구조에서 바로 재현될 수 있다."</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-head">
+          <span class="pattern-num">P2</span>
+          <span class="pattern-title">기술 나열 → 현장 변화 번역 실패</span>
+        </div>
+        <div class="pattern-body">
+          <div class="pattern-row">
+            <span class="plabel bad">증상</span>
+            <div class="ptext">Redis Pipeline, K8s, Kafka 나열 → "기술 좋은 개발자"로 읽힘<span class="ex">→ 운영형 직무 평가자는 기술보다 "그래서 현장에 뭐가 바뀌었나"를 본다</span></div>
+          </div>
+          <div class="pattern-row">
+            <span class="plabel good">교정</span>
+            <div class="ptext">기술 성과 서술 끝에 반드시 <strong>"그래서 현장/사용자/운영에 어떤 변화가 생겼는가"</strong>로 마무리<span class="ex">예) "처리량 5배" → "피크타임 주문 장애가 사라졌고, 담당자 콜이 0건으로 줄었다"</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-head">
+          <span class="pattern-num">P3</span>
+          <span class="pattern-title">비전공 + 분산 경력 무방비</span>
+        </div>
+        <div class="pattern-body">
+          <div class="pattern-row">
+            <span class="plabel bad">증상</span>
+            <div class="ptext">계약직·프리랜서·단기 재직 이력이 나열만 되어 있고 해명 없음<span class="ex">→ 평가자: "커리어 방향성이 있는 사람인가? 오래 다닐 수 있을까?"</span></div>
+          </div>
+          <div class="pattern-row">
+            <span class="plabel good">교정</span>
+            <div class="ptext">지원동기 또는 성장과정 문항에서 각 경험의 <strong>의도성과 일관성</strong>을 짧게 서술<span class="ex">예) "이커머스→의료→IoT→제조로 도메인은 바뀌었지만, 매번 낯선 환경의 핵심을 빠르게 흡수하는 방식은 같았다"</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-head">
+          <span class="pattern-num">P4</span>
+          <span class="pattern-title">인턴·전환형 포지션에서 "왜 내려왔는가" 미설명</span>
+        </div>
+        <div class="pattern-body">
+          <div class="pattern-row">
+            <span class="plabel bad">증상</span>
+            <div class="ptext">경력이 있는데 인턴 지원 → 평가자 의심: "커리어 점프용이거나 오래 못 다닐 것"<span class="ex">→ 선제 해소 없으면 리스크 있는 지원자로 분류됨</span></div>
+          </div>
+          <div class="pattern-row">
+            <span class="plabel good">교정</span>
+            <div class="ptext">지원동기에 <strong>"왜 이 경로(인턴)로 들어오려 하는가"</strong>를 1~2문장 선제 서술<span class="ex">예) "이 직무의 운영 도메인을 내 것으로 만들기 위해, 처음부터 현장을 배우는 방식을 선택했다"</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-head">
+          <span class="pattern-num">P5</span>
+          <span class="pattern-title">가치관 문항이 개인 성장 스토리로 흐름</span>
+        </div>
+        <div class="pattern-body">
+          <div class="pattern-row">
+            <span class="plabel bad">증상</span>
+            <div class="ptext">"나는 새로운 기술을 빠르게 익힌다" → 개인 역량 소개로 읽힘<span class="ex">→ 평가자: "그래서 우리 조직에서 어떻게 발현될지는 모르겠는데"</span></div>
+          </div>
+          <div class="pattern-row">
+            <span class="plabel good">교정</span>
+            <div class="ptext"><strong>가치관 정의 → 조직 내 왜 필요한가 → 팀/현장과 얽힌 사례</strong> 순서로 서술<span class="ex">마지막 문장: "그래서 나는 [가치관]을 이 조직에서 [이렇게] 실천하겠다"로 닫기</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-head">
+          <span class="pattern-num">P6</span>
+          <span class="pattern-title">아이디어에 운영 현실성 부재</span>
+        </div>
+        <div class="pattern-body">
+          <div class="pattern-row">
+            <span class="plabel bad">증상</span>
+            <div class="ptext">"이런 기능을 만들면 좋겠다" → 기획 아이디어 수준, 시스템 이해 없어 보임<span class="ex">→ 현업 담당자가 읽으면: "현장 몰라서 하는 말"로 느껴짐</span></div>
+          </div>
+          <div class="pattern-row">
+            <span class="plabel good">교정</span>
+            <div class="ptext">아이디어 제시 시 <strong>4축 포함 필수</strong>:<br>
+              ① 어떤 현장 문제인가 (관찰 기반)<br>
+              ② 구현 시 발생할 운영 리스크는<br>
+              ③ 기존 시스템과 어떻게 연동되는가<br>
+              ④ 도입 후 측정 가능한 변화는
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub-title">📋 문항별 작성 프레임</div>
+
+      <div class="frame-card">
+        <div class="frame-head"><span class="frame-badge">지원동기</span> 왜 이 회사·이 직무인가</div>
+        <div class="frame-body">
+          <div class="formula">① 회사 고유 시스템/서비스 언급 (구체적으로 1개 이상)<br>② 그것과 내 경험 직접 연결<br>③ 내가 여기서 해결하고 싶은 문제 (회사 문제 중심)</div>
+          <div class="forbidden">🚫 금지 표현: "대규모 환경" "성장 가능성" "안정적인 기업" — 다른 회사에도 쓸 수 있는 문장은 전부 제거</div>
+        </div>
+      </div>
+
+      <div class="frame-card">
+        <div class="frame-head"><span class="frame-badge">직무 적합성</span> 왜 내가 이 일을 잘 하는가</div>
+        <div class="frame-body">
+          <div class="formula">[상황] → [내가 한 행동] → [결과 수치] → [이 경험이 이 직무에서 어떻게 재현되는가]</div>
+          결과 수치 필수. 마지막 문장은 반드시 <strong>"이 경험이 [직무명]에서 [구체적으로 어떻게 쓰이는지]"</strong>로 마무리.
+        </div>
+      </div>
+
+      <div class="frame-card">
+        <div class="frame-head"><span class="frame-badge">가치관/인재상</span> 나는 어떤 사람인가</div>
+        <div class="frame-body">
+          <div class="formula">[가치관 — 본인 언어로 정의] → [조직에서 왜 필요한가] → [팀/현장과 얽힌 내 사례]</div>
+          사례는 <strong>혼자 한 것보다 팀·현업·현장과 얽힌 이야기 우선</strong>. 마지막은 "그래서 이 조직에서 [이렇게] 실천하겠다"로 닫기.
+        </div>
+      </div>
+
+      <div class="frame-card">
+        <div class="frame-head"><span class="frame-badge">아이디어/개선</span> 무엇을 바꾸고 싶은가</div>
+        <div class="frame-body">
+          <div class="formula">[현장 문제 관찰] → [근본 원인 분석] → [아이디어 + 리스크] → [기대 효과/측정 방법]</div>
+          리스크 언급이 있어야 현장 이해도 높아 보임. 현장 관찰 없이 아이디어만 쓰면 감점.
+        </div>
+      </div>
+
+      <div class="sub-title">✅ 제출 전 6개 체크리스트</div>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px">6개 모두 통과해야 제출 가능 수준. AI에게 이 체크리스트로 검토 요청 가능.</p>
+
+      <ul class="checklist">
+        <li><span class="ck-num">1</span>이 문장은 다른 회사 자소서에도 그대로 쓸 수 있는가? <strong>→ 있으면 수정 필요</strong></li>
+        <li><span class="ck-num">2</span>기술 성과가 "현장/사용자 변화"로 번역되었는가? <strong>→ 수치만 있고 변화가 없으면 추가</strong></li>
+        <li><span class="ck-num">3</span>비전공·분산 경력에 대한 서사가 의도적으로 정리되었는가? <strong>→ 나열만 있으면 흐름 추가</strong></li>
+        <li><span class="ck-num">4</span>인턴·전환형 포지션이라면 "왜 이 경로인가" 설명이 있는가? <strong>→ 없으면 1문장 선제 추가</strong></li>
+        <li><span class="ck-num">5</span>가치관 문항이 개인 성장이 아닌 조직 기여로 귀결되는가? <strong>→ 나 중심으로 끝나면 수정</strong></li>
+        <li><span class="ck-num">6</span>아이디어에 운영 현실성(리스크, 연동, 측정)이 포함되었는가? <strong>→ 없으면 한 항목이라도 추가</strong></li>
+      </ul>
+
+    </div>
+  </div>
+
 </main>
 
 <script>
+  const SYSTEM_PROMPT = `당신은 취업 자소서 전문 컨설턴트입니다. 아래 지원자 프로필과 작성 원칙을 엄격히 적용하세요.
+
+[지원자 프로필]
+이름: 최두용 | 전공: 경찰행정학과(비전공) | 현 소속: 현대위아
+자격증: 정보처리기사, SQLD, OPIc IH | 기술: Java/Spring, Python/FastAPI/Django, Redis, Docker, GitHub Actions
+경험: MES 유지보수, 현업 요청 반영, PM, 성능개선(응답속도 40%↑, 처리량 5배, 비용 60%↓)
+특이사항: 계약직·프리랜서 이력 포함 / 경력이 짧고 분산돼 보일 수 있음
+
+[탈락 패턴 — 반드시 반대로 적용]
+
+P1. 회사 고유성 없는 지원동기
+❌ "대규모 환경에서 병목 개선을 하고 싶다" (어디에나 쓸 수 있는 문장)
+✅ 지원 회사의 고유 시스템·서비스 1개 이상 언급 + 내 경험과 직접 연결
+
+P2. 기술 나열 → 현장 변화 번역 실패
+❌ Redis/K8s/Kafka 나열 → "기술 좋은 개발자"로만 읽힘
+✅ 기술 성과 끝에 "그래서 현장/사용자에 어떤 변화가 생겼는가"로 마무리
+
+P3. 비전공 + 분산 경력 무방비
+❌ 계약직·단기 이력 나열만, 해명 없음
+✅ 각 경험의 의도성·일관성을 짧게 서술 ("도메인은 바뀌었지만 방식은 같았다")
+
+P4. 인턴/전환형 포지션에서 "왜 내려왔는가" 미설명
+❌ 경력 있는데 인턴 지원 → 리스크 있는 지원자로 분류
+✅ "왜 이 경로로 들어오려 하는가" 1~2문장 선제 서술
+
+P5. 가치관 문항이 개인 성장 스토리로 흐름
+❌ "나는 기술을 빠르게 익힌다" → 개인 역량 소개
+✅ 가치관 정의 → 조직에서 왜 필요한가 → 팀/현장과 얽힌 사례 순서
+
+P6. 아이디어에 운영 현실성 부재
+❌ "이런 기능을 만들면 좋겠다" → 기획 아이디어 수준
+✅ 아이디어 + ①현장 문제 ②운영 리스크 ③시스템 연동 ④측정 방법 4축 포함
+
+[문항별 프레임]
+지원동기: ①회사 고유 언급 → ②내 경험 연결 → ③내가 해결할 문제
+직무적합: [상황] → [행동] → [수치 결과] → [이 직무에서 재현 방법]
+가치관: [가치관 정의] → [조직에서 필요한 이유] → [팀/현장 사례] → [이 조직에서 실천 방법]
+아이디어: [현장 관찰] → [원인 분석] → [아이디어+리스크] → [기대 효과]
+
+[제출 전 6개 체크리스트]
+1. 이 문장은 다른 회사에도 쓸 수 있는가? (있으면 수정)
+2. 기술 성과가 현장 변화로 번역되었는가?
+3. 비전공·분산 경력의 서사가 정리되었는가?
+4. 인턴/전환형이라면 "왜 이 경로"가 설명되었는가?
+5. 가치관 문항이 조직 기여로 귀결되는가?
+6. 아이디어에 운영 현실성이 포함되었는가?
+
+6개 모두 통과해야 제출 가능 수준입니다.`;
+
+  const FIT_PROMPT = `아래 채용공고를 분석해줘.
+
+[지원자 프로필]
+- 백엔드 개발자 (비전공 → 전환)
+- 현 소속: 현대위아 (MES 유지보수, 사내 AI 코드생성 플랫폼 PoC, PM)
+- 주력: Java/Spring Boot, Python/FastAPI, Redis, Docker, GitHub Actions CI/CD
+- 경험: 성능개선(응답속도 40%↑, 처리량 5배, 비용 60%↓), 현업 요청 반영, 운영 장애 대응
+- 자격증: 정보처리기사, SQLD, OPIc IH
+
+[판단 기준 — 10점 체크리스트]
+1. Java/Spring 기반인가
+2. 백엔드 개발 + 운영이 함께 있는가
+3. 성능개선 / 장애대응 / 안정화 업무가 있는가
+4. Redis / Kafka / 비동기 경험이 우대되는가
+5. 제조 / DX / 사내시스템 / 물류 / 커머스 도메인인가
+6. 1~3년 또는 주니어 채용인가
+7. 프로젝트·비전공 경험을 인정해주는가
+8. 운영 중인 시스템 개선 경험을 높게 볼 것 같은가
+9. 현업 협업 / 요구사항 반영 경험이 중요한가
+10. 팀 리드가 아닌 실무 기여자를 뽑는가
+
+[출력 형식]
+## 점수: X / 10
+## 판단: GO / HOLD / PASS
+## 근거 (3줄 이내)
+- 강점 연결:
+- 리스크:
+## 지원 시 강조할 경험 1개:
+
+---
+[공고 붙여넣기]
+`;
+
+  function copyFitPrompt() {
+    navigator.clipboard.writeText(FIT_PROMPT.trim()).then(() => {
+      const btn = document.querySelector('#fit-check .copy-btn');
+      const orig = btn.textContent;
+      btn.textContent = '복사됨 ✓';
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 2000);
+    });
+  }
+
+  function copyPrompt() {
+    navigator.clipboard.writeText(SYSTEM_PROMPT.trim()).then(() => {
+      const btn = document.querySelector('#writing-rules .copy-btn');
+      const orig = btn.textContent;
+      btn.textContent = '복사됨 ✓';
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 2000);
+    });
+  }
+
   function copyStory(id) {
     const el = document.getElementById(id);
     if (!el) return;
