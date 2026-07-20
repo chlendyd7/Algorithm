@@ -16,5 +16,4 @@ from collections import deque
 
 
 def solution():
-    
     return 0
