@@ -1,7 +1,7 @@
 # https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV18TrIqIwUCFAZN
 
 
-from collections import defaultdict
+from collections import defaultdict, deque
 
 
 def solution():
@@ -18,13 +18,24 @@ def solution():
         nums.add(nodes[i])
         nums.add(nodes[i+1])
 
-    for n in nums:
+    q = deque()
+    for n in range(1, v+1):
         if n not in in_degrees:
             in_degrees[n] = 0
+            q.append(n)
+    
+    answer = []
+    while q:
+        node = q.popleft()
+        answer.append(node)
+
+        for child in parents[node]:
+            in_degrees[child] -= 1
+            if in_degrees[child] == 0:
+                q.append(child)
 
 
-
-    return
+    return ' '.join(map(str, answer))
 
 # T = int(input())
 for t in range(1, 11):
