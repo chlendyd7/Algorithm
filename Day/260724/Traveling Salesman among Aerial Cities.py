@@ -1,23 +1,36 @@
 # https://atcoder.jp/contests/abc180/tasks/abc180_e
 def distance(p1, p2):
     # 3D 공간에서 거리 계산: |Δx| + |Δy| + max(0, Δz)
-    pass
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+    return abs(x2 - x1) + abs(y2 - y1) + max(0, z2 - z1)
 
 def solve():
-    # 입력받기
-
-    # DP 배열: dp[mask][i] = mask 상태에서 도시 i에 있을 때의 최소 비용
+    n = int(input())
+    cities = [list(map(int, input().split())) for _ in range(n)]
+    inf = float('inf')
+    dp = [[inf] * n for _ in range(1<<n)]
+    dp[1][0] = 0
     
-    # 시작: 도시 0에서 출발
-    
-    # 모든 상태에서 미방문 도시로 이동하며 DP 계산
-    
-            # 미방문 도시 j로 이동
+    for mask in range(1<<n):
+        for i in range(n):
+            if dp[mask][i] == inf:
+                continue
             
-                # 도시 j 방문 표시
-
+            for j in range(n):
+                if mask & (1<<j):
+                    continue
+                
+                new_mask = mask | (1 << j)
+                cost = distance(cities[i], cities[j])
+                dp[new_mask][j] = min(dp[new_mask][j], dp[mask][i] + cost)
     
-    # 모든 도시 방문 후 시작점으로 복귀
+    all_cities = (1 << n) - 1
+    answer = inf
+    for i in range(n):
+        if dp[all_cities][i] != inf:
+            answer = min(answer, dp[all_cities][i] + distance(cities[i], cities[0]))
+                
 
-
+    return answer
 print(solve())
