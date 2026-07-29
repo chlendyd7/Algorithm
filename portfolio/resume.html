@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최두용 | 백엔드 개발자</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #222;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 70px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+    .header-name { font-size: 52px; font-weight: 700; letter-spacing: -2px; line-height: 1.1; }
+    .header-title { font-size: 16px; color: #666; margin-top: 6px; }
+    .header-contact { text-align: right; padding-top: 8px; line-height: 2; }
+    .header-contact span { display: block; }
+    .header-contact strong { font-weight: 600; }
+
+    /* ── Section ── */
+    .section { margin-top: 44px; }
+    .section-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 30px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #111;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px dashed #bbb;
+      margin-bottom: 32px;
+    }
+
+    /* ── About Me ── */
+    .about p { margin-bottom: 6px; }
+    .about strong { font-weight: 700; }
+
+    /* ── Two-column row (Experience / Project) ── */
+    .row {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .row-left { flex: 0 0 190px; }
+    .row-right { flex: 1; min-width: 0; }
+
+    .company-name { font-size: 24px; font-weight: 700; line-height: 1.2; }
+    .company-url { font-size: 12px; color: #888; display: block; margin: 3px 0 5px; }
+    .company-role { font-weight: 700; font-size: 14px; }
+    .company-period { font-size: 13px; color: #666; margin-top: 2px; }
+
+    .row-subtitle {
+      font-style: italic;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .row-right ul { list-style: none; padding: 0; }
+    .row-right ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+    .row-right ul li::before { content: '•'; position: absolute; left: 0; }
+
+    /* ── 역량 (Competencies) ── */
+    .comp-group { margin-bottom: 22px; }
+    .comp-group-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .comp-group ul { list-style: none; padding: 0; }
+    .comp-group ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .comp-group ul li::before { content: '•'; position: absolute; left: 0; }
+
+    /* ── Skill (two-column) ── */
+    .skill-cols {
+      display: flex;
+      gap: 40px;
+    }
+    .skill-col { flex: 1; }
+
+    .skill-row {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+    .skill-row-label {
+      flex: 0 0 120px;
+      font-size: 18px;
+      font-weight: 700;
+      padding-top: 2px;
+    }
+    .skill-row-items ul { list-style: none; padding: 0; }
+    .skill-row-items ul li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .skill-row-items ul li::before { content: '•'; position: absolute; left: 0; }
+
+    /* project name style */
+    .project-name { font-size: 18px; font-weight: 700; }
+    .project-period { font-size: 12px; color: #888; display: block; margin: 2px 0 3px; }
+    .project-desc { font-size: 13px; color: #666; display: block; margin-bottom: 4px; }
+    .project-tech { font-size: 12px; color: #888; margin-bottom: 6px; }
+
+    /* ── Education / Cert ── */
+    .edu-school { font-size: 22px; font-weight: 700; }
+    .edu-major { font-size: 13px; color: #555; margin-top: 2px; }
+    .edu-period { font-size: 13px; color: #888; margin-top: 2px; }
+
+    .cert-table { border-collapse: collapse; }
+    .cert-table td { padding: 3px 16px 3px 0; }
+    .cert-table .cert-name { font-weight: 600; }
+    .cert-table .cert-date { color: #666; }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      font-style: italic;
+      color: #888;
+      font-size: 13px;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { padding: 20px 40px; font-size: 13px; }
+      .section { page-break-inside: avoid; }
+      .row { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ Header ════════════════ -->
+<div class="header">
+  <div>
+    <div class="header-name">최두용</div>
+    <div class="header-title">백엔드 개발자</div>
+  </div>
+  <div class="header-contact">
+    <span>Email: <strong>chlendyd7@gmail.com</strong></span>
+    <span>GitHub: <strong><a href="https://github.com/chlendyd7">github.com/chlendyd7</a></strong></span>
+  </div>
+</div>
+
+
+<!-- ════════════════ About Me ════════════════ -->
+<div class="section">
+  <div class="section-title">About Me</div>
+  <hr class="section-divider">
+  <div class="about">
+    <p>
+      운영 환경에서 안정적으로 동작하는 백엔드 구조를 설계하는 데 강점이 있는 개발자입니다.
+    </p>
+    <p>
+      <strong>Spring Boot, Django, FastAPI</strong> 기반으로 대용량 처리, 비동기 파이프라인, 동시성 제어,
+      실시간 이벤트 처리 구조를 구현해왔으며, ERP/MES/PLC 등 <strong>레거시 시스템 간 인터페이스</strong>와
+      AI 연계 서비스까지 폭넓게 경험했습니다.
+    </p>
+    <p>
+      최근에는 단순 LLM 연동을 넘어 <strong>Agentic AI, MCP, LangGraph</strong> 관점의 실행 구조까지 확장하며
+      서비스형 AI 아키텍처를 직접 설계·구현하고 있습니다.
+    </p>
+  </div>
+</div>
+
+
+<!-- ════════════════ Experience ════════════════ -->
+<div class="section">
+  <div class="section-title">Experience</div>
+  <hr class="section-divider">
+
+  <!-- 현대위아 -->
+  <div class="row">
+    <div class="row-left">
+      <div class="company-name">현대 위아</div>
+      <div class="company-role">시스템 유지보수 / PM</div>
+      <div class="company-period">2026.04 ~ 현재</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">자동차 부품 제조사 사내 시스템 유지보수 및 AI 플랫폼 개발</div>
+      <ul>
+        <li>열관리 시스템 MES 유지보수 — Spring Boot, Vue3, PostgreSQL, MyBatis 기반 150건 이상 개발 항목 중 50건+ 담당</li>
+        <li>사내 AI Agentic 스튜디오 개발 — Spring Boot, FastAPI, React 기반 업무용 앱 생성·검증·배포 플랫폼 PoC</li>
+        <li>SCADA 시스템 PM (CIMON) — 현업 요구사항 수집·정리 및 개발 일정·우선순위 조율</li>
+        <li>SQL 하드코딩 대신 Java 함수로 로직 분리해 재사용성과 유지보수성 향상</li>
+        <li>API 레벨 인증·인가 검증 구조 도입, 마스킹 정책 수립으로 보안 수준 강화</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SSAFY -->
+  <div class="row">
+    <div class="row-left">
+      <div class="company-name">SSAFY</div>
+      <div class="company-role">백엔드 / 인프라 담당</div>
+      <div class="company-period">2025.10 ~ 2026.04</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">삼성 청년 SW 아카데미 — 3개 프로젝트 참여, 우수·최우수 수상</div>
+      <ul>
+        <li><strong>Click-CEO</strong> — Kafka·Redis 기반 실시간 호가창 집계, WebSocket 전환으로 연결 실패율 44% → 0%, K8s 무중단 배포 구현 <em>(우수 프로젝트)</em></li>
+        <li><strong>Cescar</strong> — MQTT·WebRTC 기반 AIoT 자동차 장비 제어, Virtual Thread 도입으로 TPS 2배 향상</li>
+        <li><strong>함께하개냥</strong> — Django·FastAPI 기반 멀티모달 AI 진단 서비스, LLM 스트리밍 TTFB 20초 → 5초 개선 <em>(최우수 프로젝트)</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 애기야가자 -->
+  <div class="row">
+    <div class="row-left">
+      <div class="company-name">애기야가자</div>
+      <div class="company-role">서버 백엔드 개발</div>
+      <div class="company-period">2023.11 ~ 2024.08</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">200MAU 규모 육아 정보 서비스 — Django REST Framework / AWS</div>
+      <ul>
+        <li>ORM N+1 해결 및 Redis 캐시 도입으로 API 응답 시간 800ms → 300ms, 캐시 대상 조회 129ms → 24ms</li>
+        <li>Celery + Redis 기반 비동기 워커 구조 도입 — 처리 가능 작업량 1,000건 → 5,000건</li>
+        <li>WebSocket 대신 SSE 적용으로 실시간성 유지하며 운영 복잡도 감소</li>
+        <li>DynamoDB 데이터 이관, FireBase·Sentry 연동, API 문서화 및 협업 인터페이스 정비</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HnK -->
+  <div class="row">
+    <div class="row-left">
+      <div class="company-name">HnK<br>株式会社</div>
+      <div class="company-role">서버 백엔드 개발 (프리랜서)</div>
+      <div class="company-period">2023.05 ~ 2023.11</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">일본 의료 교육 스타트업 — PeerStudy 플랫폼 개발</div>
+      <ul>
+        <li>Django Channels + Redis 기반 실시간 채팅 구현 — Redis Set으로 O(1) 동시 접속자 관리</li>
+        <li>PAY.JP Webhook 기반 결제 자동화 — 멱등성 보장으로 Webhook 재수신·실패 시도 안전 처리</li>
+        <li>B2B/B2C 구독 Lifecycle 관리 시스템 구축 (가입·갱신·취소·환불 전 단계)</li>
+        <li>NG Word 필터링, 관리자 통계·정산 기능 구현</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 경성테크놀러지 -->
+  <div class="row">
+    <div class="row-left">
+      <div class="company-name">경성<br>테크놀러지</div>
+      <div class="company-role">백엔드 / AI 모델 개발</div>
+      <div class="company-period">2022.04 ~ 2022.12</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">도로 파손 탐지 AI 솔루션 개발</div>
+      <ul>
+        <li>도로 파손 객체 탐지 CV 모델(YOLO 계열) 학습 및 튜닝</li>
+        <li>학습 모델과 백엔드 서버 연결 — 추론 API 구현 및 운영 환경 배포</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════ 핵심 역량 ════════════════ -->
+<div class="section">
+  <div class="section-title">핵심 역량</div>
+  <hr class="section-divider">
+
+  <div class="comp-group">
+    <div class="comp-group-title">성능 최적화</div>
+    <ul>
+      <li>N+1 문제 해결, Redis 캐시·비동기 파이프라인을 통한 병목 구간 개선</li>
+      <li>장애를 줄이는 구조 설계와 운영 안정성 확보에 집중 — 운영 이슈 발생 시 원인 파악 및 현업-개발 간 브릿지 역할 수행</li>
+    </ul>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">안정적인 백엔드 설계</div>
+    <ul>
+      <li>동시성 이슈, 분산 환경 스케줄 제어, 원자성 보장, 운영 자동화 경험</li>
+      <li>서비스 상황에 따라 단순 구현보다 안전한 처리 구조를 우선 설계 — Celery·ShedLock·Virtual Thread 실제 적용</li>
+    </ul>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">업무 시스템 연계 및 데이터 인터페이스 설계</div>
+    <ul>
+      <li>ERP, MES, PLC, WMS 등 레거시·현장 시스템과의 데이터 연계 경험</li>
+      <li>정합성과 운영 제약을 고려한 인터페이스 및 배치 구조 설계</li>
+    </ul>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">실시간·이벤트 기반 시스템 경험</div>
+    <ul>
+      <li>REST, SSE, WebSocket, MQTT, WebRTC 기반 데이터 흐름 구현</li>
+      <li>사용자 응답성과 이벤트 처리 특성을 고려한 구조 설계 — 기술 선택 근거를 직접 검증한 후 적용</li>
+    </ul>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">Agentic AI 및 서비스형 AI 아키텍처</div>
+    <ul>
+      <li>Tool-calling 기반 Agentic Loop 직접 구현 — 단순 LLM 호출이 아닌 자기검증형 실행 구조</li>
+      <li>MCP 기반 사내 시스템 연동 표준화 설계, LangGraph 상태 오케스트레이션 적용 예정</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ════════════════ Skill ════════════════ -->
+<div class="section">
+  <div class="section-title">Skill</div>
+  <hr class="section-divider">
+
+  <p style="font-style:italic; color:#666; margin-bottom:24px;">현재 업무에 사용 중이거나 프로젝트에서 활용한 기술들입니다.</p>
+
+  <div class="skill-row">
+    <div class="skill-row-label">Backend</div>
+    <div class="skill-row-items">
+      <ul>
+        <li>Spring Boot, Spring MVC, Spring Security, Spring Data JPA</li>
+        <li>Django, Django REST Framework, Django Channels</li>
+        <li>FastAPI, Celery</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-row-label">Data / Messaging</div>
+    <div class="skill-row-items">
+      <ul>
+        <li>PostgreSQL, MySQL, MyBatis</li>
+        <li>Redis, DynamoDB</li>
+        <li>Kafka, EMQX (MQTT)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-row-label">Infra / Ops</div>
+    <div class="skill-row-items">
+      <ul>
+        <li>Docker, Kubernetes, Jenkins (CasC)</li>
+        <li>AWS (EC2, S3, RDS, DynamoDB, FireBase)</li>
+        <li>Sentry, k6, Jira, Git</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-row-label">AI / Agentic</div>
+    <div class="skill-row-items">
+      <ul>
+        <li>LangChain, LangGraph</li>
+        <li>MCP (Model Context Protocol)</li>
+        <li>RAG, Vector Embedding, Claude API</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════ 프로젝트 ════════════════ -->
+<div class="section">
+  <div class="section-title">프로젝트</div>
+  <hr class="section-divider">
+
+  <!-- AI Agent Studio -->
+  <div class="row">
+    <div class="row-left">
+      <div class="project-name">AI Agent Studio</div>
+      <span class="project-period">2026.05 ~ 현재</span>
+      <span class="project-tech">Spring Boot, FastAPI, React<br>Claude API, MCP, LangGraph</span>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">사내 업무용 웹앱의 생성·검증·배포를 표준화하는 Agentic AI 플랫폼</div>
+      <ul>
+        <li>오픈소스 분석 기반 tool-calling Agentic Loop 직접 설계·구현 — 자기검증형 실행 구조</li>
+        <li>MCP 기반 ERP/MES 레거시 시스템 표준 연동 계층 설계</li>
+        <li>앱 생성 후 자동 보안 점검 → 승인 → 격리 배포로 이어지는 운영 구조 정의</li>
+        <li>3개월 내 MVP 구축, ICT 추진 파일럿을 목표로 단계별 로드맵 및 KPI 수립</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Click-CEO -->
+  <div class="row">
+    <div class="row-left">
+      <div class="project-name">Click-CEO</div>
+      <span class="project-period">2026.02 ~ 2026.04</span>
+      <span class="project-tech">Spring Boot, Kafka, Redis<br>Jenkins, K8s, k6</span>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">호가창 기반 실시간 주문 집계·모니터링 시뮬레이션 게임 — SSAFY 우수 프로젝트</div>
+      <ul>
+        <li>Polling → WebSocket 전환으로 Stress test 연결 실패율 <strong>44% → 0%</strong></li>
+        <li>봇 주문을 독립 멀티 스레드로 분리, Kafka 메시지 브로커로 서비스별 구독·배치 처리 부하 분산</li>
+        <li>ShedLock으로 K8s 멀티 Pod 환경의 중복 실행 문제 해결</li>
+        <li>Jenkins CasC 기반 CI/CD, K8s Rolling Update 무중단 배포 구현</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Cescar -->
+  <div class="row">
+    <div class="row-left">
+      <div class="project-name">Cescar</div>
+      <span class="project-period">2026.01 ~ 2026.02</span>
+      <span class="project-tech">Spring Boot, FastAPI<br>MQTT(EMQX), WebRTC, YOLO</span>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">IoT 디바이스·웹 서비스 연동 실시간 영상 스트리밍 AIoT 프로젝트</div>
+      <ul>
+        <li>Spring Virtual Thread 도입으로 I/O 병목 제거 — <strong>TPS 2배 이상 향상</strong>, 카메라 6개 기준 안정성 확보</li>
+        <li>YOLO 감지·FFmpeg 인코딩·GCS 업로드를 Daemon Thread로 분리해 실시간 FPS 저하 해소</li>
+        <li>FCM Web Push 알림 + GCS Signed URL 기반 미디어 업로드로 클라이언트-서버 전송 부담 감소</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 함께하개냥 -->
+  <div class="row">
+    <div class="row-left">
+      <div class="project-name">함께하개냥</div>
+      <span class="project-period">2025.10 ~ 2025.12</span>
+      <span class="project-tech">Django, FastAPI, Vue<br>PostgreSQL, Redis, Vector Embedding</span>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">멀티모달 AI 기반 반려동물 실시간 진단 서비스 — SSAFY 최우수 프로젝트</div>
+      <ul>
+        <li>FastAPI Stream + AsyncGenerator로 LLM 응답 청크 전송 — TTFB <strong>20초 → 5초</strong> 개선</li>
+        <li>이미지 전처리 파이프라인 구성으로 AI 분석 비용 절감 — 전처리 시간 15초 → 3초</li>
+        <li>Vector Embedding 기반 의미 검색으로 과거 진단 이력 관련 결과 추천</li>
+        <li>결제 트랜잭션 및 비동기 파이프라인으로 DB 무결성 90% 이상 확보</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════ Education ════════════════ -->
+<div class="section">
+  <div class="section-title">Education</div>
+  <hr class="section-divider">
+
+  <div class="row">
+    <div class="row-left">
+      <div class="edu-school">대구가톨릭<br>대학교</div>
+      <div class="edu-major">경찰행정학과</div>
+      <div class="edu-period">2015 ~ 2025</div>
+    </div>
+    <div class="row-right">
+      <ul>
+        <li>비전공 출신으로 독학 및 프로젝트 경험을 통해 백엔드 개발 역량 자체 구축</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════ 자격증 ════════════════ -->
+<div class="section">
+  <div class="section-title">자격증</div>
+  <hr class="section-divider">
+
+  <table class="cert-table">
+    <tr>
+      <td class="cert-name">정보처리기사</td>
+      <td class="cert-date">2024. 09. 10</td>
+    </tr>
+    <tr>
+      <td class="cert-name">SQLD</td>
+      <td class="cert-date">2024. 09. 20</td>
+    </tr>
+    <tr>
+      <td class="cert-name">OPIC IH</td>
+      <td class="cert-date">2026. 06. 10</td>
+    </tr>
+  </table>
+</div>
+
+
+<div class="footer">
+  최두용 · chlendyd7@gmail.com
+</div>
+
+</body>
+</html>
