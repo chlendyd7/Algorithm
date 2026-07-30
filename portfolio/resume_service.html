@@ -90,16 +90,21 @@
   <hr class="section-divider">
   <div class="about">
     <p>
-      <strong>200MAU 규모의 서비스 운영</strong>부터 실시간 채팅, 결제 Lifecycle 관리, 비동기 파이프라인까지
-      서비스 전 구간을 직접 설계하고 운영해온 백엔드 개발자입니다.
+      Java & Spring Boot, Python & Django/FastAPI 기반의 서버 백엔드 개발자로, <strong>200MAU 규모 커머스</strong>,
+      <strong>500억 규모 제조 AX 팩토리 MES</strong> 등 다양한 도메인에서 백엔드 시스템 설계와 운영을 해왔습니다.
     </p>
     <p>
-      <strong>N+1 해결, Redis 캐시, Celery 비동기 워커</strong> 도입으로 API 응답 시간을 수백 ms 수준으로 개선한 경험이 있으며,
-      서비스 상황에 따라 단순 구현보다 <strong>운영 안정성과 처리 안전성을 우선</strong>하는 설계를 지향합니다.
+      눈에 보이는 기능 구현보다 서비스가 안정적으로 버티는 구조를 만드는 데 더 관심이 많아, ORM N+1 문제와 Redis 캐시 도입으로
+      API 응답 시간을 <strong>800ms → 300ms</strong>로 개선하고, 트랜잭션 원자성 보장과 장애 시 자동 롤백 구조를 자발적으로 설계해왔습니다.
+      커스텀 인터셉터 기반 RBAC와 RSA·AES 이중 암호화 등 보안 구조도 직접 설계·적용했습니다.
     </p>
     <p>
-      최근에는 Kafka·WebSocket 기반 실시간 시스템과
-      LLM 스트리밍·RAG 구조까지 서비스 수준으로 구현하며 AI 연계 백엔드 역량을 확장하고 있습니다.
+      성능 개선은 감이 아니라 수치로 검증해야 한다는 생각에, k6 부하 테스트로 WebSocket 연결 실패율을
+      <strong>44% → 0%</strong>로 낮추는 등 도입 전후를 항상 측정하고 비교하는 습관을 가지고 있습니다.
+    </p>
+    <p>
+      현재는 MES 백엔드 유지보수와 PM 역할을 병행하며 이기종 시스템간 연동을 조율하고, 현업 요구사항을 개발 항목으로 구체화하는 동시에
+      MCP·RAG 기반 AI Agent Loop 구조를 PoC로 설계·구현하며 AI 연계 백엔드로 역량을 확장하고 있습니다.
     </p>
   </div>
 </div>
@@ -117,12 +122,17 @@
       <div class="company-period">2026.04 ~ 현재</div>
     </div>
     <div class="row-right">
-      <div class="row-subtitle">자동차 부품 제조사 사내 시스템 개발 및 AI 플랫폼 PoC</div>
+      <div class="row-subtitle">대기업 500억 AX 팩토리 MES 풀스택 개발·운영(AI 활용)</div>
       <ul>
-        <li>MES 시스템 유지보수 — 150건 이상 개발 항목 중 50건+ 담당, SQL 로직을 Java 함수로 분리해 유지보수성 향상</li>
-        <li>사내 AI Agentic 스튜디오 PoC — Spring Boot·FastAPI·React 기반 업무용 앱 생성·배포 플랫폼 설계·구현</li>
-        <li>API 레벨 인증·인가 검증 구조 도입, 마스킹 정책 수립으로 보안 수준 강화</li>
+        <li>레거시 코드 개선 설계 — 재고 LOT 채번·분할·합치기, 생산실적 등록, ERP 인터페이스 취소 등 핵심 트랜잭션 정합성 확보</li>
+        <li>DB 프로시저 30종·함수 15종 설계 — 재고 LOT 채번·분할·합치기, 생산실적 등록, ERP 인터페이스 취소 등 핵심 트랜잭션 정합성 확보</li>
+        <li>이기종 시스템 연동 트랜잭션 구현 - ERP · 로봇서버 · 설비장비 · 품질서버 통신 실패 시 MES 트랜잭션 자동 롤백</li>
+        <li>RBAC 설계 - RSA-2048 전송 암호화 + AES-256 세션 암호화 + NETS SSO 3개 인증 경로 통합, 커스텀 인터셉터 기반 URL 단위 보안 설계</li>
       </ul>
+      <!-- <div class="row-subtitle" style="margin-top: 14px;">사내 AI Agentic 스튜디오 PoC</div>
+      <ul>
+        <li>LangGraph 기반 Agentic Loop, MCP 사내 시스템 연동 계층 설계·구현</li>
+      </ul> -->
     </div>
   </div>
 
@@ -134,12 +144,10 @@
       <div class="company-period">2023.11 ~ 2024.08</div>
     </div>
     <div class="row-right">
-      <div class="row-subtitle">200MAU 규모 육아 정보 서비스 — DRF / AWS / Redis</div>
+      <div class="row-subtitle">200MAU 규모 장소 추천 기반 이커머스 서비스</div>
       <ul>
-        <li>ORM N+1 해결 및 Redis 캐시 도입 — API 응답 <span class="highlight">800ms → 300ms</span>, 캐시 대상 조회 <span class="highlight">129ms → 24ms</span></li>
-        <li>Celery + Redis 비동기 워커 도입 — 처리 가능 작업량 <span class="highlight">1,000건 → 5,000건</span></li>
-        <li>WebSocket 대신 SSE 적용 — 운영 복잡도 감소하며 실시간성 유지</li>
-        <li>DynamoDB 데이터 이관, FireBase·Sentry 연동, API 문서화 및 협업 인터페이스 정비</li>
+        <li>성능개선: ORM N+1 해결 및 DynamoDB 사용, Redis + 비동기 워커 도입</li>
+        <li>문서화: Open API 문서화 협업 인터페이스 정비</li>
       </ul>
     </div>
   </div>
@@ -152,11 +160,30 @@
       <div class="company-period">2023.05 ~ 2023.11</div>
     </div>
     <div class="row-right">
-      <div class="row-subtitle">일본 의료 교육 스타트업 PeerStudy — Django / Redis / PAY.JP</div>
+      <div class="row-subtitle">일본 의료 교육 웹서비스 PeerStudy</div>
       <ul>
-        <li>Django Channels + Redis 기반 실시간 채팅 구현 — Redis Set O(1) 동시 접속자 관리</li>
-        <li>PAY.JP Webhook 기반 결제 자동화 — 멱등성 보장으로 Webhook 재수신·실패 시도 안전 처리</li>
-        <li>B2B/B2C 구독 Lifecycle 관리 시스템 — 가입·갱신·취소·환불 전 단계 구축</li>
+        <li>WebSocket + Redis 기반 실시간 채팅 구현 </li>
+          <!-- — Redis Set O(1) 동시 접속자 관리</li> -->
+        <li>PAY.JP Webhook 기반 구독 결제 자동화</li>
+        <li>B2B/B2C 구독 Lifecycle 관리 시스템</li>
+        <li>통계 및 서비스 관리를 위한 Admin 대시보드 구현</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 경성테크놀러지 -->
+  <div class="row">
+    <div class="row-left">
+      <div class="company-name">경성<br>테크놀러지</div>
+      <div class="company-role">백엔드 / AI 모델 개발</div>
+      <div class="company-period">2022.04 ~ 2022.12</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">도로 파손 탐지 AI 솔루션 개발</div>
+      <ul>
+        <li>학습 모델과 백엔드 서버 연결 — 추론 API 구현 및 운영 환경 배포</li>
+        <li>도로 파손 데이터 수집 및 전처리 파이프라인 구축</li>
+        <li>도로 파손 객체 탐지 모델 학습 및 튜닝</li>
       </ul>
     </div>
   </div>
@@ -168,34 +195,48 @@
   <hr class="section-divider">
 
   <div class="comp-group">
-    <div class="comp-group-title">성능 최적화</div>
+    <div class="comp-group-title">성능 최적화 및 병목 진단</div>
     <ul>
-      <li>N+1 해결, Redis 캐시·비동기 파이프라인을 통한 병목 구간 개선 — 수치로 검증한 개선 경험</li>
-      <li>장애를 줄이는 구조 설계와 운영 안정성 확보 중심 접근</li>
+      <li>ORM N+1 제거 + Redis 캐시 도입 — API 응답 <span class="highlight">800ms → 300ms</span>, 캐시 조회 <span class="highlight">129ms → 24ms</span></li>
+      <li>Async 및 Batch 도입으로 처리 작업량 향상 <span class="highlight">1,000건 → 5,000건</span> 확장</li>
+      <li>병목 구간 k6 부하 측정·검증 후 도입</li>
     </ul>
   </div>
 
   <div class="comp-group">
-    <div class="comp-group-title">안정적인 백엔드 설계</div>
+    <div class="comp-group-title">동시성 제어 및 안정적 서버 설계</div>
     <ul>
-      <li>동시성 이슈, 분산 환경 스케줄 제어, 원자성 보장 — ShedLock·Celery·Virtual Thread 실제 적용</li>
-      <li>서비스 상황에 따라 단순 구현보다 안전한 처리 구조 우선 설계</li>
+      <li>원자성 보장·트랜잭션 롤백 구조 설계
+      <li>단순 구현보다 안전한 처리 구조 우선
+      <li>K8s HPA 수평 확장 + ShedLock 중복 실행 방지 + Virtual Thread I/O 병목 제거 — <span class="highlight">TPS 2배 이상</span> 향상</li>
     </ul>
   </div>
 
   <div class="comp-group">
     <div class="comp-group-title">실시간·이벤트 기반 시스템</div>
     <ul>
-      <li>REST, SSE, WebSocket, MQTT, WebRTC 기반 데이터 흐름 직접 구현 및 비교 선택 경험</li>
-      <li>Kafka 기반 메시지 브로커 구조로 서비스별 부하 분산 설계</li>
+      <li>Polling → WebSocket 전환으로 Stress test 연결 실패율 <span class="highlight">44% → 0%</span> 달성</li>
+      <li>REST, SSE, WebSocket, MQTT, WebRTC — 각 특성과 운영 복잡도를 비교해 상황에 맞는 기술 직접 선택</li>
+      <li>Kafka 메시지 브로커로 서비스별 구독·배치 처리 부하 분산 설계</li>
     </ul>
   </div>
 
   <div class="comp-group">
     <div class="comp-group-title">결제·외부 연동 시스템</div>
     <ul>
-      <li>Webhook 기반 결제 자동화, 멱등성 보장, 구독 Lifecycle 전 구간 구현 경험</li>
-      <li>외부 API 장애 상황을 고려한 재처리·폴백 설계</li>
+      <li>외부 API 장애 시 재처리·폴백 안정성 있는 구조 설계</li>
+      <li>Webhook 기반 결제 자동화 — 멱등성 보장으로 재수신·실패 시도 안전 처리</li>
+      <li>B2B/B2C 구독 Lifecycle 전 구간(가입·갱신·취소·환불) 직접 구현</li>
+    </ul>
+  </div>
+
+  <div class="comp-group">
+    <div class="comp-group-title">AI 연계 백엔드 설계</div>
+    <ul>
+      <li>FastAPI Stream + AsyncGenerator 기반 LLM 스트리밍 — TTFB <span class="highlight">20초 → 5초</span> 개선</li>
+      <li>이미지 전처리 파이프라인 구성으로 AI 분석 전처리 시간 <span class="highlight">15초 → 3초</span>, 전송 데이터 크기 대폭 감소</li>
+      <li>Vector Embedding 기반 의미 검색, RAG 파이프라인 직접 구현</li>
+      <li>tool-calling 기반 Agentic Loop, MCP 사내 시스템 연동 계층 설계·구현</li>
     </ul>
   </div>
 </div>
@@ -211,9 +252,8 @@
     <div class="skill-row-label">Backend</div>
     <div class="skill-row-items">
       <ul>
-        <li>Spring Boot, Spring MVC, Spring Security, Spring Data JPA</li>
-        <li>Django, Django REST Framework, Django Channels</li>
-        <li>FastAPI, Celery</li>
+        <li>Java: Spring Boot, Spring MVC, Spring Security, Spring Data JPA</li>
+        <li>Python: Django REST Framework, FastAPI, Celery</li>
       </ul>
     </div>
   </div>
@@ -233,9 +273,9 @@
     <div class="skill-row-label">Infra / Ops</div>
     <div class="skill-row-items">
       <ul>
-        <li>Docker, Kubernetes, Jenkins (CasC)</li>
-        <li>AWS (EC2, S3, RDS, DynamoDB), Firebase, Sentry</li>
-        <li>k6, Jira, Git</li>
+        <li>Docker, Kubernetes, Jenkins (CasC), k6, JUnit</li>
+        <li>AWS (EC2, S3, DynamoDB), Firebase, Sentry</li>
+        <li>Jira, Git</li>
       </ul>
     </div>
   </div>
@@ -245,7 +285,7 @@
     <div class="skill-row-items">
       <ul>
         <li>LangChain, LangGraph, MCP</li>
-        <li>RAG, Vector Embedding, Claude API</li>
+        <li>RAG, Vector Embedding</li>
       </ul>
     </div>
   </div>
@@ -267,7 +307,7 @@
       <ul>
         <li>Polling → WebSocket 전환으로 Stress test 연결 실패율 <span class="highlight">44% → 0%</span></li>
         <li>Kafka 메시지 브로커로 서비스별 구독·배치 처리 부하 분산, ShedLock으로 K8s 멀티 Pod 중복 실행 해결</li>
-        <li>Jenkins CasC 기반 CI/CD + K8s Rolling Update 무중단 배포 구현</li>
+        <li>Jenkins CasC 기반 CI/CD + K8s Rolling Update 무중단 배포 + HPA 수평 확장 구성</li>
       </ul>
     </div>
   </div>
@@ -296,13 +336,13 @@
 
   <div class="row">
     <div class="row-left">
-      <div class="edu-name">SSAFY 12기</div>
+      <div class="edu-name">SSAFY 14기</div>
       <div class="edu-sub">삼성 청년 SW 아카데미</div>
       <div class="edu-sub" style="color:#888;">2025.10 ~ 2026.04</div>
     </div>
     <div class="row-right">
       <ul>
-        <li>백엔드·인프라 집중 과정 — 프로젝트 3회, 우수·최우수 수상</li>
+        <li>알고리즘 + 프로젝트 중심 과정 — 프로젝트 3회, 우수·최우수 수상</li>
         <li>Kafka·K8s 기반 실시간 시스템, RAG·LLM 스트리밍 서비스 구현</li>
       </ul>
     </div>
@@ -316,7 +356,7 @@
     </div>
     <div class="row-right">
       <ul>
-        <li>비전공 출신으로 독학 및 프로젝트 경험을 통해 백엔드 개발 역량 자체 구축</li>
+        <li>법·행정 전공에서 체득한 문서 정확성, 규정 준수, 접근 통제에 대한 감각을 데이터 정합성 확보와 보안 설계에 실제로 적용하고 있습니다</li>
       </ul>
     </div>
   </div>

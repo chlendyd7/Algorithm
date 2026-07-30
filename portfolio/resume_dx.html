@@ -117,14 +117,14 @@
       <div class="company-period">2026.04 ~ 현재</div>
     </div>
     <div class="row-right">
-      <div class="row-subtitle">자동차 부품 제조사 — MES·SCADA 유지보수 및 AI 플랫폼 PoC</div>
+      <div class="row-subtitle">생산·자재·설비·품질·출하 7개 도메인 MES 백엔드 단독 설계·운영</div>
       <ul>
-        <li>열관리 시스템 MES 유지보수 (Spring Boot, Vue3, PostgreSQL, MyBatis) — 생산실적·재고·공정 관련 150건+ 개발 항목 중 50건 이상 담당</li>
-        <li>SQL 하드코딩 대신 Java 함수로 로직 분리 — 재사용성과 유지보수성 향상</li>
-        <li>ERP와 MES 간 불일치 항목 대응, UI 개선으로 현업 사용성 향상</li>
+        <li><span class="highlight">REST API 400종 이상 / 소스파일 518개</span> 규모의 MES 백엔드를 단독 담당</li>
+        <li>DB 프로시저 <span class="highlight">42종·함수 15종</span> 직접 설계 — 재고 LOT 채번·분할·합치기, 생산실적 등록, ERP 인터페이스 취소 등 핵심 트랜잭션 정합성 확보</li>
+        <li>ERP·설비 서버·현장 장비·품질 서버 등 <span class="highlight">이기종 시스템 연동 트랜잭션</span> 구현 — 통신 실패 시 MES 트랜잭션 자동 롤백</li>
+        <li>RSA-2048 전송 암호화 + AES-256 세션 암호화 + NETS SSO 3개 인증 경로 통합, 커스텀 인터셉터 기반 URL 단위 RBAC 설계</li>
         <li>SCADA 시스템 PM (CIMON) — 현업 요구사항 수집·정리 및 개발사 일정·우선순위 조율</li>
-        <li>사내 AI Agentic 스튜디오 PoC — Spring Boot·FastAPI·React 기반 업무용 앱 생성·배포 플랫폼 설계</li>
-        <li>API 레벨 인증·인가 검증 구조, 마스킹 정책 수립 — 운영 환경 보안 수준 강화</li>
+        <li>사내 AI Agentic 스튜디오 PoC — tool-calling 기반 Agentic Loop, MCP 사내 시스템 연동 계층 설계·구현</li>
       </ul>
     </div>
   </div>
