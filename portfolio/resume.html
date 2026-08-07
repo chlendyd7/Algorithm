@@ -58,30 +58,33 @@
     /* ── Two-column row (Experience / Project) ── */
     .row {
       display: flex;
-      gap: 40px;
-      margin-bottom: 40px;
+      gap: 56px;
+      margin-bottom: 44px;
     }
-    .row-left { flex: 0 0 190px; }
+    .row-left { flex: 0 0 200px; }
     .row-right { flex: 1; min-width: 0; }
 
     .company-name { font-size: 24px; font-weight: 700; line-height: 1.2; }
     .company-url { font-size: 12px; color: #888; display: block; margin: 3px 0 5px; }
-    .company-role { font-weight: 700; font-size: 14px; }
-    .company-period { font-size: 13px; color: #666; margin-top: 2px; }
+    .company-role { font-weight: 700; font-size: 14px; margin-top: 6px; }
+    .company-period { font-size: 13px; color: #666; margin-top: 4px; }
 
     .row-subtitle {
       font-style: italic;
       font-size: 13px;
       color: #666;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .row-right ul { list-style: none; padding: 0; }
     .row-right ul li {
-      padding-left: 16px;
+      padding-left: 18px;
       position: relative;
-      margin-bottom: 5px;
+      margin-bottom: 9px;
+      line-height: 1.6;
     }
-    .row-right ul li::before { content: '•'; position: absolute; left: 0; }
+    .row-right ul li::before { content: '•'; position: absolute; left: 0; color: #999; }
+
+    .footnote { font-size: 11px; color: #999; margin-top: 6px; }
 
     /* ── 역량 (Competencies) ── */
     .comp-group { margin-bottom: 22px; }
@@ -205,29 +208,14 @@
     <div class="row-right">
       <div class="row-subtitle">자동차 부품 제조사 사내 시스템 유지보수 및 AI 플랫폼 개발</div>
       <ul>
-        <li>열관리 시스템 MES 유지보수 — Spring Boot, Vue3, PostgreSQL, MyBatis 기반 150건 이상 개발 항목 중 50건+ 담당</li>
-        <li>사내 AI Agentic 스튜디오 개발 — Spring Boot, FastAPI, React 기반 업무용 앱 생성·검증·배포 플랫폼 PoC</li>
-        <li>SCADA 시스템 PM (CIMON) — 현업 요구사항 수집·정리 및 개발 일정·우선순위 조율</li>
+        <li>열관리 시스템 MES 유지보수 — Spring Boot, Vue3, PostgreSQL, MyBatis 기반 50건+ 담당</li>
+        <li>OPC(KEPServerEX) 기반 설비 데이터 수집 인터페이스 설계 — PLC·품질서버·WMS·AMR 연동, 초당 5,000건 이상 태그 데이터 수집 후 이벤트·배치 기반 MES 반영<sup>※</sup></li>
         <li>SQL 하드코딩 대신 Java 함수로 로직 분리해 재사용성과 유지보수성 향상</li>
         <li>API 레벨 인증·인가 검증 구조 도입, 마스킹 정책 수립으로 보안 수준 강화</li>
+        <li>사내 AI Agentic 스튜디오 개발 — Claude Code 기반 Agentic 코드 생성 파이프라인 구축, MCP로 ERP/MES 레거시 연동 표준화, LangGraph 상태 오케스트레이션 적용한 업무용 앱 생성·검증·배포 플랫폼 PoC</li>
+        <li>SCADA 시스템 PM (CIMON) — 현업 요구사항 수집·정리 및 개발 일정·우선순위 조율</li>
       </ul>
-    </div>
-  </div>
-
-  <!-- SSAFY -->
-  <div class="row">
-    <div class="row-left">
-      <div class="company-name">SSAFY</div>
-      <div class="company-role">백엔드 / 인프라 담당</div>
-      <div class="company-period">2025.10 ~ 2026.04</div>
-    </div>
-    <div class="row-right">
-      <div class="row-subtitle">삼성 청년 SW 아카데미 — 3개 프로젝트 참여, 우수·최우수 수상</div>
-      <ul>
-        <li><strong>Click-CEO</strong> — Kafka·Redis 기반 실시간 호가창 집계, WebSocket 전환으로 연결 실패율 44% → 0%, K8s 무중단 배포 구현 <em>(우수 프로젝트)</em></li>
-        <li><strong>Cescar</strong> — MQTT·WebRTC 기반 AIoT 자동차 장비 제어, Virtual Thread 도입으로 TPS 2배 향상</li>
-        <li><strong>함께하개냥</strong> — Django·FastAPI 기반 멀티모달 AI 진단 서비스, LLM 스트리밍 TTFB 20초 → 5초 개선 <em>(최우수 프로젝트)</em></li>
-      </ul>
+      <div class="footnote">※ OPC(Open Platform Communications) — PLC 등 이기종 산업 장비의 통신 프로토콜을 표준 태그로 추상화하는 산업 표준. Kepware KEPServerEX가 OPC 서버 역할을 하고, 자체 개발 I/F가 OPC 클라이언트로 태그를 구독·수집</div>
     </div>
   </div>
 
@@ -467,6 +455,22 @@
 <div class="section">
   <div class="section-title">Education</div>
   <hr class="section-divider">
+
+  <div class="row">
+    <div class="row-left">
+      <div class="edu-school">SSAFY</div>
+      <div class="edu-major">백엔드 / 인프라 트랙 (삼성 청년 SW 아카데미)</div>
+      <div class="edu-period">2025.10 ~ 2026.04</div>
+    </div>
+    <div class="row-right">
+      <div class="row-subtitle">3개 프로젝트 참여, 우수·최우수 수상</div>
+      <ul>
+        <li><strong>Click-CEO</strong> — Kafka·Redis 기반 실시간 호가창 집계, WebSocket 전환으로 연결 실패율 44% → 0%, K8s 무중단 배포 구현 <em>(우수 프로젝트)</em></li>
+        <li><strong>Cescar</strong> — MQTT·WebRTC 기반 AIoT 자동차 장비 제어, Virtual Thread 도입으로 TPS 2배 향상</li>
+        <li><strong>함께하개냥</strong> — Django·FastAPI 기반 멀티모달 AI 진단 서비스, LLM 스트리밍 TTFB 20초 → 5초 개선 <em>(최우수 프로젝트)</em></li>
+      </ul>
+    </div>
+  </div>
 
   <div class="row">
     <div class="row-left">
