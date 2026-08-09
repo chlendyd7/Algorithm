@@ -7,7 +7,7 @@ def solution(m, n, puddles):
         for r in range(1, m+1):
             if c == 1 and r == 1:
                 continue
-            if [c,r] in puddles:
+            if [r,c] in puddles:
                 continue
             dp[c][r] = dp[c][r-1] + dp[c-1][r]
 
