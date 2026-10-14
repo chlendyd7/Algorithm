@@ -17,19 +17,36 @@ public class Main {
         list.remove(0); // 인덱스로 삭제 (Integer.valueOf(10)이면 값으로 삭제 — 헷갈리는 함정)
         System.out.println(list);
 
-        // TODO 1: 2차원 배열 int[3][3] 만들고 전부 1로 채운 뒤 출력해보기.
-        // 힌트: for문 이중으로 돌면서 arr2d[i][j] = 1
+        // ── 연습 1: 2차원 배열 채우기 ──────────────────────────
+        // Python: [[1]*3 for _ in range(3)] 한 줄
+        // Java는 바깥 for, 안쪽 for 이중으로 직접 돌아야 함.
+        int[][] arr2d = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                arr2d[i][j] = 1;
+            }
+        }
+        System.out.println(Arrays.deepToString(arr2d)); // 2차원 배열 출력은 deepToString 써야 함
 
+        // ── 연습 2: 배열 깊은 복사 ────────────────────────────
+        // Java 배열 변수는 "주소"를 담고 있음 (Python 리스트도 사실 똑같이 참조형이라 마찬가지).
+        int[] original = {1, 2, 3};
+        int[] shallowRef = original;   // 복사가 아니라 같은 배열을 가리키는 것뿐
+        shallowRef[0] = 999;
+        System.out.println("original도 같이 바뀜: " + Arrays.toString(original)); // [999, 2, 3]
 
-        // TODO 2: 배열을 "깊은 복사"해보기.
-        // int[] original = {1,2,3} 만들고, int[] copy = original 로 대입한 뒤 copy[0]을 바꿔보면
-        // original도 같이 바뀜 (참조 복사라서). Arrays.copyOf(original, original.length)로
-        // 진짜 복사본 만들어서 copy[0] 바꿔도 original은 안 바뀌는 거 확인해보기.
+        int[] original2 = {1, 2, 3};
+        int[] deepCopy = Arrays.copyOf(original2, original2.length); // 진짜 새 배열을 만들어서 값만 복사
+        deepCopy[0] = 999;
+        System.out.println("original2는 안 바뀜: " + Arrays.toString(original2)); // [1, 2, 3]
+        System.out.println("deepCopy만 바뀜: " + Arrays.toString(deepCopy));      // [999, 2, 3]
 
-
-        // TODO 3: ArrayList<Integer>를 int[]로 바꾸는 상황 자주 생김.
-        // list에 1,2,3 넣고 int[]로 변환해서 출력해보기.
-        // 힌트: list.stream().mapToInt(Integer::intValue).toArray()
-
+        // ── 연습 3: List<Integer> -> int[] 변환 ────────────────
+        List<Integer> src = new ArrayList<>(Arrays.asList(1, 2, 3));
+        int[] converted = src.stream().mapToInt(Integer::intValue).toArray();
+        // src.stream(): 리스트를 스트림으로 바꿈
+        // .mapToInt(Integer::intValue): Integer(박싱된 객체) 하나하나를 int(기본형)로 풀어줌
+        // .toArray(): int[] 로 모아줌
+        System.out.println(Arrays.toString(converted));
     }
 }

@@ -14,13 +14,29 @@ public class Main {
         int overflowed = Integer.MAX_VALUE + 1; // 2147483647 + 1 => 음수로 뒤집힘
         System.out.println("int overflow: " + overflowed);
 
-        // TODO 1: 1,000,000 * 1,000,000 을 int로 곱하면 오버플로 남 (약 10^12인데 int는 약 21억까지).
-        // int 변수에 곱해서 틀린 값 나오는 거 확인하고, long으로 캐스팅해서 올바른 값도 출력해보기.
-        // 힌트: (long) a * b 처럼 피연산자 하나만 캐스팅해도 전체가 long 연산이 됨.
+        // ── 연습 1: 곱셈 오버플로 ────────────────────────────
+        // int는 약 ±21억(2.1 * 10^9)까지만 담을 수 있음.
+        // 1,000,000 * 1,000,000 = 10^12 인데 이건 int 범위를 훌쩍 넘어감 → 계산이 틀어짐.
+        int x = 1_000_000;
+        int y = 1_000_000;
+        int wrong = x * y; // int * int 는 결과도 int로 계산 → 담다가 넘쳐서 틀린 값
+        System.out.println("wrong (int*int): " + wrong);
 
+        // 고치는 법: 피연산자 중 하나만 long으로 캐스팅해도 그 연산 전체가 long으로 승격됨
+        long correct = (long) x * y; // (long) x 가 먼저 적용되고, 그 다음 곱셈은 long 연산
+        System.out.println("correct (long): " + correct);
 
-        // TODO 2: Python에서 a, b = b, a 처럼 스왑하던 거, Java는 임시변수 없이는 안 됨.
-        // int x = 1, y = 2 선언하고 임시변수 써서 swap한 뒤 출력해보기.
+        // 흔한 함정: long correct2 = x * y; 라고만 쓰면 이미 int*int에서 틀어진 뒤에
+        // long에 대입하는 거라 똑같이 틀림. 캐스팅은 "곱하기 전에" 해야 함.
+        long stillWrong = x * y;
+        System.out.println("still wrong (대입만 long): " + stillWrong);
 
+        // ── 연습 2: swap (임시변수 사용) ──────────────────────
+        // Python: a, b = b, a 처럼 한 줄로 되지만 Java는 그런 문법이 없음.
+        int p = 1, q = 2;
+        int temp = p; // p를 잃어버리기 전에 temp에 저장
+        p = q;
+        q = temp;
+        System.out.println("swapped: p=" + p + ", q=" + q); // p=2, q=1
     }
 }

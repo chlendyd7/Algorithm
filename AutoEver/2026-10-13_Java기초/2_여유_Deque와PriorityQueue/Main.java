@@ -32,13 +32,35 @@ public class Main {
         maxHeap.offer(2);
         System.out.println(maxHeap.poll()); // 3
 
-        // TODO 1: int[] {5, 2, 8, 1} 을 전부 PriorityQueue(최소힙)에 넣고
-        // 하나씩 poll()하면서 오름차순으로 출력해보기 (힙 정렬 느낌).
+        // ── 연습 1: PriorityQueue로 힙 정렬 ──────────────────
+        // 전부 넣고 하나씩 꺼내면 항상 "제일 작은 것부터" 나오므로 자동으로 오름차순 정렬됨
+        int[] data = {5, 2, 8, 1};
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int d : data) {
+            pq.offer(d);
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!pq.isEmpty()) {
+            sb.append(pq.poll()).append(" ");
+        }
+        System.out.println(sb.toString().trim()); // 1 2 5 8
 
-
-        // TODO 2: 회문(팰린드롬) 체크할 때 자주 쓰는 패턴 — Deque 양쪽에서 꺼내서 비교.
-        // "level" 문자를 한 글자씩 Deque에 다 넣고, pollFirst()/pollLast()로 양쪽에서
-        // 하나씩 꺼내 비교하면서 회문인지 확인해보기.
-
+        // ── 연습 2: Deque로 회문(팰린드롬) 체크 ──────────────
+        // 양쪽 끝에서 하나씩 꺼내 비교 — 전부 같으면 회문
+        String word = "level";
+        Deque<Character> deque = new ArrayDeque<>();
+        for (char c : word.toCharArray()) {
+            deque.addLast(c); // 뒤에 하나씩 쌓기
+        }
+        boolean isPalindrome = true;
+        while (deque.size() > 1) {
+            char first = deque.pollFirst(); // 앞에서 하나 꺼내고
+            char last = deque.pollLast();   // 뒤에서 하나 꺼내서
+            if (first != last) {            // 서로 다르면 회문 아님
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println(word + " is palindrome: " + isPalindrome); // true
     }
 }

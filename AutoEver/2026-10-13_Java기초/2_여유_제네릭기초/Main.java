@@ -20,15 +20,38 @@ public class Main {
             System.out.println(e[0] + " -> " + e[1] + " (w=" + e[2] + ")");
         }
 
-        // TODO 1: Map<String, Integer>를 하나 만들어서 과일별 개수를 넣고,
-        // 값(개수)이 제일 큰 key를 찾아서 출력해보기.
-        // 힌트: entrySet() 순회하면서 max 추적
+        // ── 연습 1: Map에서 값이 제일 큰 key 찾기 ───────────────
+        Map<String, Integer> fruitCount = new HashMap<>();
+        fruitCount.put("apple", 5);
+        fruitCount.put("banana", 9);
+        fruitCount.put("kiwi", 2);
 
+        String maxKey = null;
+        int maxValue = Integer.MIN_VALUE; // 뭐가 와도 이것보단 크니까 시작값으로 안전함
+        for (Map.Entry<String, Integer> e : fruitCount.entrySet()) {
+            if (e.getValue() > maxValue) {
+                maxValue = e.getValue();
+                maxKey = e.getKey();
+            }
+        }
+        System.out.println(maxKey + ": " + maxValue); // banana: 9
 
-        // TODO 2: List<List<Integer>>로 2차원 구조 만들기 (배열의 배열이 가변 버전인 느낌).
-        // 크기 3짜리 바깥 리스트 만들고, 각 안쪽 리스트에 숫자 하나씩 넣어서 출력해보기.
-        // 힌트: 바깥 리스트 만들 때 new ArrayList<>()를 미리 3번 add 해둬야 함
-        //      (Python처럼 [[]]*3 하면 전부 같은 리스트를 가리켜서 버그남 — Java도 똑같이 조심)
+        // ── 연습 2: List<List<Integer>> 2차원 가변 구조 ─────────
+        // Python 함정이랑 똑같이, Java도 [[]]*3 같은 식으로 하나의 리스트를 복제하면
+        // 전부 "같은 리스트"를 가리키게 돼서 하나 바꾸면 전부 바뀌는 버그가 생김.
+        // 그래서 바깥 리스트를 만든 뒤, 안쪽 리스트를 "하나씩 새로" 만들어서 넣어야 함.
+        List<List<Integer>> grid = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            grid.add(new ArrayList<>()); // 매번 new로 새 리스트를 만들어서 add — 이게 핵심
+        }
+        grid.get(0).add(10);
+        grid.get(1).add(20);
+        grid.get(2).add(30);
+        System.out.println(grid); // [[10], [20], [30]] — 서로 독립적으로 잘 들어감
 
+        // 참고: 틀린 예시 (실제로 실행 안 함, 설명용)
+        // List<List<Integer>> wrong = new ArrayList<>();
+        // List<Integer> inner = new ArrayList<>();
+        // for (int i = 0; i < 3; i++) wrong.add(inner); // 매번 같은 inner를 넣음 → 전부 같은 리스트
     }
 }

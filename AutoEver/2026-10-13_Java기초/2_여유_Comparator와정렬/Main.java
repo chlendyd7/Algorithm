@@ -21,13 +21,28 @@ public class Main {
         Arrays.sort(pairs, (a, b) -> a[1] - b[1]); // 두 번째 값 기준 오름차순
         System.out.println(Arrays.deepToString(pairs));
 
-        // TODO 1: {"banana", "kiwi", "apple"} 를 길이가 짧은 순서로 정렬해서 출력해보기.
-        // 힌트: Arrays.asList(...)를 ArrayList로 감싼 뒤 .sort((a,b) -> a.length() - b.length())
+        // Comparator 람다 (a, b) -> ... 읽는 법:
+        // 음수 리턴 → a가 b보다 먼저 와야 함
+        // 양수 리턴 → b가 a보다 먼저 와야 함
+        // 0 리턴    → 순서 상관없음
+        // 그래서 "a - b"면 오름차순, "b - a"면 내림차순이 됨 (Python에는 없는 개념이라 외워둬야 함)
 
+        // ── 연습 1: 문자열을 길이 기준으로 정렬 ─────────────────
+        List<String> words = new ArrayList<>(Arrays.asList("banana", "kiwi", "apple"));
+        words.sort((a, b) -> a.length() - b.length()); // 길이가 짧은 게 먼저 오도록 오름차순
+        System.out.println(words); // [kiwi, apple, banana]
 
-        // TODO 2: "가장 큰 수"류 문제에서 쓰는 패턴 — 숫자를 문자열로 바꿔서 비교.
-        // {3, 30, 34} 를 문자열로 이어붙였을 때 제일 큰 값이 되도록 정렬해보기 (정답: 34330).
-        // 힌트: Comparator.comparing(x -> ..., 또는 (a,b) -> (b+a).compareTo(a+b))
-
+        // ── 연습 2: "가장 큰 수" 패턴 — 숫자를 이어붙였을 때 제일 큰 조합 ──
+        // {3, 30, 34} 를 이어붙여서 제일 큰 수를 만들려면: "34" + "330" vs "330" + "34" 를 비교해서
+        // 더 큰 쪽이 앞에 오게 정렬해야 함 (단순 숫자 크기 비교로는 안 풀림 — 3 < 30 이지만 "334"보다 "330" 조합이 작음)
+        Integer[] nums = {3, 30, 34};
+        Arrays.sort(nums, (a, b) -> {
+            String ab = "" + a + b; // a 뒤에 b를 이어붙인 문자열
+            String ba = "" + b + a; // b 뒤에 a를 이어붙인 문자열
+            return ba.compareTo(ab); // ba가 더 크면(문자열 비교) a가 앞으로 와야 하므로 내림차순 비교
+        });
+        StringBuilder sb = new StringBuilder();
+        for (int num : nums) sb.append(num);
+        System.out.println(sb); // 34330 (제일 큰 조합)
     }
 }

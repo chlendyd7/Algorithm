@@ -19,14 +19,29 @@ public class Main {
         set.add(1); // 중복은 무시됨
         System.out.println(set.size()); // 1
 
-        // TODO 1: 문자열 배열 {"a","b","a","c","b","a"} 에서 각 문자 등장 횟수를
-        // HashMap<String, Integer>에 세서 저장하고 전부 출력해보기.
-        // 힌트: map.put(key, map.getOrDefault(key, 0) + 1)
+        // ── 연습 1: 등장 횟수 세기 ─────────────────────────────
+        // Python이면: from collections import Counter; Counter(arr)
+        // Java는 Counter가 없어서 HashMap으로 직접 세야 함. 패턴은 코테에서 제일 많이 나옴.
+        String[] arr = {"a", "b", "a", "c", "b", "a"};
+        Map<String, Integer> counter = new HashMap<>();
+        for (String key : arr) {
+            // getOrDefault(key, 0): "이 key 본 적 있으면 그 값, 처음 보면 0"을 가져옴
+            // 그 값에 +1 해서 다시 put → "처음 보면 1, 이미 있으면 기존값+1"이 됨
+            // Python의 counter[key] = counter.get(key, 0) + 1 과 완전히 똑같은 동작
+            counter.put(key, counter.getOrDefault(key, 0) + 1);
+        }
+        System.out.println(counter); // {a=3, b=2, c=1} (HashMap이라 순서는 보장 안 됨)
 
+        // ── 연습 2: Map 순회하면서 key, value 같이 꺼내기 ────────
+        // Python이면: for key, value in counter.items(): ...
+        // Java는 .entrySet()을 돌려야 key/value 쌍(Map.Entry)이 나옴.
+        // (map.keySet()만 돌리고 매번 map.get(key) 하는 것보다 entrySet이 더 빠름 — 조회를 한 번만 하니까)
+        for (Map.Entry<String, Integer> e : counter.entrySet()) {
+            System.out.println(e.getKey() + ": " + e.getValue());
+        }
 
-        // TODO 2: HashMap을 순회하면서 key, value 같이 꺼내기.
-        // 위에서 만든 map을 for (Map.Entry<String,Integer> e : map.entrySet()) 로 순회해서
-        // "key: value" 형태로 전부 출력해보기.
-
+        // 참고: key만 필요하면 keySet(), value만 필요하면 values() 써도 됨
+        // for (String key : counter.keySet()) { ... }
+        // for (int value : counter.values()) { ... }
     }
 }
