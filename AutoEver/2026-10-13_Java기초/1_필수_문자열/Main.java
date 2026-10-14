@@ -8,7 +8,11 @@ public class Main {
         // 예상 출력:
         // false
         // true
+        String a = new String("hello");
+        String b = new String("hello");
 
+        System.out.println(a==b);
+        System.out.println(a.equals(b));
 
         // 예시: StringBuilder로 "a","b","c" append해서 이어붙인 뒤 출력
         // 예상 출력: abc
