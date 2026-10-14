@@ -1,42 +1,32 @@
 // Python: 변수에 타입 안 붙임, int가 알아서 무한정 커짐 (bignum)
 // Java: 타입 명시 필수, int/long 자리수 한계 있음 → 코테에서 오버플로 버그 제일 많이 남
+// 막히면 Answer.java 참고. 설명 보면서 직접 타이핑하고 실행해서 예상 출력이랑 맞는지 확인.
 
 public class Main {
     public static void main(String[] args) {
-        // 예시: 기본 타입 선언
-        int a = 10;
-        long b = 10_000_000_000L; // int 범위(약 21억) 넘으면 L 붙여서 long
-        double c = 3.14;
+        // 예시: int a=10, long b=10_000_000_000L(21억 넘으면 L 꼭 붙이기), double c=3.14 선언하고
+        // a + " " + b + " " + c 형태로 한 줄 출력
+        // 예상 출력: 10 10000000000 3.14
 
-        System.out.println(a + " " + b + " " + c);
 
-        // 예시: int 오버플로 직접 보기
-        int overflowed = Integer.MAX_VALUE + 1; // 2147483647 + 1 => 음수로 뒤집힘
-        System.out.println("int overflow: " + overflowed);
+        // 예시: int overflowed = Integer.MAX_VALUE + 1; 선언하고 출력
+        // 예상 출력: int overflow: -2147483648
 
-        // ── 연습 1: 곱셈 오버플로 ────────────────────────────
-        // int는 약 ±21억(2.1 * 10^9)까지만 담을 수 있음.
-        // 1,000,000 * 1,000,000 = 10^12 인데 이건 int 범위를 훌쩍 넘어감 → 계산이 틀어짐.
-        int x = 1_000_000;
-        int y = 1_000_000;
-        int wrong = x * y; // int * int 는 결과도 int로 계산 → 담다가 넘쳐서 틀린 값
-        System.out.println("wrong (int*int): " + wrong);
 
-        // 고치는 법: 피연산자 중 하나만 long으로 캐스팅해도 그 연산 전체가 long으로 승격됨
-        long correct = (long) x * y; // (long) x 가 먼저 적용되고, 그 다음 곱셈은 long 연산
-        System.out.println("correct (long): " + correct);
+        // 연습 1: 곱셈 오버플로
+        // int x = 1_000_000, y = 1_000_000;
+        // wrong = x * y (int끼리 곱함) 출력
+        // correct = (long) x * y (곱하기 전에 캐스팅) 출력
+        // stillWrong = x * y 를 long 변수에 대입만 한 것 (곱한 다음에 캐스팅한 꼴) 출력 — wrong이랑 같은 값 나오는지 확인
+        // 예상 출력:
+        // wrong (int*int): -727379968
+        // correct (long): 1000000000000
+        // still wrong (대입만 long): -727379968
 
-        // 흔한 함정: long correct2 = x * y; 라고만 쓰면 이미 int*int에서 틀어진 뒤에
-        // long에 대입하는 거라 똑같이 틀림. 캐스팅은 "곱하기 전에" 해야 함.
-        long stillWrong = x * y;
-        System.out.println("still wrong (대입만 long): " + stillWrong);
 
-        // ── 연습 2: swap (임시변수 사용) ──────────────────────
-        // Python: a, b = b, a 처럼 한 줄로 되지만 Java는 그런 문법이 없음.
-        int p = 1, q = 2;
-        int temp = p; // p를 잃어버리기 전에 temp에 저장
-        p = q;
-        q = temp;
-        System.out.println("swapped: p=" + p + ", q=" + q); // p=2, q=1
+        // 연습 2: swap (임시변수 사용)
+        // int p = 1, q = 2; 선언하고 temp 변수로 서로 바꾼 뒤 출력
+        // 예상 출력: swapped: p=2, q=1
+
     }
 }
