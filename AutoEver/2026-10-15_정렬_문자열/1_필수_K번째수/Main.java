@@ -1,10 +1,21 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42748
 
 class Solution {
-    // TODO: 파라미터/리턴타입 문제에 맞게 채우기
-    public int solution() {
-        int answer = 0;
-        return answer;
+    public int[] solution(int[] array, int[][] commands) {
+        int[] list = new int[commands.length];
+        
+        for(int i=0; i<commands.length; i++) {
+            int[] command = commands[i];
+            int start = command[0];
+            int end = command[1];
+            int pick = command[2];
+            System.out.println(start + "" + end + "" + pick);
+            int[] sliced = Arrays.copyOfRange(array, start-1, end);
+            Arrays.sort(sliced);
+            
+            list[i] = sliced[pick-1];
+        }
+        return list;
     }
 }
 

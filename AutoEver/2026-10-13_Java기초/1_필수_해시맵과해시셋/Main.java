@@ -12,7 +12,14 @@ public class Main {
         // 1
         // 0
         // true
+        Map<String, Integer> map = new HashMap<>();
+        map.put("apple", 1);
+        map.put("banana", 2);
+        System.out.println(map.get("apple"));
+        System.out.println(map.getOrDefault("grape", 0));
+        System.out.println(map.containsKey("banana"));
 
+        
 
         // 예시: Set<Integer> set 만들어서 1을 두 번 add 하고 size() 출력 (중복 무시되는지 확인)
         // 예상 출력: 1

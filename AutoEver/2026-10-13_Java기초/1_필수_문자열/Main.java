@@ -16,7 +16,12 @@ public class Main {
 
         // 예시: StringBuilder로 "a","b","c" append해서 이어붙인 뒤 출력
         // 예상 출력: abc
+        StringBuilder sb = new StringBuilder();
+        sb.append("a");
+        sb.append("b");
+        sb.append("c");
 
+        System.out.println(sb.toString());
 
         // 연습 1: split으로 나누기
         // "apple,banana,orange" 를 split(",")으로 나눠서 for문으로 하나씩 출력
@@ -24,16 +29,29 @@ public class Main {
         // apple
         // banana
         // orange
-
+        String csv = "apple,banana,orange";
+        String[] list = csv.split(",");
+        for (String l: list) {
+            System.out.println(l);
+        }
 
         // 연습 2: substring으로 자르기
         // String s = "programmers"; substring(3, 7) 로 잘라서 출력 (끝 인덱스는 포함 안 됨)
         // 예상 출력: gram
-
+        String s = "programmers";
+        System.out.println(s.substring(3,7));
 
         // 연습 3: 문자 하나씩 순회하며 개수 세기
         // "hello world" 에서 charAt(i) == 'l' 인 걸 세서 출력
         // 예상 출력: l 개수: 3
-
+        String h = "hello world";
+        int cnt = 0;
+        for (char c: h.toCharArray()) {
+            if (c == 'l') {
+                cnt ++;
+            }
+        }
+        System.out.println(cnt);
     }
 }
+

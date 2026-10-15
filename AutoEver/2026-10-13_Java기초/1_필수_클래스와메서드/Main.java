@@ -7,9 +7,26 @@
 // - 생성자: Point(int x, int y) { this.x = x; this.y = y; }
 // - 인스턴스 메서드: distanceFromOrigin() — Math.abs(x) + Math.abs(y) 리턴
 // - static 메서드: add(Point a, Point b) — 새 Point(a.x+b.x, a.y+b.y) 리턴
-// class Point {
-//
-// }
+class Point {
+    int x, y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int distanceFromOrigin() {
+        return Math.abs(x) + Math.abs(y);
+    }
+
+    public boolean isOrigin() {
+        return this.x == 0 && this.y == 0;
+    }
+
+    static Point add(Point a, Point b) {
+        return new Point(a.x + b.x, a.y+ b.y);
+    }
+}
 
 // 연습 1: 위 Point 클래스 안에 isOrigin() 인스턴스 메서드 추가
 // this.x == 0 && this.y == 0 인지 리턴
@@ -22,14 +39,18 @@
 
 public class Main {
     public static void main(String[] args) {
+        Point p = new Point(3,4);
         // Point p = new Point(3, 4); 만들어서 p.distanceFromOrigin(), p.isOrigin() 출력
         // 예상 출력:
         // 7
         // false
-
+        System.out.println(p.distanceFromOrigin());
+        System.out.println(p.isOrigin());
 
         // Point origin = new Point(0, 0); 만들어서 origin.isOrigin() 출력
         // 예상 출력: true
+        Point p2 = Point.add(p, new Point(1,1));
+        System.out.println(p2.x + " " + p2.y);
 
 
         // Point.add(p, new Point(1,1)) 로 새 Point 만들어서 x, y 출력

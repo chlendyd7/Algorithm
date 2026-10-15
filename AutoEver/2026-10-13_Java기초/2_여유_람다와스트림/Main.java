@@ -11,14 +11,20 @@ public class Main {
 
         // 예시: nums에서 양수만 걸러서(filter) 2배로(map) 만든 뒤 리스트로 모아서(collect) 출력
         // 예상 출력: [2, 6, 10]
-
+        List<Integer> result = nums.stream()
+            .filter(x -> x > 0)
+            .map(x -> x * 2)
+            .collect(Collectors.toList());
+        System.out.println(result);
 
         // 예시: mapToInt(Integer::intValue).sum() 으로 합계 출력
         // 예상 출력: 3
-
+        int sum = nums.stream().mapToInt(Integer::intValue).sum();
+        System.out.println(sum);
 
         // 예시: int[] {1,2,3} 은 Arrays.stream(arr).sum() 으로 합계 출력
         // 예상 출력: 6
+        
 
 
         // 연습 1: nums에서 mapToInt().max().getAsInt() 로 최댓값 출력
