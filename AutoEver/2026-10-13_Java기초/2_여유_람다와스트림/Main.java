@@ -24,16 +24,28 @@ public class Main {
 
         // 예시: int[] {1,2,3} 은 Arrays.stream(arr).sum() 으로 합계 출력
         // 예상 출력: 6
-        
+        int[] arr = {1,2,3};
+        int arrSum = Arrays.stream(arr).sum();
+        System.out.println(arrSum);
 
 
         // 연습 1: nums에서 mapToInt().max().getAsInt() 로 최댓값 출력
         // 예상 출력: max: 5
+        int max = nums.stream().mapToInt(Integer::intValue).max().getAsInt();
+        System.out.println(5);
 
 
         // 연습 2: {"apple","kiwi","banana"} 를 stream().sorted((a,b)->a.length()-b.length())로
         // 길이순 정렬해서 출력
         // 예상 출력: [kiwi, apple, banana]
+        String[] arr2 = {"apple", "kiwi", "banana"};
+        String[] sortedArr = Arrays.stream(arr2).sorted((a,b) -> a.length() - b.length()).toArray(String[]::new);
+        System.out.println(Arrays.toString(sortedArr));
 
+                List<String> words = Arrays.asList("apple", "kiwi", "banana");
+        List<String> sorted = words.stream()
+                .sorted((a, b) -> a.length() - b.length())
+                .collect(Collectors.toList());
+        System.out.println(sorted); // [kiwi, apple, banana]
     }
 }

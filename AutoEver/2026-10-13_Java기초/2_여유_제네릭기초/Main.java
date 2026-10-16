@@ -8,10 +8,20 @@ public class Main {
     public static void main(String[] args) {
         // 예시: Map<Integer, List<Integer>> graph 만들어서 1에 {2,3} 넣고 add(4)로 하나 더 추가 후 출력
         // 예상 출력: [2, 3, 4]
-
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        graph.put(1, new ArrayList<>(Arrays.asList(2,3)));
+        graph.get(1).add(4);
+        System.out.println(graph.get(1));
 
         // 예시: List<int[]> edges 만들어서 {1,2,5}, {2,3,3} add 하고
+        List<int[]> edges = new ArrayList<>();
+        edges.add(new int[]{1,2,5});
+        edges.add(new int[]{2,3,3});
         // for문으로 "e[0] -> e[1] (w=e[2])" 형태로 출력
+        for (int[] e : edges) {
+            System.out.println(e[0] + " -> " + e[1] + " (w=" + e[2] + ")");
+        }
+
         // 예상 출력:
         // 1 -> 2 (w=5)
         // 2 -> 3 (w=3)
@@ -20,7 +30,18 @@ public class Main {
         // 연습 1: Map<String,Integer> fruitCount = {"apple":5, "banana":9, "kiwi":2}
         // entrySet 순회하면서 값이 제일 큰 key 찾아서 "key: value" 출력
         // 예상 출력: banana: 9
+        Map<String, Integer> fruitCount = Map.of("apple", 5, "banana", 9, "kiwi",2);
 
+        String maxKey = null;
+        int maxValue = Integer.MIN_VALUE;
+        for (Map.Entry<String, Integer> e: fruitCount.entrySet()) {
+            if(e.getValue() > maxValue) {
+                maxValue = e.getValue();
+                maxKey = e.getKey();
+            }
+        }
+
+        System.out.println(maxValue + ":" + maxKey);
 
         // 연습 2: List<List<Integer>> grid — 바깥 리스트 3칸을 "매번 new ArrayList<>()로" 채운 뒤
         // grid.get(0).add(10), get(1).add(20), get(2).add(30) 하고 grid 전체 출력
