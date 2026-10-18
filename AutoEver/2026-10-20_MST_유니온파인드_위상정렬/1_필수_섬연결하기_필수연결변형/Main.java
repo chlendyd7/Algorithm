@@ -4,18 +4,124 @@
 import java.util.*;
 
 class Solution {
+    record Node (int target, int weight) {};
+
     public long additionalCost(int n, int[][] costs, int[][] preconnected) {
+        List<List<Node>> graph = new ArrayList<>();
+        for (int i=0; i<n; i++) graph.add(new ArrayList<>());
+        for (int i=0; i<costs.length; i++) {
+            int s = costs[i][0];
+            int e = costs[i][1];
+            int w = costs[i][2];
+            
+            graph.get(s).add(new Node(e, w));
+            graph.get(e).add(new Node(s, w));
+        }
+        
+        for (int i=0; i<preconnected.length; i++){
+            int s = costs[i][0];
+            int e = costs[i][1];
+            int w = 0;
+            
+            graph.get(s).add(new Node(e, w));
+            graph.get(e).add(new Node(s, w));
+        }
+
+        boolean[] visited = new boolean[n];
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[0] - b[0]);
+        pq.add(new int[] {0,0});
+        
+        int totalCost = 0;
+        while (!pq.isEmpty()) {
+            int[] curr = pq.poll();
+            int weight = curr[0], node = curr[1];
+            if (visited[node]) continue;
+            visited[node] = true;
+            totalCost += weight;
+            
+            for(Node edge: graph.get(node)) {
+                int next = edge.target(), w = edge.weight();
+                if (!visited[next]) pq.offer(new int[] {w, next});
+            }
+        }
+        
+        return totalCost;
+
         // TODO A: preconnected는 이미 설치된 무료 연결. 새로 설치할 최소 비용.
         // 연결 불가능하면 -1. costs의 노드 번호는 0-based.
-        throw new UnsupportedOperationException("TODO A: 이미 연결된 쌍");
+        // throw new UnsupportedOperationException("TODO A: 이미 연결된 쌍");
+    }
+    static class UnionFind{
+        int[] parent;
+        int count;
+
+        public UnionFind(int n) {
+            parent = new int[n];
+            for (int i=0; i<n; i++) parent[i] = i;
+            count = n;
+        }
+        public int find(int i) {
+            if (parent[i]==i) return i;
+            return parent[i] = find(parent[i]);
+        }
+        public boolean union(int i, int j) {
+            int rootI = find(i);
+            int rootJ = find(j);
+            if (rootI != rootJ) {
+                parent[rootI] = rootJ;
+                count--;
+                return true;
+            }
+            return false;
+        }
     }
 
     public long requiredCost(int n, int[][] costs, int[] requiredEdgeIndices, boolean requireTree) {
         // TODO B/C: costs에서 지정된 간선은 반드시 설치하고 비용도 모두 합산.
         // requiredEdgeIndices는 costs의 0-based 인덱스. costs 정렬 전에 식별자를 보존.
         // requireTree=true이면 필수 간선의 사이클도 불가능(-1).
-        // requireTree=false이면 필수 간선 사이클은 허용하되 비용은 전부 더함.
-        throw new UnsupportedOperationException("TODO B/C: 유료 필수 간선");
+        UnionFind uf = new UnionFind(n);
+        boolean[] isRequired = new boolean[costs.length];
+        for (int idx: requiredEdgeIndices) {
+            isRequired[idx] = true;
+        }
+
+        for (int idx: requiredEdgeIndices) {
+            int u = costs[idx][0];
+            int v = costs[idx][1];
+            int w = costs[idx][2];
+
+            totalCost += w;
+            boolean united = uf.union(u,v);
+
+            if(requiredTree && !united) {
+                return -1;
+            }
+        }
+        
+        List<int[]> remainingEdges = new ArrayList<>();
+        for (int i=0; i<costs.length; i++) {
+            if (!isRequired[i]) {
+                remainingEdges.add(costs[i]);
+            }
+        }
+        
+        remainingEdges.sort((a,b) -> Integer.compare(a[2], b[2]));
+        for (int[] edges: remainingEdges) {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+
+            if (uf.union(u, v)) {
+                totalCost += w;
+            }
+        }
+
+        if (uf.count != 1) {
+            return -1;
+        }
+        
+        return totalCost;
     }
 }
 
