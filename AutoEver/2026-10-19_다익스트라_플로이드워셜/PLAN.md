@@ -12,5 +12,6 @@
 - 프로그래머스: 합승 택시 요금 (Lv3, 플로이드-워셜)
 
 **[여유]**
+- [프로그래머스: 경주로 건설](https://school.programmers.co.kr/learn/courses/30/lessons/67259) (Lv3, 방향 상태 다익스트라 + 긴 구현) — 3차 점검(2026-10-19)으로 추가. 2025 하반기 후기의 "다익스트라 + 조건 많은 구현" 대비. 10/23 모의풀이 슬롯 A 기본 문제. [연습 파일](./2_여유_경주로건설/Main.java)
 - SWEA 1249 보급로 (BFS 기반 최단경로, SWEA 사이트에서 번호로 검색)
 - Codeforces 20C "Dijkstra?" — https://codeforces.com/problemset/problem/20/C

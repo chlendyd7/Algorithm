@@ -19,3 +19,6 @@
 **[보완 필수]**
 - [주차 요금 계산](https://school.programmers.co.kr/learn/courses/30/lessons/92341) (Lv2, 시간 문자열 파싱+해시+정렬) — [연습 파일](./1_필수_주차요금계산/Main.java), [체크포인트](./1_필수_주차요금계산/README.md).
 - 이미 지난 날짜이므로 미완료면 10/23에 진행. 베스트앨범은 문자열 파싱 문제를 대신하지 않는다.
+
+**[여유]**
+- [프로그래머스 문자열 압축](https://school.programmers.co.kr/learn/courses/30/lessons/60057) (Lv2, 문자열 완전탐색) — 커버리지 점검(2026-10-19)으로 추가. [연습 파일](./2_여유_문자열압축/Main.java)

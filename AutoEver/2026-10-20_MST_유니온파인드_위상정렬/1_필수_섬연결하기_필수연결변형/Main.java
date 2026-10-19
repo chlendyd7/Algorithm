@@ -19,8 +19,9 @@ class Solution {
         }
         
         for (int i=0; i<preconnected.length; i++){
-            int s = costs[i][0];
-            int e = costs[i][1];
+            // [FIX 1] costs[i] -> preconnected[i] (엉뚱한 배열을 읽고 있었음)
+            int s = preconnected[i][0];
+            int e = preconnected[i][1];
             int w = 0;
             
             graph.get(s).add(new Node(e, w));
@@ -31,12 +32,16 @@ class Solution {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[0] - b[0]);
         pq.add(new int[] {0,0});
         
-        int totalCost = 0;
+        // [FIX 2] int -> long (합이 21억 넘으면 오버플로)
+        long totalCost = 0;
+        // [FIX 3-a] 방문 노드 수 카운트 (연결 불가 판단용)
+        int visitedCount = 0;
         while (!pq.isEmpty()) {
             int[] curr = pq.poll();
             int weight = curr[0], node = curr[1];
             if (visited[node]) continue;
             visited[node] = true;
+            visitedCount++; // [FIX 3-a]
             totalCost += weight;
             
             for(Node edge: graph.get(node)) {
@@ -45,6 +50,8 @@ class Solution {
             }
         }
         
+        // [FIX 3-b] 모든 노드를 못 방문했으면 연결 불가 -> -1
+        if (visitedCount != n) return -1;
         return totalCost;
 
         // TODO A: preconnected는 이미 설치된 무료 연결. 새로 설치할 최소 비용.
@@ -80,6 +87,8 @@ class Solution {
         // TODO B/C: costs에서 지정된 간선은 반드시 설치하고 비용도 모두 합산.
         // requiredEdgeIndices는 costs의 0-based 인덱스. costs 정렬 전에 식별자를 보존.
         // requireTree=true이면 필수 간선의 사이클도 불가능(-1).
+        // [FIX 4] totalCost 선언 누락 (컴파일 에러)
+        long totalCost = 0;
         UnionFind uf = new UnionFind(n);
         boolean[] isRequired = new boolean[costs.length];
         for (int idx: requiredEdgeIndices) {
@@ -94,7 +103,8 @@ class Solution {
             totalCost += w;
             boolean united = uf.union(u,v);
 
-            if(requiredTree && !united) {
+            // [FIX 5] requiredTree -> requireTree (파라미터 이름 오타, 컴파일 에러)
+            if(requireTree && !united) {
                 return -1;
             }
         }
@@ -107,7 +117,8 @@ class Solution {
         }
         
         remainingEdges.sort((a,b) -> Integer.compare(a[2], b[2]));
-        for (int[] edges: remainingEdges) {
+        // [FIX 6] 루프 변수 edges -> edge (안쪽에서 edge[]로 쓰고 있어서 컴파일 에러)
+        for (int[] edge: remainingEdges) {
             int u = edge[0];
             int v = edge[1];
             int w = edge[2];
