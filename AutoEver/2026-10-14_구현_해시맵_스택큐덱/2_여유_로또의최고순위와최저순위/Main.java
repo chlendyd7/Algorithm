@@ -1,13 +1,19 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/77484
+/*
+ 
+ */
+import java.util.*;
 
 class Solution {
-    // TODO: 파라미터/리턴타입 문제에 맞게 채우기
-    public int solution() {
-        int answer = 0;
+    public int[] solution(int[] lottos, int[] win_nums) {
+
+        List<Integer> winList = Arrays.stream(win_nums)
+                                    .boxed()
+                                    .collect(Collectors.toList());
+        int[] answer = {};
         return answer;
     }
 }
-
 public class Main {
     public static void main(String[] args) {
         Solution sol = new Solution();

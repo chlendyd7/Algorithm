@@ -1,9 +1,22 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/43238
 
 class Solution {
-    // TODO: 파라미터/리턴타입 문제에 맞게 채우기
-    public int solution() {
-        int answer = 0;
+    public long solution(int n, int[] times) {
+        long left = 1;
+        long right = (long) Arrays.stream(times).max().getAsInt() * n;
+        long answer = right;
+        while (left <= right) {
+            long mid = (left + right) / 2;
+            long temp = 0;
+            for (int time: times) {temp += (mid / time ;)}
+
+            if (temp >= n) {
+                right = mid-1;
+                answer = mid;
+            } else {
+                left = mid+1;
+            }
+        }
         return answer;
     }
 }

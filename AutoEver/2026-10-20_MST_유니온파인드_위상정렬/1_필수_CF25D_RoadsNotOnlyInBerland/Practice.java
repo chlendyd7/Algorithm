@@ -4,33 +4,33 @@
 import java.util.*;
 
 public class Practice {
-    static class UnionFind {
+    class UnionFind {
         int[] parent;
         int count;
 
         public UnionFind(int n) {
             parent = new int[n];
-            for (int i=0; i<n; i++) {parent[i] = i;}
+            for (int i=0; i<n; i++) parent[i] = i;
             count = n;
-        
         }
-        public int find(int i) {
+
+        public find(int i) {
             if (parent[i] == i) return i;
             return parent[i] = find(parent[i]);
         }
-        public boolean union(int a, int b) {
-            int rootA = find(a);
-            int rootB = find(b);
-            if (rootA != rootB) {
-                parent[rootA] = rootB;
-                count --;
-                return true;
+        
+        public boolean union(int i, int j) {
+            parentI = find(i);
+            parentJ = find(j);
+            if (parentI != parentJ) {
+                parent[parentI] = parentJ;
+                count--;
+                return true
             }
             return false;
         }
     }
-
-    static class Edge {
+    class Edge {
         int u, v;
         public Edge(int u, int v) {
             this.u = u;
@@ -38,34 +38,46 @@ public class Practice {
         }
     }
 
-    // n: 도시 수(1..n), roads: n-1개의 {u, v}
-    // 반환: 하루마다 {닫을 u, 닫을 v, 지을 a, 지을 b}. 하루도 필요 없으면 길이 0 배열.
-    static int[][] solve(int n, int[][] roads) {
-        UnionFind uf = new UnionFind(n+1);
-        List<Edge> extraEdges = new ArrayList<>();
-        for (int[] r : roads) {
-            int u = r[0];
-            int v = r[1];
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-            if (!uf.union(u, v)) {
-                extraEdges.add(new Edge(u, v));
+        UnionFind uf = new UnionFind(n+1);
+        List<Edge> extraEdge = new ArrayList<>();
+
+        for (int i=0; i<n-1; i++) {
+            String[] input = br.readlin().split(" ");
+            int u = Integer.parseInt(input[0]);
+            int v = Integer.parseInt(input[1]);
+
+            if (!uf.union(u,v)) {
+                extraEdge.add(new Edge(u,v));
             }
         }
 
-        List<Integer> roots = new ArrayList<>();
+        //root에 사이즈가 있었는데 어떻게 해서 나왓을까
+        
+        List<Integer> root = new ArrayList<>();
         for (int i=1; i<n+1; i++) {
             if (uf.find(i) == i) {
-                roots.add(i);
+                root.add(i);
             }
         }
+        int cnt = root.size()-1;
+        for (int i=0; i<cnt; i++) {
+            Edge edge = extraEdge[i];
+            edge.get(u);
+            edge.get(v);
 
-        int t = roots.size()-1;
-        int[][] ans = new int[t][4];
-        for (int i = 0; i < t; i++) {
-            Edge e = extraEdges.get(i);
-            ans[i] = new int[] {e.u, e.v, roots.get(i), roots.get(i + 1)};
+            int a = root.get(i);
+            int b = root.get(i+1);
+            union(a,b);
+
         }
-    return ans;
+
+        return sb
+
+        
     }
 
     // ---------- 채점 (수정 불필요) ----------

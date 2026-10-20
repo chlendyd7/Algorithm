@@ -4,8 +4,23 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String[] gems) {
-        // TODO: README의 조건을 확인하고 직접 구현하세요.
-        throw new UnsupportedOperationException("TODO: 보석 쇼핑");
+        int kinds = new HashSet<>(Arrays.asList(gems)).size();
+        Map<String, Integer> cnt = new HashMap<>();
+
+        int best = Integer.MAX_VALUE, bs = 0, be = 0;
+        int left = 0;
+        for (int right = 0; right < gems.length; right++) {
+            cnt.merge(gems[right], 1, Integer::sum);
+
+            while(cnt.size() == kinds) {
+                if (right - left < best) { best = right - left; bs=left; be=right;}
+
+                String g = gems[left];
+                if (cnt.merge(g, -1, Integer::sum) == 0) cnt.remove(g);
+                left++;
+            }
+        }
+        return new int[] {bs+1, be+1};
     }
 }
 
