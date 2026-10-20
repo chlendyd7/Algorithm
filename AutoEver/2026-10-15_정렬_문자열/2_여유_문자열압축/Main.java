@@ -2,10 +2,35 @@
 // 연습용: TODO 구현 전에는 실행 시 예외가 발생합니다.
 class Solution {
     public int solution(String s) {
-        // TODO: 1..s.length()/2 길이로 앞에서부터 잘라 같은 덩어리가 연속되면 "개수+덩어리"로 압축.
-        // 압축 후 문자열 길이의 최솟값 반환. 개수 1은 숫자를 쓰지 않는다. 개수가 두 자리 이상이면 자릿수도 길이에 포함.
-        // 마지막에 남는 짧은 조각도 길이에 더한다. 길이 1 문자열 경계 확인.
-        throw new UnsupportedOperationException("TODO: 문자열 압축");
+        int minLength = s.length();
+        for (int step=1; step <= s.length()/2; step++) {
+            StringBuilder sb = new StringBuilder();
+            String prev = s.substring(0, step);
+            
+            int count = 1;
+            for (int i=step; i<s.length(); i+=step) {
+                int end = Math.min(s.length(), i+step);
+                String sub = s.substring(i, end);
+                
+                if(prev.equals(sub)) {
+                    count++;
+                } else {
+                    if (count > 1) {
+                        sb.append(count);
+                    }
+                    sb.append(prev);
+                    prev = sub;
+                    count = 1;
+                }
+            }
+            if (count > 1) {
+                sb.append(count);
+            }
+            sb.append(prev);
+            minLength = Math.min(minLength, sb.length());
+        }
+        
+        return minLength;
     }
 }
 
