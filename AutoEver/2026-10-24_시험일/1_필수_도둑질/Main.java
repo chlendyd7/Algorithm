@@ -3,22 +3,19 @@
 class Solution {
     public int solution(int[] money) {
         int n = money.length;
-        int[] dp = new int[n];
-        dp[0] = money[0];
-        dp[1] = money[1];
-
-        for (int i=2; i<n; i++) {
-            dp[i] = Math.max(dp[i-2] + money[i], dp[i-1]);
-        }
-        // int answer = 0;
-        return dp[n];
+        // 경우1: 0 ~ n-2, 경우2: 1 ~ n-1
+        return Math.max(rob(money, 0, n - 2), rob(money, 1, n - 1));
     }
-}
 
-public class Main {
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        
-        System.out.println(sol.solution());
+    // money[from..to] 구간에서 인접한 집 안 터는 최대값
+    int rob(int[] money, int from, int to) {
+        int len = to - from + 1;
+        int[] dp = new int[len];
+        dp[0] = money[from];
+        dp[1] = Math.max(money[from], money[from + 1]);
+        for (int i = 2; i < len; i++) {
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + money[from + i]);
+        }
+        return dp[len - 1];
     }
 }
