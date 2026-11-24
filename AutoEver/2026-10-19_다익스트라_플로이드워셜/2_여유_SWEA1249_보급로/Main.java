@@ -38,10 +38,7 @@ class Solution {
                 }
             }
         }
-
         return visited[n-1][m-1];
-
-
     }
 }
 

@@ -19,7 +19,6 @@ public class Main {
         System.out.println(map.getOrDefault("grape", 0));
         System.out.println(map.containsKey("banana"));
 
-        
 
         // 예시: Set<Integer> set 만들어서 1을 두 번 add 하고 size() 출력 (중복 무시되는지 확인)
         // 예상 출력: 1

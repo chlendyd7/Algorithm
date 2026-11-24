@@ -3,13 +3,42 @@
 import java.util.*;
 
 class Solution {
+    int[] dr = {-1, 1, 0, 0};   // 상 하 좌 우
+    int[] dc = {0, 0, -1, 1};
+
     public int solution(int[][] board) {
-        // TODO: N x N 격자(0=빈 칸, 1=벽). (0,0)에서 (N-1,N-1)까지 상하좌우로 도로를 건설.
-        // 직선 도로 한 칸 = 100, 코너(직전 이동 방향과 다른 방향으로 꺾음) 한 번 = 500 추가.
-        // 출발 칸에서 처음 이동할 때는 코너 비용이 없다. 최소 건설 비용을 반환.
-        // 상태 = (행, 열, 도착 방향). 다익스트라(우선순위 큐) 또는 방향별 최소 비용 배열 + BFS 갱신.
-        // 같은 칸이라도 도착 방향이 다르면 다른 상태다. dist[행][열][방향]으로 관리.
-        throw new UnsupportedOperationException("TODO: 방향 상태 다익스트라");
+        int n = board.length;
+        int INF = Integer.MAX_VALUE;
+
+        int[][][] dist = new int[n][n][4];
+        for (int[][] a : dist) for (int[] b : a) Arrays.fill(b, INF);
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[3], b[3]));  // {r, c, dir, cost}
+        for (int d = 0; d < 4; d++) {           // 시작은 4방향 모두 비용 0
+            dist[0][0][d] = 0;
+            pq.offer(new int[] {0, 0, d, 0});
+        }
+
+        while (!pq.isEmpty()) {
+            int[] cur = pq.poll();
+            int r = cur[0], c = cur[1], d = cur[2], cost = cur[3];
+            if (cost > dist[r][c][d]) continue;     // 이미 더 좋은 값이 갱신된 낡은 항목
+
+            for (int nd = 0; nd < 4; nd++) {
+                int nr = r + dr[nd], nc = c + dc[nd];
+                if (nr < 0 || nc < 0 || nr >= n || nc >= n || board[nr][nc] == 1) continue;
+
+                int ncost = cost + 100 + (nd != d ? 500 : 0);   // 방향 바뀌면 코너 비용
+                if (ncost < dist[nr][nc][nd]) {
+                    dist[nr][nc][nd] = ncost;
+                    pq.offer(new int[] {nr, nc, nd, ncost});
+                }
+            }
+        }
+
+        int ans = INF;
+        for (int d = 0; d < 4; d++) ans = Math.min(ans, dist[n-1][n-1][d]);
+        return ans;
     }
 }
 

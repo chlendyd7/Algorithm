@@ -6,10 +6,7 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] lottos, int[] win_nums) {
-
-        List<Integer> winList = Arrays.stream(win_nums)
-                                    .boxed()
-                                    .collect(Collectors.toList());
+        boolean[] 
         int[] answer = {};
         return answer;
     }
